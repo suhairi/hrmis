@@ -67,14 +67,6 @@
                             <span>Leave</span></a>
                     </li>
                     <li>
-                        <a href="review.html"><img src="{{ URL::to('assets/img/review.svg') }}"
-                                alt="sidebar_img"><span>Review</span></a>
-                    </li>
-                    <li>
-                        <a href="report.html"><img src="{{ URL::to('assets/img/report.svg') }}"
-                                alt="sidebar_img"><span>Report</span></a>
-                    </li>
-                    <li>
                         <a href="manage.html"><img src="{{ URL::to('assets/img/manage.svg') }}" alt="sidebar_img">
                             <span>Manage</span></a>
                     </li>
