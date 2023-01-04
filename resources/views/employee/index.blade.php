@@ -43,7 +43,7 @@
                             @endif
 
 
-                            <table class="table table-bordered">
+                            <table class="table table-bordered mb-5">
                              <tr>
                                <th>No</th>
                                <th>Name</th>
@@ -79,7 +79,10 @@
                              @endforeach
                             </table>
 
-                            {{ $employees->render() }}
+                            <div class="d-flex justify-content-center">
+                                {!! $employees->links('vendor.pagination.bootstrap-5') !!}
+                            </div>
+
                             
                         </div>
                     </div>
