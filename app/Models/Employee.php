@@ -27,7 +27,11 @@ class Employee extends Model
     ];
 
 
-    public function ppks() {
-        return $this->belongsTo(Employee::class);
+    public function ppk() {
+        return $this->belongsTo(Ppk::class);
+    }
+
+    public function position() {
+        return $this->belongsTo(Position::class);
     }
 }

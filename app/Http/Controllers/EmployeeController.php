@@ -12,11 +12,11 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::all();
+        $employees = Employee::orderBy('name', 'ASC')->paginate(15);
 
-        return view('employee.index', compact('employees'));
+        return view('employee.index', compact('employees'))->with('i', ($request->input('page', 1) - 1) * 15);
     }
 
     /**
@@ -26,7 +26,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**

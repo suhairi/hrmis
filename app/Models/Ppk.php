@@ -14,11 +14,11 @@ class Ppk extends Model
     public $timestamps = false;
 
 
-    public function wilayahs() {
-        return $this->belongsTo(Ppk::class);
+    public function wilayah() {
+        return $this->belongsTo(Wilayah::class);
     }
 
-    public function employees() {
-        return $this->hasMany(Employee::class);
+    public function employee() {
+        return $this->hasOne(Employee::class);
     }
 }

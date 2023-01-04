@@ -29,7 +29,7 @@
                             <span>Dashboard</span></a>
                     </li>
                     <li>
-                        <a href="employee.html"><img src="{{ URL::to('assets/img/employee.svg') }}" alt="sidebar_img"><span>
+                        <a href="{{ route('employees.index') }}"><img src="{{ URL::to('assets/img/employee.svg') }}" alt="sidebar_img"><span>
                                 Employees</span></a>
                     </li>
                     <li>
