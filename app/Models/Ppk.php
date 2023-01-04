@@ -12,4 +12,13 @@ class Ppk extends Model
     protected $fillable = ['name', 'code', 'wilayah_id'];
 
     public $timestamps = false;
+
+
+    public function wilayahs() {
+        return $this->belongsTo(Ppk::class);
+    }
+
+    public function employees() {
+        return $this->hasMany(Employee::class);
+    }
 }

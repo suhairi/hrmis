@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             CreateAdminUserSeeder::class,
             WilayahTableSeeder::class,
             PpkSeeder::class,
+            EducationTableSeeder::class,
+            PositionTableSeeder::class,
+            EmployeeTableSeeder::class,
         ]);
     }
 }
