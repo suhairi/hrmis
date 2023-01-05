@@ -55,7 +55,7 @@ class PermissionController extends Controller
         $data['guard_name'] = $request->input('guard_name');
         $permission = Permission::create($data);
 
-        $data['name']       = $request->input('name') . 'edit';
+        $data['name']       = $request->input('name') . '-edit';
         $data['guard_name'] = $request->input('guard_name');
         $permission = Permission::create($data);
 
@@ -63,7 +63,7 @@ class PermissionController extends Controller
         $data['guard_name'] = $request->input('guard_name');
         $permission = Permission::create($data);
 
-        return redirect()->route('permissions.create')
+        return redirect()->route('permissions.index')
                         ->with('success','Permission : ' . $request->name . ' created successfully');
 
 

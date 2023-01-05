@@ -20,22 +20,9 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        // $employees = Employee::orderBy('name', 'ASC')->paginate(15);
-        // return view('employees.index', compact('employees'))->with('i', ($request->input('page', 1) - 1) * 15);
-
-        $employee = Employee::find(1);
-
-        $actions =  "<a class='btn btn-info shadow-md' href='" . route('employees.show', $employee->id) . "'>Show</a>" . 
-                    "<a class='btn btn-success shadow-md' href='" . route('employees.edit', $employee->id) . "'>Edit</a>" .
-                    "<form method='DELETE action='" . route('employees.destroy', $employee->id) . "' class='style:display:inline'>
-                    <button class='btn btn-success shadow-md'>Delete</button></form>";
-        // return $actions;
-
-
         if ($request->ajax()) {
 
-            $employees = Employee::orderBy('name', 'ASC');
-
+            $employees = Employee::all();
 
             return Datatables::of($employees)
                     ->addIndexColumn()
@@ -64,8 +51,8 @@ class EmployeeController extends Controller
                     })
                     ->addColumn('actions', function($employee) {
 
-                        $actions =  "<a class='btn btn-info shadow-md' href='" . route('employees.show', $employee->id) . "'>Show</a>" . 
-                                    "<a class='btn btn-success shadow-md' href='" . route('employees.edit', $employee->id) . "'>Edit</a>" .
+                        $actions =  "<a class='btn btn-info shadow-md mr-2' href='" . route('employees.show', $employee->id) . "'>Show</a>" . 
+                                    "<a class='btn btn-success shadow-md mr-2' href='" . route('employees.edit', $employee->id) . "'>Edit</a>" .
                                     "<form method='DELETE action='" . route('employees.destroy', $employee->id) . "' style='display:inline'>
                                     <a class='btn btn-danger shadow-md'>Delete</a>
                                     </form>";

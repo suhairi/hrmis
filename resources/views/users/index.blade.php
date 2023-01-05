@@ -48,7 +48,7 @@
                                <th>No</th>
                                <th>Name</th>
                                <th>Email</th>
-                               <th>HQ/Wilayah/PPK</th>
+                               <th>Location</th>
                                <th>Roles</th>
                                <th>Permissions</th>
                                <th width="280px">Action</th>
@@ -58,7 +58,7 @@
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->ppk }}</td>
+                                <td>{{ $user->location }}</td>
                                 <td style="vertical-align:top">
                                   @if(!empty($user->getRoleNames()))
                                     @foreach($user->getRoleNames() as $v)
@@ -87,7 +87,9 @@
                              @endforeach
                             </table>
 
-                            {!! $data->render() !!}
+                            <div class="mt-4">
+                                {!! $data->links('vendor.pagination.bootstrap-5') !!}
+                            </div>
                         </div>
                     </div>
                 </div>

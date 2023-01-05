@@ -63,18 +63,6 @@
                         </li>
                     @endcan
                     <li>
-                        <a href="leave.html"><img src="{{ URL::to('assets/img/leave.svg') }}" alt="sidebar_img">
-                            <span>Leave</span></a>
-                    </li>
-                    <li>
-                        <a href="manage.html"><img src="{{ URL::to('assets/img/manage.svg') }}" alt="sidebar_img">
-                            <span>Manage</span></a>
-                    </li>
-                    <li>
-                        <a href="settings.html"><img src="{{ URL::to('assets/img/settings.svg') }}"
-                                alt="sidebar_img"><span>Settings</span></a>
-                    </li>
-                    <li>
                         <a href="{{ route('profiles.index') }}"><img src="{{ URL::to('assets/img/profile.svg') }}" alt="sidebar_img">
                             <span>Profile</span></a>
                     </li>

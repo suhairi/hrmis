@@ -75,17 +75,14 @@ class UserController extends Controller
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
-        $ppk = [
-                'HQ' => 'HQ', 'BPIP' => 'BPIP', 'BPW' => 'BPW',
-                'W1' => 'Wilayah 1', 'W2' => 'Wilayah 2', 'W3' => 'Wilayah 3', 'W4' => 'Wilayah 4',
-                'A1' => 'A1', 'B1' => 'B1', 'C1' => 'C1', 'D1' => 'D1', 'E1' => 'E1',
-                'A2' => 'A2', 'B2' => 'B2', 'C2' => 'C2', 'D2' => 'D2', 'E2' => 'E2', 'F2' => 'F2', 'G2' => 'G2', 'H2' => 'H2', 'I2' => 'I2',
-                'A3' => 'A3', 'B3' => 'B3', 'C3' => 'C3', 'D3' => 'D3', 'E3' => 'E3', 'F3' => 'F3',
-                'A4' => 'A4', 'B4' => 'B4', 'C4' => 'C4', 'D4' => 'D4', 'E4' => 'E4', 'F4' => 'F4', 'G4' => 'G4'
+        $location = [
+                'HQ' => 'HQ', 
+                'W1' => 'WILAYAH',
+                'PPK' => 'PPK',
             ];
-        $userPpk = $user->ppk;
+        $userLocation = $user->location;
 
-        return view('users.edit', compact('user','roles','userRole', 'ppk', 'userPpk'));
+        return view('users.edit', compact('user','roles','userRole', 'location', 'userLocation'));
     }
 
     public function update(Request $request, $id)

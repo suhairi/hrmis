@@ -13,12 +13,12 @@
                             @csrf
                             <div class="form-group">
                                 <label class="form-control-label">Username</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter username">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="hrmis.pip@gmail.com" placeholder="Enter username">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Password</label>
                                 <div class="pass-group">
-                                    <input type="password" class="form-control pass-input @error('password') is-invalid @enderror" name="password" placeholder="    Enter Password">
+                                    <input type="password" class="form-control pass-input @error('password') is-invalid @enderror" name="password" placeholder="    Enter Password" value="Password.123">
                                     <span class="fas fa-eye toggle-password"></span>
                                 </div>
                             </div>

@@ -81,7 +81,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>PPK :</strong>
-                                        {!! Form::select('ppk', $ppk, $userPpk, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
+                                        {!! Form::select('location', $location, $userLocation, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
                                     </div>
                                 </div>                                
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center p-4">

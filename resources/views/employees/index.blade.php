@@ -73,14 +73,15 @@
             serverSide: true,
             ajax: "{{ route('employees.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: true},
                 {data: 'name', name: 'name'},
                 {data: 'nokp', name: 'nokp'},
                 {data: 'gender', name: 'gender'},
                 {data: 'ppk', name: 'ppk'},
                 {data: 'start_date', name: 'start_date'},
-                {data: 'actions', name: 'actions'},
-            ]
+                {data: 'actions', name: 'actions', orderable: false, searchable: false},
+            ],
+            sPaginationType: "simple_numbers",
         });
     });
 </script>
