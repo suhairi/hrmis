@@ -66,6 +66,10 @@
                              @endforeach
                             </table>
 
+                            <div class="mt-3">
+                                {!! $permissions->links('vendor.pagination.bootstrap-5') !!}
+                            </div>
+
                         </div>
                     </div>
                 </div>

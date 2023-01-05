@@ -17,11 +17,11 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $permissions = Permission::all();
+        $permissions = Permission::orderBy('id', 'ASC')->paginate(10);
 
-        return view('permissions.index', compact('permissions'));
+        return view('permissions.index', compact('permissions'))->with('i', ($request->input('page', 1) - 1) * 15);
     }
 
     /**
@@ -30,9 +30,7 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
-
+    {     
         return view('permissions.create');
     }
 
@@ -49,7 +47,21 @@ class PermissionController extends Controller
             'guard_name'    => 'required',
         ]);
 
-        $permission = Permission::create($request->all());
+        $data['name']       = $request->input('name') . '-create';
+        $data['guard_name'] = $request->input('guard_name');
+        $permission = Permission::create($data);
+
+        $data['name']       = $request->input('name') . '-delete';
+        $data['guard_name'] = $request->input('guard_name');
+        $permission = Permission::create($data);
+
+        $data['name']       = $request->input('name') . 'edit';
+        $data['guard_name'] = $request->input('guard_name');
+        $permission = Permission::create($data);
+
+        $data['name']       = $request->input('name') . '-list';
+        $data['guard_name'] = $request->input('guard_name');
+        $permission = Permission::create($data);
 
         return redirect()->route('permissions.create')
                         ->with('success','Permission : ' . $request->name . ' created successfully');
@@ -76,7 +88,9 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::find($id);
+
+        return view('permissions.edit', compact('permission'));
     }
 
     /**
@@ -86,9 +100,16 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+        ]);
+    
+        $permission->update($request->all());
+    
+        return redirect()->route('permissions.index')
+                        ->with('success','Permission ' . $request->name . ' updated successfully');
     }
 
     /**

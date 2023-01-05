@@ -14,7 +14,7 @@ class Wilayah extends Model
     public $timestamps = false;
 
 
-    public function ppks() {
-        return $this->hasMany(Wilayah::class);
+    public function ppk() {
+        return $this->hasOne(Ppk::class);
     }
 }

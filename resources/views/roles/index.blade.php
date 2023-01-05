@@ -67,7 +67,7 @@
                                 </tr>
                                 @endforeach
                             </table>
-                            {!! $roles->render() !!}
+                            {!! $roles->links('vendor.pagination.bootstrap-5') !!}
 
                         </div>
                     </div>

@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
 
     Route::resource('employees', EmployeeController::class);
+    Route::get('employees/list', [EmployeeController::class, 'list'])->name('employees.list');
 
     Route::resource('profiles', ProfileController::class);
 
