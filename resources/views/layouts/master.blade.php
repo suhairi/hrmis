@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{{ URL::to('assets/css/dataTables.bootstrap4.min.css') }}">
 	<link rel="stylesheet" href="{{ URL::to('assets/css/jquery.dataTables.min.css') }}">
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
+	<link rel="stylesheet" href="{{ URL::to('assets/css/multiform.css') }}" id="bootstrap">
 </head>
 
 <body>
@@ -190,12 +191,14 @@
 	<script src="{{ URL::to('assets/js/bootstrap.min.js') }}"></script>	
 	<script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
 	<script src="{{ URL::to('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
-	<script src="{{ URL::to('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
-	<script src="{{ URL::to('assets/plugins/apexchart/chart-data.js') }}"></script>
+	
 
 	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/script.js') }}"></script>
+
+	<!-- <script src="{{ URL::to('assets/plugins/apexchart/apexcharts.min.js') }}"></script> -->
+	<!-- <script src="{{ URL::to('assets/plugins/apexchart/chart-data.js') }}"></script> -->
 
 	@stack('scripts')
 </body>

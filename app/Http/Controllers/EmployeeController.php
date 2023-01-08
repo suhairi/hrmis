@@ -74,7 +74,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return abort(404);
+        return view('employees.create');
     }
 
     /**
