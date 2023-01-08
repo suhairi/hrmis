@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Employee extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name', 
@@ -24,14 +26,15 @@ class Employee extends Model
         'location',
         'ppk_id',
         'edu_major',
+        'deleted_at'
     ];
 
 
     public function ppk() {
-        return $this->belongsTo(Ppk::class);
+        return $this->belongsTo(Ppk::class)->withTrashed();
     }
 
     public function position() {
-        return $this->belongsTo(Position::class);
+        return $this->belongsTo(Position::class)->withTrashed();
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('code');
             $table->unsignedBigInteger('wilayah_id');
             $table->foreign('wilayah_id')->references('id')->on('wilayahs')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

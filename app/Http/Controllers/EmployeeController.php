@@ -22,12 +22,19 @@ class EmployeeController extends Controller
     {
         if ($request->ajax()) {
 
-            $employees = Employee::all();
+            // ** Listing the deleted employee to the BACK of the list
+            // $employees = Employee::withTrashed()->orderBy('deleted_at', 'asc')->get();
+
+            // ** Listing the deleted employee to the FRONT of the list 
+            $employees = Employee::withTrashed()->get();
 
             return Datatables::of($employees)
                     ->addIndexColumn()
                     ->addColumn('name', function($employee) {
-                        return $employee->name;
+                        if($employee->deleted_at != NULL)
+                            return $employee->name . ' <small><sup>*</sup><font color=red><sup>deleted</sup></font></small>';
+                        else
+                            return $employee->name;
                     })
                     ->addColumn('nokp', function($employee) {
                         return $employee->nokp;
@@ -50,15 +57,7 @@ class EmployeeController extends Controller
                         return $start_date;
                     })
                     ->addColumn('actions', function($employee) {
-
-                        $actions =  "<a class='btn btn-info shadow-md mr-2' href='" . route('employees.show', $employee->id) . "'>Show</a>" . 
-                                    "<a class='btn btn-success shadow-md mr-2' href='" . route('employees.edit', $employee->id) . "'>Edit</a>" .
-                                    "<form method='DELETE action='" . route('employees.destroy', $employee->id) . "' style='display:inline'>
-                                    <a class='btn btn-danger shadow-md'>Delete</a>
-                                    </form>";
-
-
-                        return $actions;
+                        return view('partials.employees.index', compact('employee'));
                     })                              
                     ->rawColumns(['name', 'nokp', 'gender', 'ppk', 'start_date', 'actions'])
                     ->make(true);
@@ -129,8 +128,12 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
-        //
+        $employee = Employee::find($id);
+
+        Employee::find($id)->delete();
+        return redirect()->route('employees.index')
+                        ->with('success','Employee : ' . $employee->name . ' deleted successfully');
     }
 }

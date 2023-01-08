@@ -8,7 +8,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PpkController;
+use App\Http\Controllers\WilayahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +37,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('permissions', PermissionController::class);
+    Route::resource('positions', PositionController::class);
+
     Route::resource('products', ProductController::class);
 
     Route::resource('employees', EmployeeController::class);
     Route::get('employees/list', [EmployeeController::class, 'list'])->name('employees.list');
+
+    Route::get('/ppk', [PpkController::class, 'index'])->name('ppk.index');
+    Route::get('/wilayah', [WilayahController::class, 'index'])->name('wilayah.index');
 
     Route::resource('profiles', ProfileController::class);
 

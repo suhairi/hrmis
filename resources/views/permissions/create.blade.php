@@ -28,7 +28,7 @@
                         <div class="card-body">
 
                             <div class="pull-right p-3">
-                                <a class="btn btn-dark" href="{{ route('permissions.index') }}"> Back</a>
+                                <a class="btn btn-dark" href="{{ URL::previous() }}"> Back</a>
                             </div>
 
                             @if (count($errors) > 0)

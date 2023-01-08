@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('grade');
             $table->string('scheme');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

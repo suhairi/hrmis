@@ -13,7 +13,7 @@
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
                             </li>
-                            <li class="breadcrumb-item active">Profile</li>
+                            <li class="breadcrumb-item active">Wilayah</li>
                         </ul>
                         <!-- <h3>Admin Dashboard</h3> -->
                     </div>
@@ -23,11 +23,9 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Profile Management</strong></div>
+                        <div class="card-header"><strong>Wilayah Management</strong></div>
 
                         <div class="card-body">
-
-                            <div class="row">
 
                             @if(session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -38,32 +36,14 @@
                                 </div>
                             @endif
 
-
-                            <table class="table table-bordered">
-                             <tr>
-                               <th>Name</th>
-                               <th>Email</th>
-                               <th>Roles</th>
-                               <th width="280px">Action</th>
-                             </tr>
-                              <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                  @if(!empty($user->getRoleNames()))
-                                    @foreach($user->getRoleNames() as $v)
-                                       <label class="badge">{{ $v }}</label>
-                                    @endforeach
-                                  @endif
-                                </td>
-                                <td>
-                                   <a class="btn btn-info" href="{{ route('users.show', $user->id) }}">Show</a>
-                                   <a class="btn btn-success" href="{{ route('profiles.edit', $user->id) }}">Edit</a>
-                                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                </td>
-                              </tr>
+                            <table class="table table-bordered mb-5 data-table">
+                                <thead>
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                </thead>
+                                <tbody></tbody>
                             </table>
-
+                            
                         </div>
                     </div>
                 </div>
@@ -71,5 +51,23 @@
         </div>
     </div>
 
-
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+    $(function () {
+      
+        var table = $('.data-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('wilayah.index') }}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: true},
+                {data: 'name', name: 'name'},
+            ],
+            sPaginationType: "simple_numbers",
+        });
+    });
+</script>
+@endpush
+

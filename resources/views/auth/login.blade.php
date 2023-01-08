@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label class="form-control-label">Password</label>
                                 <div class="pass-group">
-                                    <input type="password" class="form-control pass-input @error('password') is-invalid @enderror" name="password" placeholder="    Enter Password" value="Password.123">
+                                    <input type="password" class="form-control pass-input @error('password') is-invalid @enderror" name="password" placeholder="    Enter Password" value="password">
                                     <span class="fas fa-eye toggle-password"></span>
                                 </div>
                             </div>

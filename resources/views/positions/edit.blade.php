@@ -13,7 +13,7 @@
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
                             </li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Employee Positions</li>
                         </ul>
                         <!-- <h3>Admin Dashboard</h3> -->
                     </div>
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Edit New User</strong></div>
+                        <div class="card-header"><strong>Edit New Position</strong></div>
 
                         <div class="card-body">
 
@@ -46,42 +46,24 @@
                             @endif
 
 
-                            {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+                            {!! Form::model($position, ['method' => 'PATCH','route' => ['positions.update', $position->id]]) !!}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <strong>Name:</strong>
+                                        <strong>Name :</strong>
                                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <strong>Email:</strong>
-                                        {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                                        <strong>Grade :</strong>
+                                        {!! Form::text('grade', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <strong>Password:</strong>
-                                        {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Confirm Password:</strong>
-                                        {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Role/s:</strong>
-                                        {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>PPK :</strong>
-                                        {!! Form::select('location', $location, $userLocation, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
+                                        <strong>Scheme :</strong>
+                                        {!! Form::select('scheme', ['SOKONGAN' => 'SOKONGAN', 'KONTRAK' => 'KONTRAK', 'SAMBILAN' => 'SAMBILAN'], $position->scheme, array('class' => 'form-control', 'placeholder' => 'Select Position')) !!}
                                     </div>
                                 </div>                                
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center p-4">

@@ -190,8 +190,8 @@
 	<script src="{{ URL::to('assets/js/bootstrap.min.js') }}"></script>	
 	<script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
 	<script src="{{ URL::to('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
-	<!-- <script src="{{ URL::to('assets/plugins/apexchart/apexcharts.min.js') }}"></script> -->
-	<!-- <script src="{{ URL::to('assets/plugins/apexchart/chart-data.js') }}"></script> -->
+	<script src="{{ URL::to('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
+	<script src="{{ URL::to('assets/plugins/apexchart/chart-data.js') }}"></script>
 
 	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>

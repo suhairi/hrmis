@@ -11,7 +11,7 @@
                 <div class="card-body">
 
                     <div class="pull-right p-3">
-                        <a class="btn btn-dark" href="{{ route('products.index') }}"> Back</a>
+                        <a class="btn btn-dark" href="{{ URL::previous() }}"> Back</a>
                     </div>
 
                     <div class="row">

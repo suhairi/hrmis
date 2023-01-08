@@ -33,6 +33,10 @@
                                 Employees</span></a>
                     </li>
                     <li>
+                        <a href="{{ route('positions.index') }}"><img src="{{ URL::to('assets/img/position.svg') }}" alt="sidebar_img"> <span>
+                                Position</span></a>
+                    </li>
+                    <li>
                         <a href="employee.html"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
                                 Performance</span></a>
                     </li>
@@ -40,22 +44,25 @@
                         <li>
                             <a href="{{ route('users.index') }}"><img src="{{ URL::to('assets/img/users.svg') }}" alt="sidebar_img"> <span>
                                     Users</span></a>
-                        </li>
-                    @endcan
-                    @can('role-create')                    
+                        </li>                   
                         <li>
-                            <a href="{{ route('roles.index') }}"><img src="{{ URL::to('assets/img/users.svg') }}" alt="sidebar_img"> <span>
+                            <a href="{{ route('roles.index') }}"><img src="{{ URL::to('assets/img/roles.svg') }}" alt="sidebar_img"> <span>
                                     Roles</span></a>
-                        </li>
-                    @endcan
-                    @can('role-create')                    
+                        </li>                  
                         <li>
-                            <a href="{{ route('permissions.index') }}"><img src="{{ URL::to('assets/img/users.svg') }}" alt="sidebar_img"> <span>
+                            <a href="{{ route('permissions.index') }}"><img src="{{ URL::to('assets/img/permission.svg') }}" alt="sidebar_img"> <span>
                                     Permissions</span></a>
                         </li>
+                                                        
+                        <li>
+                            <a href="{{ route('wilayah.index') }}"><img src="{{ URL::to('assets/img/ppk.svg') }}" alt="sidebar_img"> <span>
+                                    Wilayah</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('ppk.index') }}"><img src="{{ URL::to('assets/img/ppk.svg') }}" alt="sidebar_img"> <span>
+                                    PPK</span></a>
+                        </li>
                     @endcan
-                    
-                    
                     @can('product-create')
                         <li>
                             <a href="{{ route('products.index') }}"><img src="{{ URL::to('assets/img/calendar.svg') }}" alt="sidebar_img">
