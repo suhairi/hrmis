@@ -3,12 +3,9 @@
         <thead>
             <th>#</th>
             <th>User Type</th>
-            <th>User ID</th>
-            <th>Event</th>
-            <th>Auditable Type</th>
-            <th>Auditable ID</th>
-            <th>Old Values</th>
-            <th>New Values</th>
+            <th>User ID / Event</th>
+            <th>Auditable ID/Type</th>
+            <th>Old/New Values</th>
             <th>URL</th>
             <th>IP Address</th>
             <th>User Agent</th>
@@ -20,27 +17,26 @@
     @foreach($permissions as $permission)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $permission->user_type }}</td>
-            <td>{{ $permission->user_id }}</td>
-            <td>{{ $permission->event }}</td>
-            <td>{{ $permission->auditable_type }}</td>
-            <td>{{ $permission->auditable_id }}</td>
+            <td>...{{ substr($permission->user_type, -10, 10) }}</td>
+            <td>{{ Str::limit($permission->user->name, 5, '...') }} <br /> {{ $permission->event }}</td>
+            <td>{{ $permission->auditable_id }} <br />...{{ substr($permission->auditable_type, -10, 10) }}</td>
             <td>
+                <strong>Old Values : </strong><br />
                 @foreach($permission->old_values as $attribute => $value)
-                    {{ $value }} <br />
+                    {{ substr($value, 0, 15) }} <br />
                 @endforeach
-            </td>
-            <td>
+                <br />
+                <strong>New Values : </strong><br />
                 @foreach($permission->new_values as $attribute => $value)
-                    {{ $value }} <br />
+                    {{ substr($value, 0, 15) }} <br />
                 @endforeach
             </td>
-            <td>{{ $permission->url }}</td>
-            <td>{{ $permission->ip_address }}</td>
-            <td>{{ $permission->user_agent }}</td>
+            <td>...{{ substr($permission->url, -20, 20) }}</td>
+            <td>{{ Str::limit($permission->ip_address, 5, '...') }}</td>
+            <td>{{ Str::limit($permission->user_agent, 5, '...') }}</td>
             <td>{{ $permission->tags }}</td>
-            <td>{{ $permission->created_at }}</td>
-            <td>{{ $permission->updated_at }}</td>
+            <td>{{ Str::limit($permission->created_at, 15, '...') }}</td>
+            <td>{{ Str::limit($permission->updated_at, 15, '...') }}</td>
         </tr>
     @endforeach
 

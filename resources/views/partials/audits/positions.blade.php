@@ -3,12 +3,9 @@
         <thead>
             <th>#</th>
             <th>User Type</th>
-            <th>User ID</th>
-            <th>Event</th>
-            <th>Auditable Type</th>
-            <th>Auditable ID</th>
-            <th>Old Values</th>
-            <th>New Values</th>
+            <th>User ID / Event</th>
+            <th>Auditable ID/Type</th>
+            <th>Old/New Values</th>
             <th>URL</th>
             <th>IP Address</th>
             <th>User Agent</th>
@@ -20,27 +17,26 @@
     @foreach($positions as $position)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $position->user_type }}</td>
-            <td>{{ $position->user_id }}</td>
-            <td>{{ $position->event }}</td>
-            <td>{{ $position->auditable_type }}</td>
-            <td>{{ $position->auditable_id }}</td>
+            <td>...{{ substr($position->user_type, -10, 10) }}</td>
+            <td>{{ Str::limit($position->user->name, 5, '...') }} <br /> {{ $position->event }}</td>
+            <td>{{ $position->auditable_id }} <br />...{{ substr($position->auditable_type, -10, 10) }}</td>
             <td>
+                <strong>Old Values : </strong><br />
                 @foreach($position->old_values as $attribute => $value)
-                    {{ $value }} <br />
+                    {{ substr($value, 0, 15) }} <br />
                 @endforeach
-            </td>
-            <td>
+                <br />
+                <strong>New Values : </strong><br />
                 @foreach($position->new_values as $attribute => $value)
-                    {{ $value }} <br />
+                    {{ substr($value, 0, 15) }} <br />
                 @endforeach
             </td>
-            <td>{{ $position->url }}</td>
-            <td>{{ $position->ip_address }}</td>
-            <td>{{ $position->user_agent }}</td>
+            <td>...{{ substr($position->url, -20, 20) }}</td>
+            <td>{{ Str::limit($position->ip_address, 5, '...') }}</td>
+            <td>{{ Str::limit($position->user_agent, 5, '...') }}</td>
             <td>{{ $position->tags }}</td>
-            <td>{{ $position->created_at }}</td>
-            <td>{{ $position->updated_at }}</td>
+            <td>{{ Str::limit($position->created_at, 15, '...') }}</td>
+            <td>{{ Str::limit($position->updated_at, 15, '...') }}</td>
         </tr>
     @endforeach
 

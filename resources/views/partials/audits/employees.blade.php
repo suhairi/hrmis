@@ -3,12 +3,9 @@
         <thead>
             <th>#</th>
             <th>User Type</th>
-            <th>User ID</th>
-            <th>Event</th>
-            <th>Auditable Type</th>
-            <th>Auditable ID</th>
-            <th>Old Values</th>
-            <th>New Values</th>
+            <th>User ID / Event</th>
+            <th>Auditable ID/Type</th>
+            <th>Old/New Values</th>
             <th>URL</th>
             <th>IP Address</th>
             <th>User Agent</th>
@@ -20,27 +17,26 @@
     @foreach($employees as $employee)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $employee->user_type }}</td>
-            <td>{{ $employee->user_id }}</td>
-            <td>{{ $employee->event }}</td>
-            <td>{{ $employee->auditable_type }}</td>
-            <td>{{ $employee->auditable_id }}</td>
+            <td>...{{ substr($employee->user_type, -10, 10) }}</td>
+            <td>{{ Str::limit($employee->user->name, 5, '...') }} <br /> {{ $employee->event }}</td>
+            <td>{{ $employee->auditable_id }} <br />...{{ substr($employee->auditable_type, -10, 10) }}</td>
             <td>
+                <strong>Old Values : </strong><br />
                 @foreach($employee->old_values as $attribute => $value)
-                    {{ $value }} <br />
+                    {{ substr($value, 0, 15) }} <br />
                 @endforeach
-            </td>
-            <td>
+                <br />
+                <strong>New Values : </strong><br />
                 @foreach($employee->new_values as $attribute => $value)
-                    {{ $value }} <br />
+                    {{ substr($value, 0, 15) }} <br />
                 @endforeach
             </td>
-            <td>{{ $employee->url }}</td>
-            <td>{{ $employee->ip_address }}</td>
-            <td>{{ $employee->user_agent }}</td>
+            <td>...{{ substr($employee->url, -20, 20) }}</td>
+            <td>{{ Str::limit($employee->ip_address, 5, '...') }}</td>
+            <td>{{ Str::limit($employee->user_agent, 5, '...') }}</td>
             <td>{{ $employee->tags }}</td>
-            <td>{{ $employee->created_at }}</td>
-            <td>{{ $employee->updated_at }}</td>
+            <td>{{ Str::limit($employee->created_at, 15, '...') }}</td>
+            <td>{{ Str::limit($employee->updated_at, 15, '...') }}</td>
         </tr>
     @endforeach
 

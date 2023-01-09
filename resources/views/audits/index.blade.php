@@ -13,7 +13,7 @@
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
                             </li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Audits</li>
                         </ul>
                     </div>
                 </div>
