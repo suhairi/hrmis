@@ -35,60 +35,44 @@
                                 </div>
                             @endif
 
-                            <ul class="nav nav-pills mb-3" id="ex1" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a
-                                      class="nav-link active"
-                                      id="ex1-tab-1"
-                                      data-mdb-toggle="pill"
-                                      href="#ex1-pills-1"
-                                      role="tab"
-                                      aria-controls="ex1-pills-1"
-                                      aria-selected="true"
-                                      >Employees</a>
+                            <ul class="nav nav-pills">  
+                                <li class="nav-item active">
+                                    <a data-toggle="tab" href="#employees" class="nav-link">Employees</a>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <a
-                                      class="nav-link"
-                                      id="ex1-tab-2"
-                                      data-mdb-toggle="pill"
-                                      href="#ex1-pills-2"
-                                      role="tab"
-                                      aria-controls="ex1-pills-2"
-                                      aria-selected="false"
-                                      >Positions</a>
+                                <li class="nav-item">
+                                    <a data-toggle="tab" href="#positions" class="nav-link">Positions</a>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <a
-                                      class="nav-link"
-                                      id="ex1-tab-3"
-                                      data-mdb-toggle="pill"
-                                      href="#ex1-pills-3"
-                                      role="tab"
-                                      aria-controls="ex1-pills-3"
-                                      aria-selected="false"
-                                      >Users</a>
+                                <li class="nav-item">
+                                    <a data-toggle="tab" href="#users" class="nav-link">Users</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a data-toggle="tab" href="#permissions" class="nav-link">Permissions</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a data-toggle="tab" href="#other" class="nav-link">Others</a>
                                 </li>
                             </ul>
-                            <!-- Pills navs -->
-
-                            <!-- Pills content -->
-                            <div class="tab-content" id="ex1-content">
-                                <div
-                                    class="tab-pane fade show active"
-                                    id="ex1-pills-1"
-                                    role="tabpanel"
-                                    aria-labelledby="ex1-tab-1"
-                                  >Tab 1 content
+                            <div class="tab-content">
+                                <div id="employees" class="tab-pane fade in active">
+                                    @include('partials.audits.employees')
                                 </div>
-                                <div class="tab-pane fade" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                                    Tab 2 content
-                                  </div>
-                                  <div class="tab-pane fade" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                                    Tab 3 content
+                                <div id="positions" class="tab-pane fade in">
+                                    @include('partials.audits.positions')
+                                </div>
+                                <div id="users" class="tab-pane fade in">
+                                    @include('partials.audits.users')
+                                </div>
+                                <div id="permissions" class="tab-pane fade in">
+                                    @include('partials.audits.permissions')
+                                </div>
+                                <div id="other" class="tab-pane fade in">
+                                    5
                                 </div>
                             </div>
-                            <!-- Pills content -->
+
+
+
+
                             
                         </div>
                     </div>
