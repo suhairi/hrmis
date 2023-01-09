@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Ppk extends Model
+use OwenIt\Auditing\Contracts\Auditable;
+
+class Ppk extends Model implements Auditable
 {
     use HasFactory, SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
 
     protected $fillable = ['name', 'code', 'wilayah_id'];
 

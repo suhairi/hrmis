@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Transfer extends Model
+use OwenIt\Auditing\Contracts\Auditable;
+
+class Transfer extends Model implements Auditable
 {
     use HasFactory, SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
 
     protected $fillable = ['employee_id', 'date_of_transfer', 'transfer_from', 'transfer_to'];
 }

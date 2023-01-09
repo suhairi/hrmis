@@ -12,6 +12,7 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PpkController;
 use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\AuditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +44,13 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('employees', EmployeeController::class);
     Route::get('employees/list', [EmployeeController::class, 'list'])->name('employees.list');
+    Route::get('employees/transfer/{id}', [EmployeeController::class, 'transfer'])->name('employees.transfer');
 
     Route::get('/ppk', [PpkController::class, 'index'])->name('ppk.index');
     Route::get('/wilayah', [WilayahController::class, 'index'])->name('wilayah.index');
+
+
+    Route::get('/audits', [AuditController::class, 'index'])->name('audits.index');
 
     Route::resource('profiles', ProfileController::class);
 

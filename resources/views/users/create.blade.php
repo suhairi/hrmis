@@ -76,8 +76,8 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <strong>PPK :</strong>
-                                        {!! Form::select('ppk', $ppk,'Select PPK', array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
+                                        <strong>Location :</strong>
+                                        {!! Form::select('location', $location,'Select Location', array('class' => 'form-control', 'placeholder' => 'Select Location')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center p-3">

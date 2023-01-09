@@ -62,6 +62,11 @@
                             <a href="{{ route('ppk.index') }}"><img src="{{ URL::to('assets/img/ppk.svg') }}" alt="sidebar_img"> <span>
                                     PPK</span></a>
                         </li>
+                        <li>
+                            <a href="{{ route('audits.index') }}"><img src="{{ URL::to('assets/img/ppk.svg') }}" alt="sidebar_img"> <span>
+                                    **Audit</span></a>
+                        </li>
+                        
                     @endcan
                     @can('product-create')
                         <li>

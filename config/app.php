@@ -200,6 +200,8 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yajra\DataTables\HtmlServiceProvider::class,
 
+        OwenIt\Auditing\AuditingServiceProvider::class,
+
     ],
 
     /*

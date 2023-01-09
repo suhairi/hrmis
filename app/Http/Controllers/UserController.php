@@ -32,7 +32,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        $ppk = [
+        $location = [
                 'HQ' => 'HQ', 'BPIP' => 'BPIP', 'BPW' => 'BPW',
                 'W1' => 'Wilayah 1', 'W2' => 'Wilayah 2', 'W3' => 'Wilayah 3', 'W4' => 'Wilayah 4',
                 'A1' => 'A1', 'B1' => 'B1', 'C1' => 'C1', 'D1' => 'D1', 'E1' => 'E1',
@@ -40,16 +40,17 @@ class UserController extends Controller
                 'A3' => 'A3', 'B3' => 'B3', 'C3' => 'C3', 'D3' => 'D3', 'E3' => 'E3', 'F3' => 'F3',
                 'A4' => 'A4', 'B4' => 'B4', 'C4' => 'C4', 'D4' => 'D4', 'E4' => 'E4', 'F4' => 'F4', 'G4' => 'G4'
             ];
-        return view('users.create', compact('roles', 'ppk'));
+        return view('users.create', compact('roles', 'location'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'name'      => 'required',
+            'email'     => 'required|email|unique:users,email',
+            'password'  => 'required|same:confirm-password',
+            'roles'     => 'required',
+            'location'  => 'required',
         ]);
 
         $input = $request->all();
