@@ -6,11 +6,7 @@
 
         <title>Laravel</title>
 
-        <link rel="shortcut icon" href="{{ URL::to('assets/img/favicon.png') }}">
         <link rel="stylesheet" href="{{ URL::to('assets/css/bootstrap.min.css') }}">
-
-        <link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
-        <link rel="stylesheet" href="{{ URL::to('assets/css/multiform.css') }}" id="bootstrap">
         
         @livewireStyles()
 
@@ -23,7 +19,6 @@
 
         @livewire('welcome')
 
-        @livewireScripts()
 
 
     </body>

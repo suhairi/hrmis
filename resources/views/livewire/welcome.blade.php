@@ -1,6 +1,8 @@
 <div class="container">
 
-    <input type="text" wire:model="name" class="mr-4"> <strong>Welcome {{ $name }}</strong>
+    <form wire:submit.prevent="secondStep">
+        <input type="text" wire:model="name" class="mr-4"> <strong>Welcome {{ $name }}</strong>
+    </form>
 
     @if($currentStep == 1)
         <h3>First Step</h3>

@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Welcome extends Component
 {
-    public $name = "Jelly";
+    public $name = 'Jelly';
     public $currentStep = 1;
 
     public function secondStep() {
