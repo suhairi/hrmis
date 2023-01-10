@@ -32,7 +32,7 @@ Route::get('/clear', function() {
     Artisan::call('route:cache');
     Artisan::call('view:clear');
     Artisan::call('config:cache');
-    return  view('welcome');
+    return  "All cleared...";
 
 });
 

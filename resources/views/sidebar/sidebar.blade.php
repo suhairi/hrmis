@@ -78,6 +78,11 @@
                         <a href="{{ route('profiles.index') }}"><img src="{{ URL::to('assets/img/profile.svg') }}" alt="sidebar_img">
                             <span>Profile</span></a>
                     </li>
+                    <li>
+                        <a href="{{ url('/welcome') }}"><img src="{{ URL::to('assets/img/profile.svg') }}" alt="sidebar_img">
+                            <span>Welcome</span></a>
+                    </li>
+                    
 
                     
                 </ul>

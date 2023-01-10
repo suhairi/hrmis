@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'layout' => 'layouts.master',
+    'layout' => 'layouts.app',
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => 'http://localhost/spatie/public/',
+    'asset_url' => env('ASSET_URL', 'http://localhost/spatie/public'),
 
     /*
     |--------------------------------------------------------------------------
