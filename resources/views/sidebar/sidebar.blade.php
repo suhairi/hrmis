@@ -64,7 +64,7 @@
                         </li>
                         <li>
                             <a href="{{ route('audits.index') }}"><img src="{{ URL::to('assets/img/ppk.svg') }}" alt="sidebar_img"> <span>
-                                    **Audit</span></a>
+                                    Audit</span></a>
                         </li>
                         
                     @endcan
@@ -78,6 +78,8 @@
                         <a href="{{ route('profiles.index') }}"><img src="{{ URL::to('assets/img/profile.svg') }}" alt="sidebar_img">
                             <span>Profile</span></a>
                     </li>
+
+                    
                 </ul>
                 <ul class="logout">
                     <li>

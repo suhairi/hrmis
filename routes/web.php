@@ -14,6 +14,8 @@ use App\Http\Controllers\PpkController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\AuditController;
 
+use App\Http\Livewire\UserWizard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

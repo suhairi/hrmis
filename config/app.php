@@ -202,6 +202,8 @@ return [
 
         OwenIt\Auditing\AuditingServiceProvider::class,
 
+        Spatie\Backup\BackupServiceProvider::class
+
     ],
 
     /*

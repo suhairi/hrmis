@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="{{ URL::to('assets/css/jquery.dataTables.min.css') }}">
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
 	<link rel="stylesheet" href="{{ URL::to('assets/css/multiform.css') }}" id="bootstrap">
+	
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<!-- @livewireStyles -->
 </head>
 
 <body>
@@ -191,7 +194,8 @@
 	<script src="{{ URL::to('assets/js/bootstrap.min.js') }}"></script>	
 	<script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
 	<script src="{{ URL::to('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
-	
+
+
 
 	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -199,6 +203,8 @@
 
 	<!-- <script src="{{ URL::to('assets/plugins/apexchart/apexcharts.min.js') }}"></script> -->
 	<!-- <script src="{{ URL::to('assets/plugins/apexchart/chart-data.js') }}"></script> -->
+
+	<!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 
 	@stack('scripts')
 </body>

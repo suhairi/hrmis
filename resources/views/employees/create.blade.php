@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.sidebar')
+    @extends('sidebar.sidebar')
 @endsection
 @section('content')
 
@@ -41,7 +41,7 @@
                               </div>
                             @endif
 
-                            <livewire:employee-create-form />
+                            
 
                             
                         </div>
