@@ -39,7 +39,7 @@
                               </div>
                             @endif
 
-                            <livewire:employee-create />
+                            @livewire('employee-create')
 
                     
                         </div>

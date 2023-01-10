@@ -27,6 +27,20 @@ use App\Http\Livewire\UserWizard;
 |
 */
 
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:cache');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    return  view('welcome');
+
+});
+
+Route::get('/welcome', function() {
+    return view('welcome');
+});
+
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
