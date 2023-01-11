@@ -16,8 +16,8 @@ class EducationTableSeeder extends Seeder
      */
     public function run()
     {
-        Education::create(['name' => 'SIJIL']); // 1
-        Education::create(['name' => 'PMR']); // 2
+        Education::create(['name' => 'SIJIL / SIJIL KEMAHIRAN']); // 1
+        Education::create(['name' => 'SRP / PMR']); // 2
         Education::create(['name' => 'SPM']); // 3
         Education::create(['name' => 'STPM']); // 4
         Education::create(['name' => 'DIPLOMA']); // 5 

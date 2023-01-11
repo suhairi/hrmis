@@ -27,9 +27,9 @@ return new class extends Migration
             $table->decimal('allowance', 6, 2);
             $table->string('service_status');
             $table->string('kwsp_no');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->unsignedBigInteger('ppk_id');
-            $table->string('edu_major');
+            $table->string('edu_major')->nullable();
             
             $table->foreign('ppk_id')->references('id')->on('ppks')->onDelete('cascade');
             $table->foreign('education_id')->references('id')->on('educations')->onDelete('cascade');

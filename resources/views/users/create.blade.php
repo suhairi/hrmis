@@ -1,7 +1,5 @@
 @extends('layouts.master')
-@section('menu')
-@extends('sidebar.sidebar')
-@endsection
+
 @section('content')
 
     <div class="page-wrapper">
@@ -15,7 +13,6 @@
                             </li>
                             <li class="breadcrumb-item active">Users</li>
                         </ul>
-                        <!-- <h3>Admin Dashboard</h3> -->
                     </div>
                 </div>
             </div>

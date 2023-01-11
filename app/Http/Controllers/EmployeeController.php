@@ -11,6 +11,10 @@ use App\DataTables\EmployeesDataTable;
 
 use DataTables;
 
+use App\Models\Education;
+use App\Models\Position;
+use App\Models\Ppk;
+
 class EmployeeController extends Controller
 {
     /**
@@ -74,7 +78,19 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        $educations = Education::pluck('name', 'id');
+        $positions  = Position::pluck('name', 'id');
+        $ppks       = Ppk::all();
+
+        $temp = [];
+        foreach($ppks as $ppk) {
+            $name = $ppk->code . ' - ' . $ppk->name;
+            $temp[$ppk->id] = $name;
+        }
+
+        $ppks = $temp;
+
+        return view('employees.create', compact('educations', 'positions', 'ppks'));
     }
 
     /**
@@ -85,7 +101,25 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'              => 'required|min:4',
+            'nokp'              => 'required|min:14|max:14',
+            'gender'            => 'required',
+            'position_id'       => 'required|numeric',
+            'start_date'        => 'required',
+            'employment_status' => 'required',
+            'service_status'    => 'required',
+            'basic_salary'      => 'required',
+            'allowance'         => 'required',
+            'kwsp_no'           => 'required',
+            'ppk_id'            => 'required|numeric',
+            'education_id'      => 'required|numeric',
+        ]);
+
+        $employee = Employee::create($request->all());
+
+        return redirect()->route('employees.index')
+                        ->with('success','Employee ' . $employee->name . ' created successfully');
     }
 
     /**
@@ -105,9 +139,30 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        //
+        $employee = Employee::find($id);
+
+        $educations = Education::pluck('name', 'id');
+        $positions  = Position::pluck('name', 'id');
+        $ppks       = Ppk::all();
+
+        $temp = [];
+        foreach($ppks as $ppk) {
+            $name = $ppk->code . ' - ' . $ppk->name;
+            $temp[$ppk->id] = $name;
+        }
+
+        $ppks = $temp;
+
+        $start_date = Carbon::parse($employee->start_date)->format('Y-m-d');
+        $employee->update(['start_date' => $start_date]);
+
+        // dd($employee->start_date);
+
+        return view('employees.edit', compact('employee', 'educations', 'positions', 'ppks'));
+
+
     }
 
     /**
@@ -117,9 +172,28 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'              => 'required|min:4',
+            'nokp'              => 'required|min:14|max:14',
+            'gender'            => 'required',
+            'position_id'       => 'required|numeric',
+            'start_date'        => 'required',
+            'employment_status' => 'required',
+            'service_status'    => 'required',
+            'basic_salary'      => 'required',
+            'allowance'         => 'required',
+            'kwsp_no'           => 'required',
+            'ppk_id'            => 'required|numeric',
+            'education_id'      => 'required|numeric',
+        ]);
+
+        $employee = Employee::find($id);
+        $employee->update($request->all());
+
+        return redirect()->route('employees.index')
+                        ->with('success','Employee ' . $employee->name . ' updated successfully');
     }
 
     /**

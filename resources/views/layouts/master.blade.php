@@ -24,7 +24,7 @@
 		<div class="header">
 			<div class="header-left">
 				<a href="{{ route('home') }}" class="logo">
-					<img src="{{ URL::to('assets/img/logo.png') }}" alt="Logo">
+					<img src="{{ URL::to('assets/img/example-logo-1.gif') }}" alt="Logo">
 				</a>
 				<a href="index.html" class="logo logo-small">
 					<img src="{{ URL::to('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">

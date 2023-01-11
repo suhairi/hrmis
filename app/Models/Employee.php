@@ -32,6 +32,8 @@ class Employee extends Model implements Auditable
         'deleted_at'
     ];
 
+    protected $dates = ['start_date'];
+
 
     public function ppk() {
         return $this->belongsTo(Ppk::class)->withTrashed();
