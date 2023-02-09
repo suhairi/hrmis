@@ -1,6 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
+    
+    <style type="text/css">
+        .input-group>.input-group-prepend {
+            flex: 0 0 40%;
+        }
+        .input-group .input-group-text {
+            width: 100%;
+        }
+    </style>
 
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -44,10 +53,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>Name</strong></span>
                                         </div>
                                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-                                        @error('name')
-                                            <span class="text-danger mr-4">{{ $message }}</span>
-                                        @enderror                                      
                                     </div>
+                                    @error('name')
+                                        <span class="text-danger help-block mb-3">{{ $message }}</span>
+                                    @enderror                                      
                                     
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
@@ -58,10 +67,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>No KP</strong></span>
                                         </div>
                                         {!! Form::text('nokp', null, array('placeholder' => 'No Kad Pengenalan : 890130-02-5567','class' => 'form-control')) !!}
-                                        @error('nokp')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('nokp')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -70,11 +79,11 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><strong>Gender</strong></span>
                                         </div>
-                                        {!! Form::select('gender', ['LELAKI' => 'LELAKI', 'PEREMPUAN' => 'PEREMPUAN'], null, array('placeholder' => 'Select Gender','class' => 'form-control')) !!}
-                                        @error('gender')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
+                                        {!! Form::select('gender', ['LELAKI' => 'LELAKI', 'PEREMPUAN' => 'PEREMPUAN'], null, array('placeholder' => 'Select Gender','class' => 'form-control')) !!}                                        
                                     </div>
+                                    @error('gender')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -93,10 +102,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>Position</strong></span>
                                         </div>
                                         {!! Form::select('position_id', $positions, null, array('placeholder' => 'Select Position','class' => 'form-control')) !!}
-                                        @error('position_id')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('position_id')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -106,10 +115,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>Start Date</strong></span>
                                         </div>
                                         {!! Form::date('start_date', null, array('placeholder' => 'Start date', 'class' => 'form-control')) !!}
-                                        @error('start_date')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('start_date')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -119,10 +128,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>Employment Status</strong></span>
                                         </div>
                                         {!! Form::select('employment_status', ['BERSARA', 'BEKERJA', 'BERHENTI'], null, array('placeholder' => 'Select Employment Status','class' => 'form-control')) !!}
-                                        @error('employment_status')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('employment_status')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -132,38 +141,36 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>Service Status</strong></span>
                                         </div>
                                         {!! Form::select('service_status', ['TETAP', 'SAMBILAN', 'KONTRAK', 'BERSARA'], null, array('placeholder' => 'Select Service Status','class' => 'form-control')) !!}
-                                        @error('service_status')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('service_status')
+                                        <div class="text-danger mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>                                
 
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Basic Salary</strong></span>
-                                            <span class="input-group-text" id="basic-addon1">RM</span>
+                                            <span class="input-group-text" id="basic-addon1"><strong>Basic Salary (RM)</strong></span>
                                         </div>
                                         {!! Form::number('basic_salary', null, array('placeholder' => 'Basic Salary','class' => 'form-control', 'step' => '.01')) !!}
-                                        @error('basic_salary')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('basic_salary')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Allowance</strong></span>
-                                            <span class="input-group-text" id="basic-addon1">RM</span>
+                                            <span class="input-group-text" id="basic-addon1"><strong>Allowance (RM)</strong></span>
                                         </div>
                                         {!! Form::number('allowance', null, array('placeholder' => 'Allowance','class' => 'form-control', 'step' => '.01')) !!}
-                                        @error('allowance')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('allowance')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -173,10 +180,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>KWSP No</strong></span>
                                         </div>
                                         {!! Form::text('kwsp_no', null, array('placeholder' => 'KWSP No','class' => 'form-control')) !!}
-                                        @error('kwsp_no')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('kwsp_no')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -186,10 +193,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>PPK</strong></span>
                                         </div>
                                         {!! Form::select('ppk_id', $ppks, null, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
-                                        @error('ppk_id')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('ppk_id')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
@@ -208,10 +215,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>Education</strong></span>
                                         </div>
                                         {!! Form::select('education_id', $educations, null, array('placeholder' => 'Select Education Level', 'class' => 'form-control')) !!}
-                                        @error('education_id')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('education_id')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6"></div>
 
@@ -221,10 +228,10 @@
                                             <span class="input-group-text" id="basic-addon1"><strong>Education Major</strong></span>
                                         </div>
                                         {!! Form::text('edu_major', null, array('placeholder' => 'Education Major', 'class' => 'form-control')) !!}
-                                        @error('edu_major')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
                                     </div>
+                                    @error('edu_major')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6"></div>
 

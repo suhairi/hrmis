@@ -127,11 +127,23 @@
                     <div class="card flex-fill">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="card-title">Total Salary By Unit</h5>
+                                <h5 class="card-title">Housekeeping</h5>
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="sales_chart"></div>
+                            <div class="team-list">
+                                <div class="team-view">
+                                    <div class="team-content">
+                                        <label>Trim</label>
+                                        <span>Employee Name</span>
+                                    </div>
+                                </div>
+                                <div class="team-action">
+                                    <ul>
+                                        <li><a href="{{ route('trim.employee.name') }}"><i data-feather="play"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

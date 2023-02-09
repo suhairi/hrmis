@@ -14,6 +14,8 @@ use App\Http\Controllers\PpkController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\AuditController;
 
+use App\Http\Controllers\SettingsController;
+
 use App\Http\Livewire\UserWizard;
 
 /*
@@ -69,5 +71,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/audits', [AuditController::class, 'index'])->name('audits.index');
 
     Route::resource('profiles', ProfileController::class);
+
+    Route::get('/settings/trim/employee/name', [SettingsController::class, 'trimName'])->name('trim.employee.name');
 
 });
