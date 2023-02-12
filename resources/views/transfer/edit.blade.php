@@ -77,28 +77,6 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Gender</strong></span>
-                                        </div>
-                                        {!! Form::select('gender', ['LELAKI' => 'LELAKI', 'PEREMPUAN' => 'PEREMPUAN'], null, array('placeholder' => 'Select Gender','class' => 'form-control')) !!}                                        
-                                    </div>
-                                    @error('gender')
-                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                            </div>
-                            <div class="row pt-4 rounded mt-3 shadow">
-
-                                <!-- ######## JOB DETAILS ######### -->
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert alert-info"><strong>2 - Job Details</strong></div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><strong>Position</strong></span>
                                         </div>
                                         {!! Form::select('position_id', $positions, null, array('placeholder' => 'Select Position','class' => 'form-control')) !!}
@@ -177,6 +155,30 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><strong>PPK</strong></span>
+                                        </div>
+                                        {!! Form::select('ppk_id', $ppks, null, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
+                                    </div>
+                                    @error('ppk_id')
+                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
+
+                            </div>
+                            <div class="row pt-4 rounded mt-3 shadow">
+
+                                <!-- ######## JOB DETAILS ######### -->
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="alert alert-info"><strong>Transfer Form</strong></div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
+
+                                
+
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><strong>KWSP No</strong></span>
                                         </div>
                                         {!! Form::text('kwsp_no', null, array('placeholder' => 'KWSP No','class' => 'form-control')) !!}
@@ -187,59 +189,10 @@
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>PPK</strong></span>
-                                        </div>
-                                        {!! Form::select('ppk_id', $ppks, null, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!} 
-                                        
-                                    </div>
-                                    <div class="bi bi-info-circle"></div>
-                                    @error('ppk_id')
-                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
+                                
 
                             </div>
-                            <div class="row pt-4 mt-3 rounded shadow">
-                                
-                                <!-- ######## EDUCATION ######### -->                                
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert alert-info" role="alert"><strong>3 - Education Background</strong></div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
 
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Education</strong></span>
-                                        </div>
-                                        {!! Form::select('education_id', $educations, null, array('placeholder' => 'Select Education Level', 'class' => 'form-control')) !!}
-                                    </div>
-                                    @error('education_id')
-                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Education Major</strong></span>
-                                        </div>
-                                        {!! Form::text('edu_major', null, array('placeholder' => 'Education Major', 'class' => 'form-control')) !!}
-                                    </div>
-                                    @error('edu_major')
-                                        <div class="text-danger help-block mb-3">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
-
-                                
-                            
-                            </div>
                             <div class="row pt-4 rounded shadow">
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center p-3">
                                     <button type="submit" class="btn btn-success shadow">Update Employee</button>

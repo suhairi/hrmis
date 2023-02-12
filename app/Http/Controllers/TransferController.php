@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 
+use App\Models\Employee;
+
+
 class TransferController extends Controller
 {
     /**
@@ -14,7 +17,9 @@ class TransferController extends Controller
      */
     public function index()
     {
-        //
+        $transfers = Transfer::paginate(15);
+
+        return view('transfer.index', compact('transfers'));
     }
 
     /**
@@ -55,9 +60,13 @@ class TransferController extends Controller
      * @param  \App\Models\Transfer  $transfer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transfer $transfer)
+    public function edit(Transfer $transfer, $id)
     {
-        //
+        $transfer = Transfer::findOrfail($id);
+        $employee = Employee::findOrfail($id);
+
+        dd($employee);
+        
     }
 
     /**

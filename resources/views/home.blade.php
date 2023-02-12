@@ -5,6 +5,16 @@
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
+
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success! </strong> {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            
             <div class="page-name mb-4">
                 <h4 class="m-0"><img src="assets/img/profile.jpg" class="mr-1" alt="profile" /> Welcome Admin</h4>
                 <!-- <label>Sun, 29 Nov 2022</label> -->

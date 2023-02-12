@@ -15,6 +15,7 @@ use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\AuditController;
 
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\TransferController;
 
 use App\Http\Livewire\UserWizard;
 
@@ -58,20 +59,26 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('permissions', PermissionController::class);
     Route::resource('positions', PositionController::class);
 
+    // Products
     Route::resource('products', ProductController::class);
 
+    // Employee
     Route::resource('employees', EmployeeController::class);
     Route::get('employees/list', [EmployeeController::class, 'list'])->name('employees.list');
-    Route::get('employees/transfer/{id}', [EmployeeController::class, 'transfer'])->name('employees.transfer');
 
+    // PPK
     Route::get('/ppk', [PpkController::class, 'index'])->name('ppk.index');
+
+    // Wilayah
     Route::get('/wilayah', [WilayahController::class, 'index'])->name('wilayah.index');
 
-
+    // Audits
     Route::get('/audits', [AuditController::class, 'index'])->name('audits.index');
 
+    // Profiles
     Route::resource('profiles', ProfileController::class);
 
-    Route::get('/settings/trim/employee/name', [SettingsController::class, 'trimName'])->name('trim.employee.name');
+    // Settings
+    Route::get('/settings/trim/employee/name', [SettingsController::class, 'trimmed'])->name('trim.employee.name');
 
 });

@@ -4,5 +4,4 @@
     {!! Form::open(['method' => 'DELETE','route' => ['employees.destroy', $employee->id],'style'=>'display:inline']) !!}
         {!! Form::submit('Delete', ['class' => 'btn btn-danger shadow-md']) !!}
     {!! Form::close() !!}
-    <a class="btn btn-success shadow-md" href="{{ route('employees.transfer', $employee->id) }}">Transfer</a>
 @endif
