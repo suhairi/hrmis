@@ -43,4 +43,8 @@ class Employee extends Model implements Auditable
         return $this->belongsTo(Position::class)->withTrashed();
     }
 
+    public function education() {
+        return $this->belongsTo(Education::class)->withTrashed();
+    }
+
 }

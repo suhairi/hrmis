@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+
+use Illuminate\Support\Str;
 
 use App\DataTables\EmployeesDataTable;
 
@@ -14,6 +17,7 @@ use DataTables;
 use App\Models\Education;
 use App\Models\Position;
 use App\Models\Ppk;
+use App\Models\Transfer;
 
 class EmployeeController extends Controller
 {
@@ -24,14 +28,34 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         if ($request->ajax()) {
 
-            // ** Listing the deleted employee to the BACK of the list
-            // $employees = Employee::withTrashed()->orderBy('deleted_at', 'asc')->get();
+            // ###########################
+            // Filter the employee listing by user access/ppk
+            // 
+            if(Auth::user()->location == 'PPK') {
+                $employees = Employee::where('ppk_id', Auth::user()->ppk_id)->get();
+            } else {
 
-            // ** Listing the deleted employee to the FRONT of the list 
-            $employees = Employee::withTrashed()->get();
+                // Administration Access has 2 levels
+                // 1 - HQ
+                // 2 - Wilayah
+                if(Str::contains(Auth::user()->location, 'WILAYAH')) {
+
+                    $wilayah = str_replace('WILAYAH ', '', Auth::user()->location);
+                    $ppks = Ppk::where('wilayah_id', $wilayah)->get();
+
+                    $min = $ppks->min('id');
+                    $max = $ppks->max('id');
+
+                    $employees = Employee::where('ppk_id', '<=', $max)
+                                    ->where('ppk_id', '>=', $min)
+                                    ->get();
+                } else {
+                    $employees = Employee::withTrashed()->get();
+                }
+            }
 
             return Datatables::of($employees)
                     ->addIndexColumn()
@@ -58,7 +82,7 @@ class EmployeeController extends Controller
                     })
                     ->addColumn('start_date', function($employee) {
 
-                        $start_date = Carbon::parse($employee->start_date)->format('d-m-Y') . '<br />' . Carbon::parse($employee->start_date)->age . ' years';
+                        $start_date = Carbon::parse($employee->start_date)->format('d-m-Y') . '<br />' . Carbon::parse($employee->start_date)->age . ' years of service.';
                         return $start_date;
                     })
                     ->addColumn('actions', function($employee) {
@@ -131,7 +155,8 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -183,7 +208,26 @@ class EmployeeController extends Controller
             'education_id'      => 'required|numeric',
         ]);
 
+
         $employee = Employee::find($id);
+
+        // ######################################
+        // Check if different in ppk_id
+        // create a transaction in table transfer
+        // ######################################
+        if($request->ppk_id != $employee->ppk_id) {
+
+            $transfer_from = Ppk::find($employee->ppk_id);
+            $transfer_to = Ppk::find($request->ppk_id);
+
+            $transfer = Transfer::create([
+                        'employee_id'       => $employee->id,
+                        'date_of_transfer'  => Carbon::today(),
+                        'transfer_from'     => $transfer_from->code . ' - ' . $transfer_from->name,
+                        'transfer_to'       => $transfer_to->code . ' - ' . $transfer_to->name
+                    ]);
+        }
+        
         $employee->update($request->all());
 
         return redirect()->route('employees.index')

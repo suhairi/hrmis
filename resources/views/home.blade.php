@@ -16,8 +16,7 @@
             @endif
             
             <div class="page-name mb-4">
-                <h4 class="m-0"><img src="assets/img/profile.jpg" class="mr-1" alt="profile" /> Welcome Admin</h4>
-                <!-- <label>Sun, 29 Nov 2022</label> -->
+                <h4 class="m-0"><img src="assets/img/profile.jpg" class="mr-1" alt="profile" /> Welcome {{ ucFirst(strtolower(Auth::user()->location)) }}</h4>
                 <label>{{ \Carbon\Carbon::parse()->isoFormat('dddd, D MMMM YYYY')}}</label>
             </div>
             <div class="row mb-4">
@@ -144,16 +143,44 @@
                             <div class="team-list">
                                 <div class="team-view">
                                     <div class="team-content">
-                                        <label>Trim</label>
-                                        <span>Employee Name</span>
+                                        <label>Employee Name White Spaces, B, B., BT, BT. and gender</label>
+                                        <span>Action : Trimm</span>
+                                    </div>
+                                </div>
+                                <div class="team-action">
+                                    <ul>
+                                        <li><a href="#"><i data-feather="play"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="team-list">
+                                <div class="team-view">
+                                    <div class="team-content">
+                                        <label>Employee Work More than 30 Years</label>
+                                        <span>Action : Display the list</span>
                                     </div>
                                 </div>
                                 <div class="team-action">
                                     <ul>
                                         <li><a href="{{ route('trim.employee.name') }}"><i data-feather="play"></i></a></li>
                                     </ul>
-                                </div>
+                                </div>                                                                
                             </div>
+                            <div class="team-list">
+                                <div class="team-view">
+                                    <div class="team-content">
+                                        <label>Duplicates of KWSP No</label>
+                                        <span>Action : Display the list</span>
+                                    </div>
+                                </div>
+                                <div class="team-action">
+                                    <ul>
+                                        <li><a href="{{ route('trim.employee.name') }}"><i data-feather="play"></i></a></li>
+                                    </ul>
+                                </div>                                                                
+                            </div>
+                            
+
                         </div>
                     </div>
                 </div>

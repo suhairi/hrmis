@@ -29,8 +29,14 @@ class User extends Authenticatable implements Auditable
         'email',
         'password',
         'location',
+        'ppk_id',
         'deleted_at'
     ];
+
+    public function ppk() {
+
+        return $this->belongsTo(Ppk::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
