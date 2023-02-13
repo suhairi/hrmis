@@ -46,24 +46,11 @@
             </div>
             <div class="row mb-4">
                 <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card board1 fill1 ">
-                        <div class="card-body">
-                            <div class="card_widget_header">
-                                <label>Employees</label>
-                                <h4>700</h4>
-                            </div>
-                            <div class="card_widget_img">
-                                <img src="assets/img/dash1.png" alt="card-img" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12">
                     <div class="card board1 fill2 ">
                         <div class="card-body">
                             <div class="card_widget_header">
                                 <label>PPK</label>
-                                <h4>27</h4>
+                                <h4>{{ $ppk }}</h4>
                             </div>
                             <div class="card_widget_img">
                                 <img src="assets/img/dash2.png" alt="card-img" />
@@ -72,10 +59,23 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card board1 fill1 ">
+                        <div class="card-body">
+                            <div class="card_widget_header">
+                                <label>Employees</label>
+                                <h4>{{ count($employees) }}</h4>
+                            </div>
+                            <div class="card_widget_img">
+                                <img src="assets/img/dash1.png" alt="card-img" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
                     <div class="card board1 fill3 ">
                         <div class="card-body">
                             <div class="card_widget_header">
-                                <label>Leaves</label>
+                                <label>**Leaves</label>
                                 <h4>9</h4>
                             </div>
                             <div class="card_widget_img">
@@ -88,7 +88,7 @@
                     <div class="card board1 fill4 ">
                         <div class="card-body">
                             <div class="card_widget_header">
-                                <label>Salary</label>
+                                <label>**Salary</label>
                                 <h4>$5.8M</h4>
                             </div>
                             <div class="card_widget_img">

@@ -26,7 +26,7 @@
 
                         <div class="card-body">
 
-                            @can('role-create')
+                            @can('employee-create')
                                 <div class="pull-right p-3">
                                     <a class="btn btn-success shadow-sm rounded" href="{{ route('employees.create') }}"> Create New Employee</a>
                                 </div>

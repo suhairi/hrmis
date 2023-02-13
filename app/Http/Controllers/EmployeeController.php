@@ -81,7 +81,8 @@ class EmployeeController extends Controller
                     ->addColumn('start_date', function($employee) {
 
                         $start_date = Carbon::parse($employee->start_date)->format('d-m-Y') . '<br />' . Carbon::parse($employee->start_date)->age . ' years of service. <br />' . 
-                            $employee->service_status;
+                            $employee->service_status . '<br />' .
+                            $employee->education->name;
                         return $start_date;
                     })
                     ->addColumn('actions', function($employee) {
@@ -104,7 +105,7 @@ class EmployeeController extends Controller
     {
         $educations = Education::pluck('name', 'id');
         $positions  = Position::pluck('name', 'id');
-        $ppks       = Ppk::all();
+        $ppks       = Ppk::where('id', Auth::user()->ppk_id)->get();
 
         $temp = [];
         foreach($ppks as $ppk) {
@@ -139,6 +140,8 @@ class EmployeeController extends Controller
             'ppk_id'            => 'required|numeric',
             'education_id'      => 'required|numeric',
         ]);
+
+        $request['name'] = strtoupper($request->name);
 
         $employee = Employee::create($request->all());
 

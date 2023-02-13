@@ -2,6 +2,15 @@
 
 @section('content')
 
+    <style type="text/css">
+        .input-group>.input-group-prepend {
+            flex: 0 0 40%;
+        }
+        .input-group .input-group-text {
+            width: 100%;
+        }
+    </style>
+
     <div class="page-wrapper">
         <div class="content container-fluid">
 
@@ -128,7 +137,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><strong>Employment Status</strong></span>
                                         </div>
-                                        {!! Form::select('employment_status', ['BERSARA', 'BEKERJA', 'BERHENTI'], null, array('placeholder' => 'Select Employment Status','class' => 'form-control')) !!}
+                                        {!! Form::select('employment_status', ['BERSARA' => 'BERSARA', 'BEKERJA' => 'BEKERJA', 'BERHENTI' => 'BERHENTI'], null, array('placeholder' => 'Select Employment Status','class' => 'form-control')) !!}
                                         @error('employment_status')
                                             <p class="text-danger mr-4">{{ $message }}</p>
                                         @enderror
@@ -141,7 +150,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><strong>Service Status</strong></span>
                                         </div>
-                                        {!! Form::select('service_status', ['TETAP', 'SAMBILAN', 'KONTRAK', 'BERSARA'], null, array('placeholder' => 'Select Service Status','class' => 'form-control')) !!}
+                                        {!! Form::select('service_status', ['TETAP' => 'TETAP', 'SAMBILAN' => 'SAMBILAN', 'KONTRAK' => 'KONTRAK', 'BERSARA' => 'BERSARA'], null, array('placeholder' => 'Select Service Status','class' => 'form-control')) !!}
                                         @error('service_status')
                                             <p class="text-danger mr-4">{{ $message }}</p>
                                         @enderror
