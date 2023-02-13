@@ -50,9 +50,9 @@
 			</a>
 			<ul class="nav user-menu">
 				<li class="nav-item dropdown">
-					<a href="#" class="dropdown-toggle nav-link pr-0" data-toggle="dropdown">
+					<!-- <a href="#" class="dropdown-toggle nav-link pr-0" data-toggle="dropdown">
 						<i data-feather="bell"></i> <span class="badge badge-pill"></span>
-					</a>
+					</a> 
 					<div class="dropdown-menu notifications">
 						<div class="topnav-dropdown-header">
 							<span class="notification-title">Notifications</span>
@@ -147,13 +147,13 @@
 							<a href="activities.html">View all Notifications</a>
 						</div>
 					</div>
-				</li>
+				</li> -->
 
 
 				<li class="nav-item dropdown has-arrow main-drop">
 					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 						<span class="user-img">
-							<img src="{{ URL::to('assets/img/profile.jpg') }}" alt="">
+							<!-- <img src="{{ URL::to('assets/img/profile.jpg') }}" alt=""> -->
 							<span class="status online"></span>
 						</span>
 						<span>{{ Auth::user()->name }}</span>

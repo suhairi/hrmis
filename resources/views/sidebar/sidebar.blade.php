@@ -33,14 +33,14 @@
                                 Employees</span></a>
                     </li>
                     <li>
-                        <a href="{{ route('positions.index') }}"><img src="{{ URL::to('assets/img/position.svg') }}" alt="sidebar_img"> <span>
-                                Position</span></a>
-                    </li>
-                    <li>
-                        <a href="employee.html"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
+                        <a href="{{ route('performance.index') }}"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
                                 Performance</span></a>
                     </li>
-                    @can('role-create')                    
+                    @can('role-create')
+                        <li>
+                            <a href="{{ route('positions.index') }}"><img src="{{ URL::to('assets/img/position.svg') }}" alt="sidebar_img"> <span>
+                                    Position</span></a>
+                        </li>               
                         <li>
                             <a href="{{ route('users.index') }}"><img src="{{ URL::to('assets/img/users.svg') }}" alt="sidebar_img"> <span>
                                     Users</span></a>

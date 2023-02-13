@@ -11,13 +11,12 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 use App\DataTables\EmployeesDataTable;
-
 use DataTables;
 
 use App\Models\Education;
 use App\Models\Position;
 use App\Models\Ppk;
-use App\Models\Transfer;
+
 
 class EmployeeController extends Controller
 {
@@ -75,14 +74,14 @@ class EmployeeController extends Controller
 
                         $ppk = $employee->ppk->wilayah->name . '<br />' .
                                $employee->ppk->code . ' - ' . $employee->ppk->name . '<br />' .
-                               $employee->position->name . '<br />' .
-                               $employee->service_status;
+                               $employee->position->name . '<br />';
 
                         return $ppk;
                     })
                     ->addColumn('start_date', function($employee) {
 
-                        $start_date = Carbon::parse($employee->start_date)->format('d-m-Y') . '<br />' . Carbon::parse($employee->start_date)->age . ' years of service.';
+                        $start_date = Carbon::parse($employee->start_date)->format('d-m-Y') . '<br />' . Carbon::parse($employee->start_date)->age . ' years of service. <br />' . 
+                            $employee->service_status;
                         return $start_date;
                     })
                     ->addColumn('actions', function($employee) {

@@ -13,6 +13,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PpkController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\AuditController;
+use App\Http\Controllers\PerformanceController;
 
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TransferController;
@@ -71,6 +72,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     // Wilayah
     Route::get('/wilayah', [WilayahController::class, 'index'])->name('wilayah.index');
+
+    // Performance
+    Route::resource('/performance', PerformanceController::class);
 
     // Audits
     Route::get('/audits', [AuditController::class, 'index'])->name('audits.index');

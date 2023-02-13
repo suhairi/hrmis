@@ -22,7 +22,7 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Employees Management</strong></div>
+                        <div class="card-header"><strong>Performance Management</strong></div>
 
                         <div class="card-body">
 
@@ -70,7 +70,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('employees.index') }}",
+            ajax: "{{ route('performance.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: true},
                 {data: 'name', name: 'name'},
