@@ -32,11 +32,25 @@ class HomeController extends Controller
     public function index()
     {
 
+        $gender = ['LELAKI' => 0, 'PEREMPUAN' => 0];
+        $employment_status = Employee::distinct()->get('employment_status');
+        $employments = [];
         $ppk = 'HQ';
+
         // Employee count for current user
         if(Auth::user()->location == 'PPK') {
             $employees = Employee::where('ppk_id', Auth::user()->ppk_id)->get();
             $ppk = Auth::user()->ppk->code . ' - ' . Auth::user()->ppk->name;
+
+            $gender = $employees->countBy(function ($item) {
+                return $item['gender'];
+            });
+
+            $employments = $employees->countBy(function ($item) {
+                return $item['employment_status'];
+            });
+            $employments = $employments->toArray();
+
         } else {
 
             // Administration Access has 2 levels
@@ -54,13 +68,46 @@ class HomeController extends Controller
                 $employees = Employee::where('ppk_id', '<=', $max)
                                 ->where('ppk_id', '>=', $min)
                                 ->get();
+
+                $gender = $employees->countBy(function ($item) {
+                    return $item['gender'];
+                });
+
+                $employments = $employees->countBy(function ($item) {
+                    return $item['employment_status'];
+                });
+                $employments = $employments->toArray();
+
             } else {
                 $employees = Employee::withTrashed()->get();
+
+                $gender = $employees->countBy(function ($item) {
+                    return $item['gender'];
+                });
+
+                $employments = $employees->countBy(function ($item) {
+                    return $item['employment_status'];
+                });
+                $employments = $employments->toArray();
             }
         }
 
-        // return count($employees);
+        
 
-        return view('home', compact('employees', 'ppk'));
+        // foreach($employment_status as $value) {
+
+        //     if(array_key_exists($value['employment_status'], $employments))
+        //         echo $value['employment_status'] . ' - ' . $employments[$value['employment_status']] . '<br />';
+        //     else
+        //         echo $value['employment_status'] . ' - 0 ' . '<br />';
+        // }
+
+        // return;
+
+        // dd(Auth::user()->location);
+        // dd($gender);
+
+
+        return view('home', compact('employees', 'ppk', 'gender', 'employments', 'employment_status'));
     }
 }

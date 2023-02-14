@@ -105,7 +105,25 @@ class EmployeeController extends Controller
     {
         $educations = Education::pluck('name', 'id');
         $positions  = Position::pluck('name', 'id');
-        $ppks       = Ppk::where('id', Auth::user()->ppk_id)->get();
+
+        // Populate PPKs by user access
+        if(Auth::user()->location == 'PPK') {
+                $ppks = Ppk::where('id', Auth::user()->ppk_id)->get();
+            } else {
+
+                // Administration Access has 2 levels
+                // 1 - HQ
+                // 2 - Wilayah
+                if(Str::contains(Auth::user()->location, 'WILAYAH')) {
+
+                    $wilayah = str_replace('WILAYAH ', '', Auth::user()->location);
+                    $ppks = Ppk::where('wilayah_id', $wilayah)->get();
+
+                } else {
+                    $ppks = Ppk::all();
+                }
+            }
+        
 
         $temp = [];
         foreach($ppks as $ppk) {
@@ -141,7 +159,7 @@ class EmployeeController extends Controller
             'education_id'      => 'required|numeric',
         ]);
 
-        $request['name'] = strtoupper($request->name);
+        // $request['name'] = strtoupper($request->name);
 
         $employee = Employee::create($request->all());
 

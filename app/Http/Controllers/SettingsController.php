@@ -63,9 +63,18 @@ class SettingsController extends Controller
                 $employee->gender = 'LELAKI';
                 $employee->update();
 
+            } else if ($employee->gender == 'W') {
+                $employee->gender = 'PEREMPUAN';
+                $employee->update();
+
             } else {
                 array_push($emp);
             }
+
+            if(str_contains($employee->employment_status, ' ')) {
+                $employee->employment_status = trim($employee->employment_status);
+                $employee->update();
+            } 
 
 
         }
@@ -83,16 +92,35 @@ class SettingsController extends Controller
             }
         }
 
-        return;
 
-
-        // 4 - ...
 
         return redirect()->route('home')->with('success','Employees name has been trimmed successfully.');
 
-        // $collection = new Collection();
-        // return $employee->duplicates('kwsp_no');
+    }
 
-        // update employees name in the database
+    public function kwsp() {
+
+        $employees = Employee::all();
+
+        // KWSP empty
+        $empty = $employees->filter(function ($employee) {
+                if($employee->kwsp_no == '')
+                    return $employee;
+            });
+        
+        // KWSP No Duplicate
+        
+
+        $duplicates = $employees->toBase()->duplicates('kwsp_no');
+
+        $employees = collect([]);
+
+        foreach($duplicates as $key => $value) {
+
+            $employee = Employee::where('kwsp_no', $value)->get();
+            $employees->push($employee);
+        }
+
+        return view('settings.kwsp', compact('empty', 'employees'));
     }
 }

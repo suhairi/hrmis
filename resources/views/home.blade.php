@@ -22,7 +22,7 @@
                 <label>{{ \Carbon\Carbon::parse()->isoFormat('dddd, D MMMM YYYY')}}</label>
             </div>
             <div class="row mb-4">
-                <div class="col-xl-6 col-sm-12 col-12">
+                <div class="col-xl-12 col-sm-12 col-12">
                     <div class="breadcrumb-path ">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="assets/img/dash.png"
@@ -33,7 +33,7 @@
                         <h3>Admin Dashboard</h3>
                     </div>
                 </div>
-                <div class="col-xl-6 col-sm-12 col-12">
+<!--                 <div class="col-xl-6 col-sm-12 col-12">
                     <div class="row">
                         <div class="col-xl-6 col-sm-6 col-12">
                             <a class="btn-dash" href="#"> Admin Dashboard</a>
@@ -42,7 +42,7 @@
                             <a class="btn-emp" href="index-employee.html">Employee Dashboard</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row mb-4">
                 <div class="col-xl-3 col-sm-6 col-12">
@@ -50,7 +50,7 @@
                         <div class="card-body">
                             <div class="card_widget_header">
                                 <label>PPK</label>
-                                <h4>{{ $ppk }}</h4>
+                                <h4><small><small>{{ $ppk }}</small></small></h4>
                             </div>
                             <div class="card_widget_img">
                                 <img src="assets/img/dash2.png" alt="card-img" />
@@ -104,33 +104,68 @@
                     <div class="card flex-fill">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="card-title">Total Employees by PPK</h5>
+                                <h5 class="card-title">Total Employees</h5>
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="invoice_chart"></div>
-                            <div class="text-center text-muted">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="mt-4">
-                                            <p class="mb-2 text-truncate"><i
-                                                    class="fas fa-circle text-primary mr-1"></i> Business</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-4">
-                                            <p class="mb-2 text-truncate"><i
-                                                    class="fas fa-circle text-success mr-1"></i> Testing</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="mt-4">
-                                            <p class="mb-2 text-truncate"><i
-                                                    class="fas fa-circle text-danger mr-1"></i> Development</p>
-                                        </div>
-                                    </div>
+                            <!-- <div id="invoice_chart"></div> -->
+                            <!-- <div id="sales_chart"></div> -->
+                            <div class="card">
+                                <div class="card-header bg-orange-300"><strong>By Gender</strong></div>
+                                <div class="card-body">
+                                    <table class="table table-bordered table-hover">
+                                        <tr>
+                                            <td><strong><i class="fas fa-male">  </i> LELAKI</strong></td>
+                                            <td>
+                                                @if(array_key_exists('LELAKI', $gender->toArray()))
+                                                    {{ $gender['LELAKI'] }} orang.
+                                                @else
+                                                    {{ $gender['L'] }} orang.
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong><i class="fa fa-female">  </i> PEREMPUAN</strong></td>
+                                            <td>
+                                                @if(array_key_exists('PEREMPUAN', $gender->toArray()))
+                                                    {{ $gender['PEREMPUAN'] }} orang.
+                                                @else
+                                                    {{ $gender['P'] }} orang.
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-slate-200">
+                                            <td><strong>TOTAL</strong></td>
+                                            <td><strong>{{ count($employees) }} orang.</strong></td>
+                                        </tr>
+                                                                            
+                                    </table>
+
                                 </div>
                             </div>
+                            <div class="card">
+                                <div class="card-header bg-orange-300"><strong>By Employment Status</strong></div>
+                                <div class="card-body">
+                                    <table class="table table-bordered table-condensed table-striped">
+                                    @foreach($employment_status as $value)
+                                        <tr>
+                                        @if(array_key_exists($value['employment_status'], $employments))
+                                            <td><strong>{{ $value['employment_status'] }}</strong></td>
+                                            <td>{{ $employments[$value['employment_status']] }} orang.</td>
+                                        @else
+                                            <td><strong>{{ $value['employment_status'] }}</strong></td>
+                                            <td>0 orang.</td>
+                                        @endif
+                                        </tr>
+                                    @endforeach
+                                        <tr class="bg-slate-200">
+                                            <td><strong>TOTAL</strong></td>
+                                            <td><strong>{{ count($employees) }} orang.</strong></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -177,7 +212,7 @@
                                 </div>
                                 <div class="team-action">
                                     <ul>
-                                        <li><a href="{{ route('trim.employee.name') }}"><i data-feather="play"></i></a></li>
+                                        <li><a href="{{ route('trim.employee.kwsp') }}"><i data-feather="play"></i></a></li>
                                     </ul>
                                 </div>                                                                
                             </div>
@@ -187,8 +222,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-6 col-sm-12 col-12 d-flex">
+            <!-- <div class="row"> -->
+                <!-- <div class="col-xl-6 col-sm-12 col-12 d-flex">
                     <div class="card card-list flex-fill">
                         <div class="card-header ">
                             <h4 class="card-title">Total Salary By Unit</h4>
@@ -264,8 +299,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-sm-12 col-12 d-flex">
+                </div> -->
+                <!-- <div class="col-xl-3 col-sm-12 col-12 d-flex">
                     <div class="card card-list flex-fill">
                         <div class="card-header">
                             <div class="">
@@ -352,8 +387,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-sm-12 col-12 d-flex">
+                </div> -->
+                <!-- <div class="col-xl-3 col-sm-12 col-12 d-flex">
                     <div class="card card-list flex-fill">
                         <div class="card-header ">
                             <h4 class="card-title-dash">Your Upcoming Leave</h4>
@@ -404,8 +439,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
         </div>
     </div>
 @endsection

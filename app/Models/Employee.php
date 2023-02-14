@@ -32,7 +32,16 @@ class Employee extends Model implements Auditable
         'deleted_at'
     ];
 
-    protected $dates = ['start_date'];
+    // protected $dates = ['start_date'];
+    protected $casts = [
+        'start_date' => 'datetime:d-m-Y',
+    ];
+
+    public function setNameAttribute($value) {
+
+        $this->attributes['name'] = strtoupper($value);
+    }
+
 
     public function ppk() {
         return $this->belongsTo(Ppk::class)->withTrashed();
