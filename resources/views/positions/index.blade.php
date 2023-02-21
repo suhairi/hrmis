@@ -29,7 +29,7 @@
 
                             @can('position-create')
                                 <div class="pull-right p-3">
-                                    <a class="btn btn-success shadow-sm rounded" href="{{ route('employees.create') }}"> Create New Position</a>
+                                    <a class="btn btn-success shadow-sm rounded" href="{{ route('positions.create') }}"> Create New Position</a>
                                 </div>
                             @endcan
 

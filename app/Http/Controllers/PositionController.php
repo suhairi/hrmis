@@ -9,8 +9,8 @@ use DataTables;
 
 class PositionController extends Controller
 {
-    function __construct()
-    {
+    function __construct() {
+        
          $this->middleware('permission:position-list|position-create|position-edit|position-delete', ['only' => ['index','show']]);
          $this->middleware('permission:position-create', ['only' => ['create','store']]);
          $this->middleware('permission:position-edit', ['only' => ['edit','update']]);
@@ -24,6 +24,15 @@ class PositionController extends Controller
      */
     public function index(Request $request)
     {
+        // $positions = Position::withTrashed()->get();
+        
+        // foreach($positions as $position) {
+
+        //     echo 'Name : ' . $position->name . '<br />';
+        // }
+
+        // return;
+
         if($request->ajax()) {
 
             $positions = Position::withTrashed()->get();
@@ -58,7 +67,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        //
+        return view('positions.create');
     }
 
     /**
@@ -69,7 +78,7 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

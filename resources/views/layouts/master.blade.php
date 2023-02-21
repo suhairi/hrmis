@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
 	<link rel="stylesheet" href="{{ URL::to('assets/css/multiform.css') }}" id="bootstrap">
 	
-	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 </head>
 
 <body>
@@ -202,10 +202,10 @@
 	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/script.js') }}"></script>
 
-	<script src="{{ URL::to('assets/plugins/apexchart/apexcharts.min.js') }}"></script>
-	<script src="{{ URL::to('assets/plugins/apexchart/chart-data.js') }}"></script>
+	@stack('scripts')
 
-	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
 
 </body>
 
