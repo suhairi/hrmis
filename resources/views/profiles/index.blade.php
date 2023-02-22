@@ -39,8 +39,8 @@
                             @endif
 
 
-                            <table class="table table-bordered">
-                             <tr>
+                            <table class="table table-bordered rounded-lg">
+                             <tr class="bg-blue-400 text-white">
                                <th>Name</th>
                                <th>Email</th>
                                <th>Roles</th>
@@ -57,14 +57,15 @@
                                   @endif
                                 </td>
                                 <td>
-                                   <a class="btn btn-info" href="{{ route('users.show', $user->id) }}">Show</a>
-                                   <a class="btn btn-success" href="{{ route('profiles.edit', $user->id) }}">Edit</a>
+                                   <a class="btn btn-info shadow-md" href="{{ route('users.show', $user->id) }}">Show</a>
+                                   <a class="btn btn-success shadow-md" href="{{ route('profiles.edit', $user->id) }}">Edit</a>
                                     {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                                 </td>
                               </tr>
                             </table>
 
                         </div>
+                        
                     </div>
                 </div>
             </div>

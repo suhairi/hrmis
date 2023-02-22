@@ -1,7 +1,4 @@
 @extends('layouts.master')
-@section('menu')
-@extends('sidebar.sidebar')
-@endsection
 @section('content')
 
     <div class="page-wrapper">
@@ -28,7 +25,7 @@
                         <div class="card-body">
 
                             <div class="pull-right p-3">
-                                <a class="btn btn-dark" href="{{ URL::previous() }}"> Back</a>
+                                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
                             </div>
 
                             @if ($errors->any())
@@ -50,7 +47,7 @@
                         		    <div class="col-xs-12 col-sm-12 col-md-12">
                         		        <div class="form-group">
                         		            <strong>Name:</strong>
-                        		            <input type="text" name="name" class="form-control" placeholder="Name">
+                        		            <input type="text" name="name" class="form-control" placeholder="Name" autofocus />
                         		        </div>
 
                         		    </div>

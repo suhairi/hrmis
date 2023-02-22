@@ -28,7 +28,7 @@
 
                             @can('employee-create')
                                 <div class="pull-right p-3">
-                                    <a class="btn btn-success shadow-sm rounded" href="{{ route('employees.create') }}"> Create New Employee</a>
+                                    <a class="btn btn-success shadow-md rounded" href="{{ route('employees.create') }}"> Create New Employee</a>
                                 </div>
                             @endcan
 
@@ -41,15 +41,17 @@
                                 </div>
                             @endif
 
-                            <table class="table table-bordered mb-5 data-table">
+                            <table class="table table-bordered mb-4 data-table">
                                 <thead>
-                                    <th>#</th>
-                                    <th>Nama</th>
-                                    <th>No KP</th>
-                                    <th>Jantina</th>
-                                    <th>PPK / Jawatan </th>
-                                    <th>Tarikh Lantikan / Status</th>
-                                    <th width="280px">Tindakan</th>
+                                    <tr class="bg-blue-500 text-white">
+                                        <th>#</th>
+                                        <th>Nama</th>
+                                        <th>No KP</th>
+                                        <th>Jantina</th>
+                                        <th>PPK / Jawatan </th>
+                                        <th>Tarikh Lantikan / Status</th>
+                                        <th width="280px">Tindakan</th>
+                                    </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
@@ -72,13 +74,13 @@
             serverSide: true,
             ajax: "{{ route('employees.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: true},
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: true, searchable: true},
                 {data: 'name', name: 'name'},
                 {data: 'nokp', name: 'nokp'},
                 {data: 'gender', name: 'gender'},
                 {data: 'ppk', name: 'ppk'},
                 {data: 'start_date', name: 'start_date'},
-                {data: 'actions', name: 'actions', orderable: false, searchable: false},
+                {data: 'actions', name: 'actions', orderable: true, searchable: false},
             ],
             sPaginationType: "simple_numbers",
         });

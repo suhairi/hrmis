@@ -113,7 +113,7 @@
                             <div class="card">
                                 <div class="card-header bg-orange-300"><strong>By Gender</strong></div>
                                 <div class="card-body">
-                                    <table class="table table-bordered table-hover">
+                                    <table class="table table-bordered table-striped table-hover">
                                         <tr>
                                             <td><strong><i class="fas fa-male">  </i> LELAKI</strong></td>
                                             <td>

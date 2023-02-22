@@ -42,9 +42,9 @@
                                 </div>
                             @endif
 
-                            <table class="table table-bordered">
-                                <thead class="">
-                                    <tr>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr class="bg-blue-500 text-white">
                                         <th scope="col">No</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Details</th>
@@ -60,10 +60,10 @@
                         	        <td>{{ $product->detail }}</td>
                         	        <td>
                                         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                                            <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                                            <a class="btn btn-info shadow-md" href="{{ route('products.show',$product->id) }}">Show</a>
 
                                             @can('product-edit')
-                                            <a class="btn btn-success" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                                            <a class="btn btn-success shadow-md" href="{{ route('products.edit',$product->id) }}">Edit</a>
                                             @endcan
 
                                             @csrf
@@ -71,7 +71,7 @@
                                             @method('DELETE')
 
                                             @can('product-delete')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger shadow-md">Delete</button>
                                             @endcan
                                         </form>
                         	        </td>

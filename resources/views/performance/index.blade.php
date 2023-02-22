@@ -41,15 +41,17 @@
                                 </div>
                             @endif
 
-                            <table class="table table-bordered mb-5 data-table">
+                            <table class="table table-bordered mb-4 data-table">
                                 <thead>
-                                    <th>#</th>
-                                    <th>Nama</th>
-                                    <th>No KP</th>
-                                    <th>Jantina</th>
-                                    <th>PPK / Jawatan </th>
-                                    <th>Tarikh Lantikan / Status</th>
-                                    <th width="280px">Tindakan</th>
+                                    <tr class="bg-blue-500 text-white">
+                                        <th>#</th>
+                                        <th>Nama</th>
+                                        <th>No KP</th>
+                                        <th>Jantina</th>
+                                        <th>PPK / Jawatan </th>
+                                        <th>Tarikh Lantikan / Status</th>
+                                        <th width="280px">Tindakan</th>
+                                    </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>

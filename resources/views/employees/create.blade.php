@@ -33,8 +33,8 @@
 
                         <div class="card-body">
 
-                            <div class="pull-right p-3">
-                                <a class="btn btn-dark" href="{{ URL::previous() }}"> Back</a>
+                            <div class="pull-right p-2">
+                                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
                             </div>
 
 <!--                             @if (count($errors) > 0)
@@ -49,18 +49,18 @@
                             @endif -->
 
                             {!! Form::open(array('route' => 'employees.store','method'=>'POST')) !!}
-                            <div class="row pt-4 rounded mt-3 shadow">
+                            <div class="row pt-4 rounded mt-2 shadow">
 
                                 <!-- ######## PERSONAL ######### -->
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert alert-info"><strong>1 - Employee Personal Details</strong></div>
+                                    <div class="alert bg-blue-500 text-white"><strong>1 - Employee Personal Details</strong></div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6"></div>
 
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Name</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Name</strong></span>
                                         </div>
                                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                                         @error('name')
@@ -74,7 +74,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>No KP</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>No KP</strong></span>
                                         </div>
                                         {!! Form::text('nokp', null, array('placeholder' => 'No Kad Pengenalan : 890130-02-5567','class' => 'form-control')) !!}
                                         @error('nokp')
@@ -87,7 +87,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Gender</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Gender</strong></span>
                                         </div>
                                         {!! Form::select('gender', ['LELAKI' => 'LELAKI', 'PEREMPUAN' => 'PEREMPUAN'], null, array('placeholder' => 'Select Gender','class' => 'form-control')) !!}
                                         @error('gender')
@@ -102,14 +102,14 @@
 
                                 <!-- ######## JOB DETAILS ######### -->
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert alert-info"><strong>2 - Job Details</strong></div>
+                                    <div class="alert bg-blue-500 text-white"><strong>2 - Job Details</strong></div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6"></div>
 
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Position</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Position</strong></span>
                                         </div>
                                         {!! Form::select('position_id', $positions, null, array('placeholder' => 'Select Position','class' => 'form-control')) !!}
                                         @error('position_id')
@@ -122,7 +122,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Start Date</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Start Date</strong></span>
                                         </div>
                                         {!! Form::date('start_date', null, array('placeholder' => 'Start date','class' => 'form-control')) !!}
                                         @error('start_date')
@@ -135,7 +135,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Employment Status</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Employment Status</strong></span>
                                         </div>
                                         {!! Form::select('employment_status', ['BERSARA' => 'BERSARA', 'BEKERJA' => 'BEKERJA', 'BERHENTI' => 'BERHENTI'], null, array('placeholder' => 'Select Employment Status','class' => 'form-control')) !!}
                                         @error('employment_status')
@@ -148,7 +148,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Service Status</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Service Status</strong></span>
                                         </div>
                                         {!! Form::select('service_status', ['TETAP' => 'TETAP', 'SAMBILAN' => 'SAMBILAN', 'KONTRAK' => 'KONTRAK', 'BERSARA' => 'BERSARA'], null, array('placeholder' => 'Select Service Status','class' => 'form-control')) !!}
                                         @error('service_status')
@@ -161,8 +161,8 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Basic Salary</strong></span>
-                                            <span class="input-group-text" id="basic-addon1">RM</span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Basic Salary</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1">RM</span>
                                         </div>
                                         {!! Form::number('basic_salary', null, array('placeholder' => 'Basic Salary','class' => 'form-control', 'step' => '.01')) !!}
                                         @error('basic_salary')
@@ -175,8 +175,8 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Allowance</strong></span>
-                                            <span class="input-group-text" id="basic-addon1">RM</span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Allowance</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1">RM</span>
                                         </div>
                                         {!! Form::number('allowance', null, array('placeholder' => 'Allowance','class' => 'form-control', 'step' => '.01')) !!}
                                         @error('allowance')
@@ -189,7 +189,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>KWSP No</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>KWSP No</strong></span>
                                         </div>
                                         {!! Form::text('kwsp_no', '', array('placeholder' => 'KWSP No','class' => 'form-control')) !!}
                                         @error('kwsp_no')
@@ -202,7 +202,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>PPK</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>PPK</strong></span>
                                         </div>
                                         {!! Form::select('ppk_id', $ppks, null, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
                                         @error('ppk_id')
@@ -217,14 +217,14 @@
                                 
                                 <!-- ######## EDUCATION ######### -->                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert alert-info" role="alert"><strong>3 - Education Background</strong></div>
+                                    <div class="alert bg-blue-500 text-white" role="alert"><strong>3 - Education Background</strong></div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6"></div>
 
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Education</strong></span>
+                                            <span class="input-group-text bg-blue-200 bg-blue-200" id="basic-addon1"><strong>Education</strong></span>
                                         </div>
                                         {!! Form::select('education_id', $educations, null, array('placeholder' => 'Select Education Level', 'class' => 'form-control')) !!}
                                         @error('education_id')
@@ -237,7 +237,7 @@
                                 <div class="col-xs-4 col-sm-4 col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><strong>Education Major</strong></span>
+                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Education Major</strong></span>
                                         </div>
                                         {!! Form::text('edu_major', null, array('placeholder' => 'Education Major', 'class' => 'form-control')) !!}
                                         @error('edu_major')
