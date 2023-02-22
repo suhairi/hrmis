@@ -34,7 +34,9 @@ class EmployeeController extends Controller
             // Filter the employee listing by user access/ppk
             // 
             if(Auth::user()->location == 'PPK') {
-                $employees = Employee::where('ppk_id', Auth::user()->ppk_id)->get();
+                $employees = Employee::where('ppk_id', Auth::user()->ppk_id)
+                                ->withTrashed()
+                                ->get();
             } else {
 
                 // Administration Access has 2 levels
@@ -50,6 +52,7 @@ class EmployeeController extends Controller
 
                     $employees = Employee::where('ppk_id', '<=', $max)
                                     ->where('ppk_id', '>=', $min)
+                                    ->withTrashed()
                                     ->get();
                 } else {
                     $employees = Employee::withTrashed()->get();
