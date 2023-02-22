@@ -1,7 +1,4 @@
 @extends('layouts.master')
-@section('menu')
-@extends('sidebar.sidebar')
-@endsection
 @section('content')
 
     <div class="page-wrapper">
@@ -27,7 +24,7 @@
                         <div class="card-body">
 
                             <div class="pull-right p-3">
-                                <a class="btn btn-dark" href="{{ URL::previous() }}"> Back</a>
+                                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
                             </div>
 
                             @if (count($errors) > 0)

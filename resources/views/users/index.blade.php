@@ -43,16 +43,18 @@
                             @endif
 
 
-                            <table class="table table-bordered">
-                             <tr>
-                               <th>No</th>
-                               <th>Name</th>
-                               <th>Email</th>
-                               <th>Location</th>
-                               <th>Roles</th>
-                               <th>Permissions</th>
-                               <th width="280px">Action</th>
-                             </tr>
+                            <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="bg-blue-500 text-white">
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Location</th>
+                                    <th>Roles</th>
+                                    <th>Permissions</th>
+                                    <th width="280px">Action</th>
+                                </tr>
+                            </thead>
                              @foreach ($data as $key => $user)
                               <tr>
                                 <td>{{ ++$i }}</td>

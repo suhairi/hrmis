@@ -1,17 +1,19 @@
 <table class="table table-bordered table-hover table-striped">
     <tr>
         <thead>
-            <th>#</th>
-            <th>User Type</th>
-            <th>User ID / Event</th>
-            <th>Auditable ID/Type</th>
-            <th>Old/New Values</th>
-            <th>URL</th>
-            <th>IP Address</th>
-            <th>User Agent</th>
-            <th>Tags</th>
-            <th>Created at</th>
-            <th>Updated at</th>
+            <tr class="bg-blue-500 text-white">
+                <th>#</th>
+                <th>User Type</th>
+                <th>User ID / Event</th>
+                <th>Auditable ID/Type</th>
+                <th>Old/New Values</th>
+                <th>URL</th>
+                <th>IP Address</th>
+                <th>User Agent</th>
+                <th>Tags</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+            </tr>
         </thead>
     </tr>
     @foreach($employees as $employee)

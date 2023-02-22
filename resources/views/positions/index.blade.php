@@ -1,7 +1,5 @@
 @extends('layouts.master')
-@section('menu')
-@extends('sidebar.sidebar')
-@endsection
+
 @section('content')
 
     <div class="page-wrapper">
@@ -42,12 +40,14 @@
                                 </div>
                             @endif
 
-                            <table class="table table-bordered mb-5 data-table">
+                            <table class="table table-bordered mb-4 table-striped data-table">
                                 <thead>
-                                    <th>#</th>
-                                    <th>Grade - Nama Jawatan</th>
-                                    <th>Skema Jawatan</th>
-                                    <th width="280px">Tindakan</th>
+                                    <tr class="bg-blue-500 text-white">
+                                        <th>#</th>
+                                        <th>Grade - Nama Jawatan</th>
+                                        <th>Skema Jawatan</th>
+                                        <th width="280px">Tindakan</th>
+                                    </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>

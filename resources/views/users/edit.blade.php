@@ -77,13 +77,7 @@
                                         <strong>Role/s:</strong>
                                         {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>PPK :</strong>
-                                        {!! Form::select('location', $location, $userLocation, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
-                                    </div>
-                                </div>                                
+                                </div>                           
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center p-4">
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>

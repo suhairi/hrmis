@@ -1,7 +1,4 @@
 @extends('layouts.master')
-@section('menu')
-@extends('sidebar.sidebar')
-@endsection
 @section('content')
 
     <div class="page-wrapper">
@@ -36,10 +33,12 @@
                                 </div>
                             @endif
 
-                            <table class="table table-bordered mb-5 data-table">
+                            <table class="table table-bordered table-striped mb-4 data-table">
                                 <thead>
-                                    <th>#</th>
-                                    <th>Nama</th>
+                                    <tr class="bg-blue-500 text-white">
+                                        <th>#</th>
+                                        <th>Nama</th>
+                                    </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
@@ -58,6 +57,7 @@
     $(function () {
       
         var table = $('.data-table').DataTable({
+            pageLength: 30,
             processing: true,
             serverSide: true,
             ajax: "{{ route('ppk.index') }}",

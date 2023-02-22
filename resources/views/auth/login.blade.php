@@ -8,12 +8,12 @@
                 <div class="login-right">
                     <div class="login-right-wrap">
                         <h1>Login</h1>
-                        <p class="account-subtitle">Access to our dashboard</p>
+                        <p class="account-subtitle">Access to HRMIS dashboard</p>
                         <form method="POST" action="{{ route('login') }}" class="md-float-material">
                             @csrf
                             <div class="form-group">
                                 <label class="form-control-label">Username</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="c1@mada.gov.my" placeholder="Enter username">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="c1@mada.gov.my" placeholder="Enter username" autofocus />
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Password</label>

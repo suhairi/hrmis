@@ -44,12 +44,14 @@
 
 
                             <table class="table table-bordered">
-                             <tr>
-                               <th>No</th>
-                               <th>Name</th>
-                               <th>Guard Name</th>
-                               <th width="280px">Action</th>
-                             </tr>
+                            <thead>
+                                <tr class="bg-blue-500 text-white">
+                                   <th>No</th>
+                                   <th>Name</th>
+                                   <th>Guard Name</th>
+                                   <th width="280px">Action</th>
+                                </tr>
+                            </thead>
                              @foreach ($permissions as $key => $permission)
                               <tr>
                                 <td>{{ $loop->iteration }}</td>
