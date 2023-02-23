@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header rounded-lg" style="background-color: #e2e8f0;">
                             <div class="card-title">Employee Dashboard</div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col col-6">
                     <div class="card">
-                        <div class="card-header shadow-lg text-white text-bold" style="background-color: #6E9AF6">
+                        <div class="card-header shadow-lg text-white text-bold" style="background-color: #1e3a8a">
                             <div class="card-title">Profile</div>
                         </div>
                         <div class="card-body">
@@ -99,7 +99,7 @@
                 </div>
                 <div class="col col-3">
                     <div class="card">
-                        <div class="card-header shadow-lg text-white" style="background-color: #6E9AF6">
+                        <div class="card-header shadow-lg text-white" style="background-color: #1e3a8a">
                             <div class="card-title">Cuti</div>
                         </div>
                         <div class="card-body">
@@ -113,17 +113,17 @@
                                     <th>Tempoh</th>
                                 </tr>
                                 <tr>
-                                    <td>1.</td>
+                                    <td><strong>1.</strong></td>
                                     <td>30 Jan 2023 - 31 Jan 2023</td>
                                     <td>2 Hari</td>
                                 </tr>
                                 <tr>
-                                    <td>2.</td>
+                                    <td><strong>2.</strong></td>
                                     <td>15 Feb 2023 - 15 Feb 2023</td>
                                     <td>1 Hari</td>
                                 </tr>
                                 <tr>
-                                    <td>3.</td>
+                                    <td><strong>3.</strong></td>
                                     <td>20 Mar 2023 - 20 Jan 2023</td>
                                     <td>1 Hari</td>
                                 </tr>
@@ -131,13 +131,22 @@
                                     <td colspan="2" align="right"><strong>JUMLAH</strong></td>
                                     <td><strong>4 Hari</strong></td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2" align="right"><strong>KELAYAKAN</strong></td>
+                                    <td><strong>25 Hari</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="right"><strong>BAKI</strong></td>
+                                    <td><strong>21 Hari</strong></td>
+                                </tr>
+                                
                             </table>
                         </div>
                     </div>                    
                 </div>
                 <div class="col col-3">
                     <div class="card">
-                        <div class="card-header shadow-lg text-white" style="background-color: #6E9AF6">
+                        <div class="card-header shadow-lg text-white" style="background-color: #1e3a8a">
                             <div class="card-title ">Prestasi</div>
                         </div>
                         <div class="card-body">
@@ -152,32 +161,32 @@
                                     <th>Indicator/Markah</th>
                                 </tr>
                                 <tr>
-                                    <td>1.</td>
-                                    <td><a href="#">2023</a></td>
+                                    <td><strong>1.</strong></td>
+                                    <td><a href="#" class="link-primary">2023</a></td>
                                     <td> <i>-no record-</i></td>
                                 </tr>
                                 <tr>
-                                    <td>2.</td>
+                                    <td><strong>2.</strong></td>
                                     <td><a href="#" class="link-primary">2022</a></td>
                                     <td>90.5 %</td>
                                 </tr>
                                 <tr>
-                                    <td>3.</td>
+                                    <td><strong>3.</strong></td>
                                     <td><a href="#">2021</a></td>
                                     <td>87.3 %</td>
                                 </tr>
                                 <tr>
-                                    <td>4.</td>
+                                    <td><strong>4.</strong></td>
                                     <td><a href="#">2020</a></td>
                                     <td>88.6 %</td>
                                 </tr>
                                 <tr>
-                                    <td>5.</td>
+                                    <td><strong>5.</strong></td>
                                     <td><a href="#">2019</a></td>
                                     <td>91.3 %</td>
                                 </tr>
                                 <tr>
-                                    <td>6.</td>
+                                    <td><strong>6.</strong></td>
                                     <td><a href="#">2018</a></td>
                                     <td>92.1 %</td>
                                 </tr>
@@ -193,7 +202,7 @@
             <div class="row">
                 <div class="col col-6">
                     <div class="card">
-                        <div class="card-header shadow-lg text-white" style="background-color: #6E9AF6">
+                        <div class="card-header shadow-lg text-white" style="background-color: #1e3a8a">
                             <div class="card-title ">Aset</div>
                         </div>
                         <div class="card-body">
