@@ -62,10 +62,23 @@ class EmployeeController extends Controller
             return Datatables::of($employees)
                     ->addIndexColumn()
                     ->addColumn('name', function($employee) {
+
+                        $name = '';
+                        
+                        
                         if($employee->deleted_at != NULL)
-                            return $employee->name . ' <small><sup>*</sup><font color=red><sup>deleted</sup></font></small>';
+                            $name = $employee->name . ' <small><sup>*</sup><font color=red><sup>deleted</sup></font></small>' . '    ';
                         else
-                            return $employee->name;
+                            $name = $employee->name;
+
+                        if($employee->employment_status == 'BEKERJA')
+                            $name .= "<br /><span class='badge bg-green-600 text-white rounded-pill' style='font-size: 8px;'>Active</span><br />";
+                        else
+                            $name .= "<br /><span class='badge bg-red-500 text-white rounded-pill' style='font-size: 8px;'>Inative</span><br />";
+
+                        
+                        
+                        return $name;
                     })
                     ->addColumn('nokp', function($employee) {
                         return $employee->nokp;
@@ -77,7 +90,8 @@ class EmployeeController extends Controller
 
                         $ppk = $employee->ppk->wilayah->name . '<br />' .
                                $employee->ppk->code . ' - ' . $employee->ppk->name . '<br />' .
-                               $employee->position->name . '<br />';
+                               $employee->position->name . '<br />' .
+                               $employee->employment_status . '<br />';
 
                         return $ppk;
                     })
@@ -178,6 +192,11 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
+        // validate access, employee from $user->ppk_id
+
+        if(Auth::user()->ppk_id != $employee->ppk_id)
+            abort(403);
+
 
         return view('employees.show', compact('employee'));
     }

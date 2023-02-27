@@ -12,7 +12,6 @@
 	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/dataTables.bootstrap4.min.css') }}"> -->
 	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/jquery.dataTables.min.css') }}"> -->
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
-	<link rel="stylesheet" href="{{ URL::to('assets/css/multiform.css') }}" id="bootstrap">
 	
 	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 </head>

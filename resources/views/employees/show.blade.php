@@ -45,7 +45,14 @@
                                 </tr>
                                 <tr>
                                     <td width="15%"><strong>Name</strong></td>
-                                    <td>{{ ucWords(strtolower($employee->name)) }}</td>
+                                    <td>
+                                        {{ ucWords(strtolower($employee->name)) }}
+                                        @if($employee->employment_status == 'BEKERJA')
+                                            <sup><span class="badge bg-green-600 text-white rounded-pill" style="font-size: 8px;">Active</span></sup>
+                                        @else
+                                            <sup><span class="badge bg-red-500 text-white rounded-pill" style="font-size: 8px;">Inative</span></sup>
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="15%"><strong>No KP</strong></td>
@@ -61,10 +68,6 @@
                                 <tr>
                                     <td width="15%"><strong>Position</strong></td>
                                     <td>{{ ucWords(strtolower($employee->position->name)) }}</td>
-                                </tr>
-                                <tr>
-                                    <td width="15%"><strong>Employment Status</strong></td>
-                                    <td>{{ ucWords(strtolower($employee->employment_status)) }}</td>
                                 </tr>
                                 <tr>
                                     <td width="15%"><strong>Service Status</strong></td>
@@ -124,7 +127,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>3.</strong></td>
-                                    <td>20 Mar 2023 - 20 Jan 2023</td>
+                                    <td>20 Mar 2023 - 20 Mar 2023</td>
                                     <td>1 Hari</td>
                                 </tr>
                                 <tr>
@@ -168,27 +171,27 @@
                                 <tr>
                                     <td><strong>2.</strong></td>
                                     <td><a href="#" class="link-primary">2022</a></td>
-                                    <td>90.5 %</td>
+                                    <td class="text-green-600 font-bold">90.5 %</td>
                                 </tr>
                                 <tr>
                                     <td><strong>3.</strong></td>
                                     <td><a href="#">2021</a></td>
-                                    <td>87.3 %</td>
+                                    <td class="text-green-600 font-bold">87.3 %</td>
                                 </tr>
                                 <tr>
                                     <td><strong>4.</strong></td>
                                     <td><a href="#">2020</a></td>
-                                    <td>88.6 %</td>
+                                    <td class="text-red-300 font-bold">73.2 %</td>
                                 </tr>
                                 <tr>
                                     <td><strong>5.</strong></td>
                                     <td><a href="#">2019</a></td>
-                                    <td>91.3 %</td>
+                                    <td class="text-green-600 font-bold">91.3 %</td>
                                 </tr>
                                 <tr>
                                     <td><strong>6.</strong></td>
                                     <td><a href="#">2018</a></td>
-                                    <td>92.1 %</td>
+                                    <td class="text-green-600 font-bold">92.1 %</td>
                                 </tr>
                             </table>
 
