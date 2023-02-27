@@ -66,6 +66,8 @@ Route::group(['middleware' => ['auth']], function() {
     // Employee
     Route::resource('employees', EmployeeController::class);
     Route::get('employees/list', [EmployeeController::class, 'list'])->name('employees.list');
+    Route::get('employees/{employee}/show2', [EmployeeController::class, 'show2'])->name('employees.show2');
+    Route::get('employees/{employee}/show3', [EmployeeController::class, 'show3'])->name('employees.show3');
 
     // PPK
     Route::get('/ppk', [PpkController::class, 'index'])->name('ppk.index');

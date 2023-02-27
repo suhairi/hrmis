@@ -193,13 +193,36 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         // validate access, employee from $user->ppk_id
-
         if(Auth::user()->ppk_id != $employee->ppk_id)
             abort(403);
 
 
         return view('employees.show', compact('employee'));
     }
+
+    public function show2(Employee $employee)
+    {
+        // validate access, employee from $user->ppk_id
+        if(Auth::user()->ppk_id != $employee->ppk_id)
+            abort(403);
+
+
+        return view('employees.show2', compact('employee'));
+    }
+
+    public function show3(Employee $employee)
+    {
+        // validate access, employee from $user->ppk_id
+        if(Auth::user()->ppk_id != $employee->ppk_id)
+            abort(403);
+
+
+        return view('employees.show3', compact('employee'));
+    }
+
+    
+
+    
 
     /**
      * Show the form for editing the specified resource.

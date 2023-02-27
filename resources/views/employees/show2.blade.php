@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <div><a href="{{ route('employees.show2', $employee) }}">Show 2</a></div>
+            <div><a href="{{ route('employees.show3', $employee) }}">Show 3</a></div>
             <div class="pull-right p-3">
                 <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
             </div>
@@ -33,11 +33,11 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col col-6">
+            <div class="grid grid-rows-3 grid-flow-col gap-2 bg-gray-200 rounded-lg">
+                <div class="row-span-3">
                     <div class="card">
-                        <div class="card-header shadow-lg text-white text-bold" style="background-color: #1e3a8a">
-                            <div class="card-title">Profile</div>
+                        <div class="card-header font-bold text-white" style="background-color: #1e3a8a">
+                            <div class="card-title">Employee Personal Profile</div>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered table-hover table-striped shadow-2xl">
@@ -100,10 +100,11 @@
                             </table>
                         </div>
                     </div>
+                    
                 </div>
-                <div class="col col-3">
+                <div class="col-span-1">
                     <div class="card">
-                        <div class="card-header shadow-lg text-white" style="background-color: #1e3a8a">
+                        <div class="card-header font-bold text-white" style="background-color: #1e3a8a">
                             <div class="card-title">Cuti</div>
                         </div>
                         <div class="card-body">
@@ -146,15 +147,53 @@
                                 
                             </table>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
-                <div class="col col-3">
+                <div class="col-span-1">
                     <div class="card">
-                        <div class="card-header shadow-lg text-white" style="background-color: #1e3a8a">
-                            <div class="card-title ">Prestasi</div>
+                        <div class="card-header font-bold text-white" style="background-color: #1e3a8a">
+                            <div class="card-title">Aset</div>
                         </div>
                         <div class="card-body">
-
+                            <table class="table table-bordered table-hover table-striped shadow-2xl">
+                                <tr>
+                                    <td colspan="3" class="bg-info text-light"><strong>**Aset </strong></td>
+                                </tr>
+                                <tr class="bg-blue-200 hover:none">
+                                    <th>Bil</th>
+                                    <th>Keterangan</th>
+                                    <th>Bilangan</th>
+                                </tr>
+                                <tr>
+                                    <td>1.</td>
+                                    <td><a href="#">External hard disk</a></td>
+                                    <td>1 unit</td>
+                                </tr>
+                                <tr>
+                                    <td>2.</td>
+                                    <td><a href="#" class="link-primary">Bosch - Pengukur Digital</a></td>
+                                    <td>2 unit</td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td><a href="#">Samsung - Telefon Bimbit (Galaxy S23)</a></td>
+                                    <td>1 unit</td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <td><a href="#">Bosch - Pengukur PH Tanah</a></td>
+                                    <td>2 Unit</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-span-2 col-span-1">
+                    <div class="card">
+                        <div class="card-header font-bold text-white" style="background-color: #1e3a8a">
+                            <div class="card-title">Prestasi</div>
+                        </div>
+                        <div class="card-body">
                             <table class="table table-bordered table-hover table-striped shadow-2xl">
                                 <tr>
                                     <td colspan="3" class="bg-info text-light"><strong>**Prestasi Kerja Tahunan</strong></td>
@@ -195,57 +234,9 @@
                                     <td class="text-green-600 font-bold">92.1 %</td>
                                 </tr>
                             </table>
-
                         </div>
                     </div>
                 </div>
-                
-            </div>
-
-            <!-- Second Row -->
-            <div class="row">
-                <div class="col col-6">
-                    <div class="card">
-                        <div class="card-header shadow-lg text-white" style="background-color: #1e3a8a">
-                            <div class="card-title ">Aset</div>
-                        </div>
-                        <div class="card-body">
-
-                            <table class="table table-bordered table-hover table-striped shadow-2xl">
-                                <tr>
-                                    <td colspan="3" class="bg-info text-light"><strong>**Aset </strong></td>
-                                </tr>
-                                <tr class="bg-blue-200 hover:none">
-                                    <th>Bil</th>
-                                    <th>Keterangan</th>
-                                    <th>Bilangan</th>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td><a href="#">External hard disk</a></td>
-                                    <td>1 unit</td>
-                                </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td><a href="#" class="link-primary">Bosch - Pengukur Digital</a></td>
-                                    <td>2 unit</td>
-                                </tr>
-                                <tr>
-                                    <td>3.</td>
-                                    <td><a href="#">Samsung - Telefon Bimbit (Galaxy S23)</a></td>
-                                    <td>1 unit</td>
-                                </tr>
-                                <tr>
-                                    <td>4.</td>
-                                    <td><a href="#">Bosch - Pengukur PH Tanah</a></td>
-                                    <td>2 Unit</td>
-                                </tr>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </div>
