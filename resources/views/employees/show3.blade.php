@@ -18,9 +18,9 @@
                 </div>
             </div>
 
-            
+
             <div class="pull-right p-3">
-                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
+                <a class="btn btn-dark rounded-full hover:bg-gray-600 hover:animate:bounce" href="{{ URL::previous() }}"> < Back</a>
             </div>
 
             <div class="row">

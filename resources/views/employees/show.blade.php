@@ -40,6 +40,11 @@
                             <div class="card-title">Profile</div>
                         </div>
                         <div class="card-body">
+                            
+                            <div class="float-right">
+                                <a href="#"><i class="fa fa-sharp fa-solid fa-file-pdf fa-1x"></i></a>
+                            </div>
+
                             <table class="table table-bordered table-hover table-striped shadow-2xl">
                                 <tr>
                                     <td colspan="2" class="bg-info text-light"><strong>Personal</strong></td>
