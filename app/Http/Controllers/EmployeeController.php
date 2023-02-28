@@ -193,6 +193,7 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         // validate access, employee from $user->ppk_id
+        // Should use laravel pennant package!!!
         if(Auth::user()->ppk_id != $employee->ppk_id)
             abort(403);
 
