@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+use App\Models\User;
 use App\Models\Employee;
 use App\Models\Education;
 use App\Models\Position;
 use App\Models\Ppk;
+
+use Notification;
+use App\Notifications\EmailNotification;
 
 class HomeController extends Controller
 {
@@ -92,22 +96,24 @@ class HomeController extends Controller
             }
         }
 
-        
-
-        // foreach($employment_status as $value) {
-
-        //     if(array_key_exists($value['employment_status'], $employments))
-        //         echo $value['employment_status'] . ' - ' . $employments[$value['employment_status']] . '<br />';
-        //     else
-        //         echo $value['employment_status'] . ' - 0 ' . '<br />';
-        // }
-
-        // return;
-
-        // dd(Auth::user()->location);
-        // dd($gender);
-
-
         return view('home', compact('employees', 'ppk', 'gender', 'employments', 'employment_status'));
+    }
+
+    public function send() {
+
+        $user = User::first();
+
+        $project = [
+            'greeting' => 'Hi '.$user->name.',',
+            'body' => 'This is the project assigned to you.',
+            'thanks' => 'Thank you, this is from hrmisppk.mada.gov.my',
+            'actionText' => 'View Project',
+            'actionURL' => url('/'),
+            'id' => 57
+        ];
+  
+        Notification::send($user, new EmailNotification($project));
+   
+        dd('Notification sent!');
     }
 }
