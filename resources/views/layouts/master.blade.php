@@ -6,15 +6,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 	<title>HR SYSTEM</title>
 	<link rel="shortcut icon" href="{{ URL::to('assets/img/favicon.png') }}">
-	<link rel="stylesheet" href="{{ URL::to('assets/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/fontawesome.min.css') }}">
-	<link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/all.min.css') }}">
+
+	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/bootstrap.min.css') }}"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- <link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/fontawesome.min.css') }}"> -->
+	<!-- blank -->
+
+	<!-- <link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/all.min.css') }}"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/dataTables.bootstrap4.min.css') }}"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/jquery.dataTables.min.css') }}"> -->
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
 	
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
-	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -190,17 +202,36 @@
 		
 	</div>
 
-	<script src="{{ URL::to('assets/js/jquery-3.6.0.min.js') }}"></script>
+	<!-- <script src="{{ URL::to('assets/js/jquery-3.6.0.min.js') }}"></script> -->
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
 	<script src="{{ URL::to('assets/js/popper.min.js') }}"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
+	<!-- <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> -->
+
 	<script src="{{ URL::to('assets/js/bootstrap.min.js') }}"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script> -->
+
+
 	<script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
-	<script src="{{ URL::to('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/feathers/5.0.0/index.js"></script> -->
+
+	<!-- <script src="{{ URL::to('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-scroll/1.3.3/slimscroll.min.js"></script>
 
 
 
-	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
+	<!-- <script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+
+	<!-- <script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/1.13.3/dataTables.bootstrap5.min.js"></script>
+
+
 	<script src="{{ URL::to('assets/js/script.js') }}"></script>
+
+	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
