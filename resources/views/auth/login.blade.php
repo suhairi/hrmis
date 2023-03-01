@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="main-wrapper login-body">
     <div class="login-wrapper">

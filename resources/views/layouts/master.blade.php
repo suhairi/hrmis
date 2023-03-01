@@ -13,6 +13,7 @@
 	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/jquery.dataTables.min.css') }}"> -->
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
 	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
 	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 </head>
 
@@ -200,6 +201,9 @@
 	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/script.js') }}"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+
 
 	@stack('scripts')
 

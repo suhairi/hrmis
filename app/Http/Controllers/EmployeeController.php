@@ -194,6 +194,7 @@ class EmployeeController extends Controller
     {
         // validate access, employee from $user->ppk_id
         // Should use laravel pennant package!!!
+
         if(Auth::user()->ppk_id != $employee->ppk_id)
             abort(403);
 
@@ -201,25 +202,48 @@ class EmployeeController extends Controller
         return view('employees.show', compact('employee'));
     }
 
-    public function show2(Employee $employee)
+    public function showCuti(Employee $employee)
     {
         // validate access, employee from $user->ppk_id
+        // Should use laravel pennant package!!!
+
         if(Auth::user()->ppk_id != $employee->ppk_id)
             abort(403);
 
 
-        return view('employees.show2', compact('employee'));
+        return view('employees.showCuti', compact('employee'));
     }
 
-    public function show3(Employee $employee)
+    public function showGaji(Employee $employee)
     {
         // validate access, employee from $user->ppk_id
+        // Should use laravel pennant package!!!
+
         if(Auth::user()->ppk_id != $employee->ppk_id)
             abort(403);
 
 
-        return view('employees.show3', compact('employee'));
+        return view('employees.showGaji', compact('employee'));
     }
+
+    public function showAset(Employee $employee)
+    {
+        // validate access, employee from $user->ppk_id
+        // Should use laravel pennant package!!!
+
+        if(Auth::user()->ppk_id != $employee->ppk_id)
+            abort(403);
+
+
+        return view('employees.showAset', compact('employee'));
+    }
+
+    
+
+    
+
+    
+
 
     
 
