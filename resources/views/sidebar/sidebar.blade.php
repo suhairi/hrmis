@@ -33,6 +33,11 @@
                                 Employees</span></a>
                     </li>
                     <li>
+                        <a href="{{ route('leaves.index') }}"><img src="{{ URL::to('assets/img/bed.svg') }}" alt="sidebar_img"><span>
+                                Leave Management</span></a>
+                    </li>
+                    
+                    <li>
                         <a href="{{ route('performance.index') }}"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
                                 Performance</span></a>
                     </li>
@@ -82,18 +87,17 @@
 
                     
                 </ul>
-                <ul class="logout">
+                <ul>
                     <li>
                         <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <img src="{{ URL::to('assets/img/logout.svg') }}" alt="sidebar_img"><span>Log
-                                out</span>
+                            onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                        <img src="{{ URL::to('assets/img/logout.svg') }}" alt="sidebar_img"><span>Log out</span>
                                         <!-- {{ __('Logout')  }} - {{ Auth::user()->name }} -->
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                         </a>
                     </li>
                 </ul>

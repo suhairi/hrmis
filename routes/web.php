@@ -17,6 +17,7 @@ use App\Http\Controllers\PerformanceController;
 
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TransferController;
+use App\Http\Controllers\LeaveController;
 
 use App\Http\Livewire\UserWizard;
 
@@ -71,6 +72,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('employees/{employee}/cuti', [EmployeeController::class, 'showCuti'])->name('employees.showCuti');
     Route::get('employees/{employee}/gaji', [EmployeeController::class, 'showGaji'])->name('employees.showGaji');
     Route::get('employees/{employee}/aset', [EmployeeController::class, 'showAset'])->name('employees.showAset');
+
+    // Employee - Leaves
+    Route::resource('leaves', LeaveController::class);
 
     // PPK
     Route::get('/ppk', [PpkController::class, 'index'])->name('ppk.index');
