@@ -33,9 +33,9 @@
                             @include('partials.employees.employeeMenu')
 
                             <div class="col-6 mb-2">
-                                <a class="btn btn-success rounded-full" href="{{ route('leaves.create', $employee->id) }}">New Record</a>
+                                <a class="btn bg-green-400  hover:bg-green-500 rounded-full transition ease-in-ease-out delay-30 hover:-translate-y-1 hover:scale-110 duration-300" href="{{ route('leaves.create', $employee->id) }}"><i class="fa fa-book"> </i> New Record</a>
                             </div>
-                            
+
                             <div class="col-6">
                                 <table class="table table-bordered table-hover table-striped shadow-2xl">
                                         <thead>
@@ -47,8 +47,8 @@
                                             </tr>
                                         </thead>                                        
                                     <tr>
-                                        <td>1.</td>
-                                        <td>01 Jan - 02 Jan</td>
+                                        <td class="text-center font-bold">1.</td>
+                                        <td>01 Jan - 02 Jan 2023</td>
                                         <td class="text-center">2</td>
                                         <td class="text-center">
                                             <a class="btn bg-yellow-300 hover:bg-yellow-400 text-white rounded-full hover:shadow-md" href="#">
@@ -63,8 +63,24 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>2.</td>
-                                        <td>01 Jan - 02 Jan</td>
+                                        <td class="text-center font-bold">2.</td>
+                                        <td>14 Feb - 14 Feb 2023</td>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center">
+                                            <a class="btn bg-yellow-300 hover:bg-yellow-400 text-white rounded-full hover:shadow-md" href="#">
+                                                <i class="fa fa-eye mr-2"> </i>Show
+                                            </a>
+                                            <a class="btn btn-success rounded-full hover:shadow-md" href="#">
+                                                <i class="fa fa-pencil-square mr-2"> </i>Edit
+                                            </a>
+                                            <a class="btn text-white bg-red-600 hover:bg-red-700 rounded-full hover:shadow-md" href="#">
+                                                <i class="fa fa-trash mr-2"> </i>Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center font-bold">3.</td>
+                                        <td>03 Mar - 04 Mar 2023</td>
                                         <td class="text-center">2</td>
                                         <td class="text-center">
                                             <a class="btn bg-yellow-300 hover:bg-yellow-400 text-white rounded-full hover:shadow-md" href="#">
@@ -79,24 +95,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>3.</td>
-                                        <td>01 Jan - 02 Jan</td>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">
-                                            <a class="btn bg-yellow-300 hover:bg-yellow-400 text-white rounded-full hover:shadow-md" href="#">
-                                                <i class="fa fa-eye mr-2"> </i>Show
-                                            </a>
-                                            <a class="btn btn-success rounded-full hover:shadow-md" href="#">
-                                                <i class="fa fa-pencil-square mr-2"> </i>Edit
-                                            </a>
-                                            <a class="btn text-white bg-red-600 hover:bg-red-700 rounded-full hover:shadow-md" href="#">
-                                                <i class="fa fa-trash mr-2"> </i>Delete
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>01 Jan - 02 Jan</td>
+                                        <td class="text-center font-bold">4.</td>
+                                        <td>01 Apr - 02 Apr 2023</td>
                                         <td class="text-center">2</td>
                                         <td class="text-center">
                                             <a class="btn bg-yellow-300 hover:bg-yellow-400 text-white rounded-full hover:shadow-md" href="#">
