@@ -240,13 +240,7 @@ class EmployeeController extends Controller
 
     
 
-    
-
-    
-
-
-    
-
+   
     
 
     /**
@@ -362,15 +356,15 @@ class EmployeeController extends Controller
 
         if ($request->ajax()) {
 
-            $data = Employee::where('name','LIKE',$request->name.'%')->limit(5)->get();
+            $data = Employee::where('name','LIKE',$request->name.'%')->limit(4)->get();
 
             $output = '';
-            if (count($data)>0) {
+            if (count($data) > 0) {
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
 
                 foreach ($data as $row) {
-                    $output .= '<li class="list-group-item hover:cursor-pointer hover:bg-blue-100">'.$row->name.'</li>';
-                    // $output .= '<li class="list-group-item">'.$row->name.'</li>';
+                    $output .= '<input type="hidden" name="employee_id" value="'.$row->id.'">';
+                    $output .= '<li class="list-group-item hover:cursor-pointer hover:bg-blue-100">'. $row->name .'</li>';
                 }
 
                 $output .= '</ul>';

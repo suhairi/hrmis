@@ -25,23 +25,37 @@
                     <div class="card">
                         <div class="card-header"><strong>Leave New Record</strong></div>
 
-                        <div class="card-body">
+                        <div class="card-body shadow">
 
                             <div class="pull-right p-2">
-                                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
+                                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-bold transition ease-in-out delay-30 hover:-translate-y-1 duration-300 rounded-full shadow-lg" href="{{ URL::previous() }}"> < Back</a>
                             </div>
 
-                            <div class="card">
+                            <div class="card mt-3">
+                                <div class="card-header"><div class="card-title">Record Leave</div></div>
                                 <div class="card-body">
 
+                                    @if (count($errors) > 0)
+                                        <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                           @foreach ($errors->all() as $error)
+                                             <li>{{ $error }}</li>
+                                           @endforeach
+                                        </ul>
+                                      </div>
+                                    @endif
+
+                                    {!! Form::open(['route' => 'leaves.store', 'method' => 'POST']) !!}
                                     <div class="grid grid-cols-4 gap-4">
 
                                         <div>
-                                            Name : <input type="text" name="name" id="name" class="form-control shadow rounded" autocomplete="off">
+                                            Name : <input type="text" name="name" id="name" class="form-control shadow rounded" required autocomplete="off">
+                                            <input type="hidden" name="employee_id" id="employee_id">
                                             <div id="product_list"></div>
                                         </div>
                                         <div>
-                                            Leave Type : <select name="type" class="form-control border-black shadow focus:border-blue-400">
+                                            Leave Type : <select name="type" class="form-control border-black shadow focus:border-blue-400" required>
                                                 <option>Select Leave Type</option>
                                                 <option>Sick Leave</option>
                                                 <option>Emergency Leave</option>
@@ -49,29 +63,22 @@
                                             </select>
                                         </div>
                                         <div>
-                                            Start Date : <input type="date" name="start_date" class="form-control rounded shadow">
+                                            Start Date : <input type="date" name="start_date" class="form-control rounded shadow" required>
                                         </div>
                                         <div>
-                                            End Date : <input type="date" name="start_date" class="form-control rounded shadow">
+                                            End Date : <input type="date" name="end_date" class="form-control rounded shadow" required>
                                         </div>
 
-                                        <div class="alert col-span-4 bg-gray-100 flex-right">
-                                            <a href="#" class="btn btn-success float-right">Add</a>
+                                        <div class="alert col-span-4 flex-right">
+                                            <button type="submit" class="btn float-right bg-green-400 hover:bg-green-500 text-white transition ease-in-out delay-30 hover:-translate-y-1 duration-300 hover:shadow-lg">Add</button>
                                         </div>
 
                                     </div>
+                                    {!! Form::close() !!}
 
                                 </div>
                             </div>
-                            
-
-                            
-                            <input type="text" name="name" id="name" class="form-control" autocomplete="off">
-                            <div id="product_list"></div>
-
-                            <input type="date" name="start_date" id="name" class="form-control" autocomplete="off">
-                            <input type="date" name="end_date" id="name" class="form-control" autocomplete="off">
-                            
+                        
 
 
                         </div>
@@ -97,12 +104,15 @@
                     data:{'name':query},
                     success:function (data) {
                         $('#product_list').html(data);
+                        console.log(data);
                     }
                 })
             });
             $(document).on('click', 'li', function(){
                 var value = $(this).text();
+                console.log(value);
                 $('#name').val(value);
+                $('#employee_id').val(value);
                 $('#product_list').html("");
             });
         });
