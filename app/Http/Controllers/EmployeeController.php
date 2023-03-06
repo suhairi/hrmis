@@ -357,4 +357,32 @@ class EmployeeController extends Controller
 
         return view('transfer.edit', compact('employee', 'educations', 'positions', 'ppks'));
     }
+
+    public function suggestion(Request $request) {
+
+        if ($request->ajax()) {
+
+            $data = Employee::where('name','LIKE',$request->name.'%')->limit(5)->get();
+
+            $output = '';
+            if (count($data)>0) {
+                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
+
+                foreach ($data as $row) {
+                    $output .= '<li class="list-group-item hover:cursor-pointer hover:bg-blue-100">'.$row->name.'</li>';
+                    // $output .= '<li class="list-group-item">'.$row->name.'</li>';
+                }
+
+                $output .= '</ul>';
+
+            }else {
+
+                $output .= '<li class="list-group-item">'.'No Data Found'.'</li>';
+            }
+
+            return $output;
+        }
+        return view('autosearch');
+
+    }
 }

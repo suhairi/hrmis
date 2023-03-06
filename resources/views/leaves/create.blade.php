@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+    
+
 
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -25,31 +27,51 @@
 
                         <div class="card-body">
 
-                            <h1>Leave Index</h1>
+                            <div class="pull-right p-2">
+                                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
+                            </div>
 
-                            {!! Form::open(array('route' => 'employees.store','method'=>'POST')) !!}
-                            <div class="row pt-4 rounded mt-2 shadow">
+                            <div class="card">
+                                <div class="card-body">
 
-                                <!-- ######## PERSONAL ######### -->
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert bg-blue-500 text-white"><strong>Employee Leave</strong></div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
+                                    <div class="grid grid-cols-4 gap-4">
 
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Name</strong></span>
+                                        <div>
+                                            Name : <input type="text" name="name" id="name" class="form-control shadow rounded" autocomplete="off">
+                                            <div id="product_list"></div>
                                         </div>
-                                        {!! Form::text('name', null, array('placeholder' => 'Name', 'class' => 'form-control bg-gray-200 hover:bg-gray-200', 'readonly' => 'true')) !!}
-                                        @error('name')
-                                            <span class="text-danger mr-4">{{ $message }}</span>
-                                        @enderror                                      
-                                    </div>                                    
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
+                                        <div>
+                                            Leave Type : <select name="type" class="form-control border-black shadow focus:border-blue-400">
+                                                <option>Select Leave Type</option>
+                                                <option>Sick Leave</option>
+                                                <option>Emergency Leave</option>
+                                                <option>Others</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            Start Date : <input type="date" name="start_date" class="form-control rounded shadow">
+                                        </div>
+                                        <div>
+                                            End Date : <input type="date" name="start_date" class="form-control rounded shadow">
+                                        </div>
 
-                            {!! Form::close() !!}
+                                        <div class="alert col-span-4 bg-gray-100 flex-right">
+                                            <a href="#" class="btn btn-success float-right">Add</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+
+                            
+                            <input type="text" name="name" id="name" class="form-control" autocomplete="off">
+                            <div id="product_list"></div>
+
+                            <input type="date" name="start_date" id="name" class="form-control" autocomplete="off">
+                            <input type="date" name="end_date" id="name" class="form-control" autocomplete="off">
+                            
 
 
                         </div>
@@ -61,3 +83,29 @@
 
 
 @endsection
+
+@push('scripts')
+
+<script type="text/javascript">
+
+        $(document).ready(function(){
+            $('#name').on('keyup',function () {
+                var query = $(this).val();
+                $.ajax({
+                    url:'{{ route('employee.suggestion') }}',
+                    type:'GET',
+                    data:{'name':query},
+                    success:function (data) {
+                        $('#product_list').html(data);
+                    }
+                })
+            });
+            $(document).on('click', 'li', function(){
+                var value = $(this).text();
+                $('#name').val(value);
+                $('#product_list').html("");
+            });
+        });
+    </script>  
+
+@endpush

@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // Employee - Leaves
     Route::resource('leaves', LeaveController::class);
+    Route::get('employee/suggestion', [EmployeeController::class, 'suggestion'])->name('employee.suggestion');
 
     // PPK
     Route::get('/ppk', [PpkController::class, 'index'])->name('ppk.index');
