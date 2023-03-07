@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('employees/{employee}/gaji', [EmployeeController::class, 'showGaji'])->name('employees.showGaji');
     Route::get('employees/{employee}/aset', [EmployeeController::class, 'showAset'])->name('employees.showAset');
 
+
     // Employee - Leaves
     Route::resource('leaves', LeaveController::class);
     Route::get('employee/suggestion', [EmployeeController::class, 'suggestion'])->name('employee.suggestion');
@@ -99,6 +100,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/settings/trim/kwspno', [SettingsController::class, 'kwsp'])->name('trim.employee.kwsp');
 
     // PDF
+
+    /* Employee */
+    Route::get('pdf/employeesList', [PdfController::class, 'employeesList'])->name('pdf.employeesList');
+
+
+    /* Leaves */
     Route::get('pdf/leavesList', [PdfController::class, 'leavesList'])->name('pdf.leavesList');
 
 });

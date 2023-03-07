@@ -25,10 +25,12 @@
                         <div class="card-body">
 
                             @can('employee-create')
-                                <div class="pull-right p-3">
+                                <div class="p-3">
                                     <a class="btn btn-success shadow-md rounded" href="{{ route('employees.create') }}"> Create New Employee</a>
                                 </div>
                             @endcan
+
+
 
                             @if(session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -38,6 +40,18 @@
                                     </button>
                                 </div>
                             @endif
+
+                            <div class="col-md-12 shadow-md mb-12">
+                                <div class="alert mb-2 float-right">
+                                    <a href="{{ route('pdf.employeesList') }}" target="_blank" class="text-red-500 hover:text-red-700">
+                                        <i class="fa fa-file-pdf fa-xl transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 shadow-md mr-4"></i>
+                                    </a>
+                                    <a href="#" class="text-red-500 hover:text-red-700" disabled>
+                                        <i class="fa-sharp fa-solid fa-file-csv fa-xl transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 shadow-md mr-4"></i>
+                                    </a>
+                                    
+                                </div>
+                            </div>
 
                             <table class="table table-bordered mb-4 data-table">
                                 <thead>

@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <div class="col-6 mb-3">
+            <div class="col-6 p-3 mb-3">
                 <a class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold 
                             transition ease-in-out delay-30 hover:-translate-y-1 duration-300
                             shadow-md rounded-full" 
