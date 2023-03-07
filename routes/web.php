@@ -19,6 +19,8 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\LeaveController;
 
+use App\Http\Controllers\PdfController;
+
 use App\Http\Livewire\UserWizard;
 
 /*
@@ -95,5 +97,8 @@ Route::group(['middleware' => ['auth']], function() {
     // Settings
     Route::get('/settings/trim/name', [SettingsController::class, 'trimmed'])->name('trim.employee.name');
     Route::get('/settings/trim/kwspno', [SettingsController::class, 'kwsp'])->name('trim.employee.kwsp');
+
+    // PDF
+    Route::get('pdf/leavesList', [PdfController::class, 'leavesList'])->name('pdf.leavesList');
 
 });

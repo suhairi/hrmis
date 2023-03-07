@@ -69,28 +69,39 @@
 
                         <div class="card-body">
 
-                            <h1>Leave Index</h1>
+                            <div class="col-md-7 shadow-md mb-5">
+                                <div class="alert mb-2 float-right">
+                                    <a href="{{ route('pdf.leavesList') }}" class="text-red-500 hover:text-red-700">
+                                        <i class="fa fa-file-pdf fa-xl transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 shadow-md"></i>
+                                    </a>
+                                </div>
+                            </div>
 
-                            <table class="table">
-                                <tr>
-                                    <td>Bil</td>
-                                    <td>Nama</td>
-                                    <td>Type of Leave</td>
-                                    <td>Start and End Date</td>
-                                    <td>Duration</td>
-                                </tr>
-                                @if(!empty($leaves))
-                                    @foreach($leaves as $leave)
+                            <div class="col-md-7 shadow-md">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $leave->employee->name }}</td>
-                                            <td>{{ $leave->type }}</td>
-                                            <td>{{ $leave->start_date }} - {{ $leave->end_date }}</td>
-                                            <td>{{ $leave->start_date->diffInDays($leave->end_date) }}</td>
+                                            <th>Bil</th>
+                                            <th>Nama</th>
+                                            <th>Type of Leave</th>
+                                            <th>Start and End Date</th>
+                                            <th>Duration</th>
                                         </tr>
-                                    @endforeach
-                                @endif
-                            </table>
+                                    </thead>
+                                    @if(!empty($leaves))
+                                        @foreach($leaves as $leave)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $leave->employee->name }}</td>
+                                                <td>{{ $leave->type }}</td>
+                                                <td>{{ $leave->start_date->format('d M') }} - {{ $leave->end_date->format('d M Y') }}</td>
+                                                <td>{{ $leave->start_date->diffInDays($leave->end_date) }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </table>                                
+                            </div>
+                            
 
                             
 

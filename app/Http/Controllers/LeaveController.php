@@ -18,7 +18,7 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        $leaves = Leave::with('employee')->get();
+        $leaves = Leave::wherehas('employee', function($q) { $q->where('ppk_id', Auth::user()->ppk_id); })->get();
 
         // dd($leaves);
 
@@ -52,10 +52,13 @@ class LeaveController extends Controller
             'type'          => 'required',
         ]);
 
+        // check for duplicate employee leave
+        // one employee might have overlap leave date
+
         $leave = Leave::create($request->all());
 
         
-        return redirect()->back();
+        return redirect()->route('leaves.index');
     }
 
     /**
