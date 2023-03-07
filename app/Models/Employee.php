@@ -55,4 +55,8 @@ class Employee extends Model implements Auditable
         return $this->belongsTo(Education::class)->withTrashed();
     }
 
+    public function leaves() {
+        return $this->hasMany(Leaves::class)->withTrashed();
+    }
+
 }

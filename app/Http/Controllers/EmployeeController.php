@@ -363,8 +363,7 @@ class EmployeeController extends Controller
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
 
                 foreach ($data as $row) {
-                    $output .= '<input type="hidden" name="employee_id" value="'.$row->id.'">';
-                    $output .= '<li class="list-group-item hover:cursor-pointer hover:bg-blue-100">'. $row->name .'</li>';
+                    $output .= '<li id="'.$row->id.'" class="list-group-item hover:cursor-pointer hover:bg-blue-100">' . $row->name .'</li>';
                 }
 
                 $output .= '</ul>';

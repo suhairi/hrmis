@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Leave;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Employee;
 
 class LeaveController extends Controller
@@ -16,8 +18,11 @@ class LeaveController extends Controller
      */
     public function index()
     {
+        $leaves = Leave::with('employee')->get();
 
-        return view('leaves.index');
+        // dd($leaves);
+
+        return view('leaves.index', compact('leaves'));
     }
 
     /**
@@ -27,9 +32,7 @@ class LeaveController extends Controller
      */
     public function create()
     {
-            
-
-            return view('leaves.create');
+        return view('leaves.create');
     }
 
     /**
@@ -41,19 +44,18 @@ class LeaveController extends Controller
     public function store(Request $request)
     {
         // Validation
-        // $this->validate($request, [
-        //     'name'          => 'required',
-        //     'start_date'    => 'required|date',
-        //     'end_date'      => 'required|date',
-        //     'type'          => 'required',
-        //     'date_field'    => 'after:start_date|before:end_date'
-        // ]);
+        // Date format m/d/Y
+        $this->validate($request, [
+            'name'          => 'required',
+            'start_date'    => 'required|date|before_or_equal:end_date',
+            'end_date'      => 'required|date|after_or_equal:start_date',
+            'type'          => 'required',
+        ]);
 
-        // check 
+        $leave = Leave::create($request->all());
 
-        // $leave = Leave::create($request->all());
-
-        dd($request->all());
+        
+        return redirect()->back();
     }
 
     /**

@@ -28,7 +28,11 @@
                         <div class="card-body shadow">
 
                             <div class="pull-right p-2">
-                                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-bold transition ease-in-out delay-30 hover:-translate-y-1 duration-300 rounded-full shadow-lg" href="{{ URL::previous() }}"> < Back</a>
+                                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-semibold 
+                                    transition ease-in-out delay-30 hover:-translate-y-1 duration-300 
+                                    rounded-full shadow-md" 
+                                    href="{{ URL::previous() }}">
+                                 < Back</a>
                             </div>
 
                             <div class="card mt-3">
@@ -52,7 +56,7 @@
                                         <div>
                                             Name : <input type="text" name="name" id="name" class="form-control shadow rounded" required autocomplete="off">
                                             <input type="hidden" name="employee_id" id="employee_id">
-                                            <div id="product_list"></div>
+                                            <div id="employee_list"></div>
                                         </div>
                                         <div>
                                             Leave Type : <select name="type" class="form-control border-black shadow focus:border-blue-400" required>
@@ -70,7 +74,11 @@
                                         </div>
 
                                         <div class="alert col-span-4 flex-right">
-                                            <button type="submit" class="btn float-right bg-green-400 hover:bg-green-500 text-white transition ease-in-out delay-30 hover:-translate-y-1 duration-300 hover:shadow-lg">Add</button>
+                                            <button type="submit" 
+                                                class="btn float-right bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                                    transition ease-in-out delay-30 hover:-translate-y-1 duration-300 
+                                                    rounded shadow-md">
+                                                Add</button>
                                         </div>
 
                                     </div>
@@ -103,17 +111,17 @@
                     type:'GET',
                     data:{'name':query},
                     success:function (data) {
-                        $('#product_list').html(data);
-                        console.log(data);
+                        $('#employee_list').html(data);
+                        // console.log(data);
                     }
                 })
             });
             $(document).on('click', 'li', function(){
                 var value = $(this).text();
-                console.log(value);
+                var id = $(this).attr("id");
                 $('#name').val(value);
-                $('#employee_id').val(value);
-                $('#product_list').html("");
+                $('#employee_id').val(id);
+                $('#employee_list').html("");
             });
         });
     </script>  

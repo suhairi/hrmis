@@ -19,7 +19,11 @@
             </div>
 
             <div class="col-6 mb-3">
-                <a class="btn btn-success rounded-full" href="{{ route('leaves.create') }}">New Record</a>
+                <a class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold 
+                            transition ease-in-out delay-30 hover:-translate-y-1 duration-300
+                            shadow-md rounded-full" 
+                    href="{{ route('leaves.create') }}">
+                New Record</a>
             </div>
 
             <div class="grid grid-cols-3 gap-10">
@@ -66,6 +70,27 @@
                         <div class="card-body">
 
                             <h1>Leave Index</h1>
+
+                            <table class="table">
+                                <tr>
+                                    <td>Bil</td>
+                                    <td>Nama</td>
+                                    <td>Type of Leave</td>
+                                    <td>Start and End Date</td>
+                                    <td>Duration</td>
+                                </tr>
+                                @if(!empty($leaves))
+                                    @foreach($leaves as $leave)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $leave->employee->name }}</td>
+                                            <td>{{ $leave->type }}</td>
+                                            <td>{{ $leave->start_date }} - {{ $leave->end_date }}</td>
+                                            <td>{{ $leave->start_date->diffInDays($leave->end_date) }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </table>
 
                             
 
