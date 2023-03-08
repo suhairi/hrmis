@@ -8,48 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 
-    <style>
-            @page {
-                margin: 10px 25px;
-            }
-
-
-
-            .my-text {
-                font-size: 10px;
-            }
-
-            /** 
-            * Define the width, height, margins and position of the watermark.
-            **/
-            #watermark {
-                position: fixed;
-                bottom:   -410px;
-                left:     270px;
-                /** The width and height may change 
-                    according to the dimensions of your letterhead
-                **/
-                width:    21.8cm;
-                height:   28cm;
-                opacity: 0.3;
-
-                /** Your watermark should be behind every content**/
-                z-index:  -1000;
-            }
-
-            .header,
-            .footer {
-                width: 100%;
-                text-align: center;
-                position: fixed;
-            }
-
-            .footer {
-                bottom: 3px;
-                font-size: 10px;
-            }
-
-        </style>
+    <link rel="stylesheet" href="{{ URL::to('assets/css/pdf.css') }}">
 
 </head>
 <body>
@@ -60,7 +19,7 @@
 
     <div class="footer">Copyright &copy; 2023 - Lembaga Kemajuan Pertanian Muda (MADA)</div>
 
-    <table class="table">
+    <table class="table mb-4">
         <tr>
             <td width="70%">
                 <h1>Senarai Pekerja</h1>
@@ -88,12 +47,15 @@
         <tbody>
         @if(!empty($employees))
             @foreach($employees as $employee)
+                @if($loop->iteration / 45 == 1)
+                    <div class="page_break"></div>
+                @endif
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $employee->name }}</td>
                     <td>{{ $employee->nokp  }}</td>
                     <td>{{ $employee->gender  }}</td>
-                    <td>{{ $employee->position->name }}</td>
+                    <td>{{ Str::limit($employee->position->name, 25, $end='...') }}</td>
                     <td class="text-center">{{ $employee->start_date->format('d M Y') }}</td>
                 </tr>
             @endforeach
