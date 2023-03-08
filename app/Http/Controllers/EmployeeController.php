@@ -354,28 +354,18 @@ class EmployeeController extends Controller
 
     public function suggestion(Request $request) {
 
-        if ($request->ajax()) {
 
-            $data = Employee::where('name','LIKE',$request->name.'%')->limit(4)->get();
+        $data = Employee::where('name','LIKE',$request->name.'%')
+                    ->where('ppk_id', Auth::user()->ppk_id)
+                    ->limit(4)
+                    ->get();
 
-            $output = '';
-            if (count($data) > 0) {
-                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
-
-                foreach ($data as $row) {
-                    $output .= '<li id="'.$row->id.'" class="list-group-item hover:cursor-pointer hover:bg-blue-100">' . $row->name .'</li>';
-                }
-
-                $output .= '</ul>';
-
-            }else {
-
-                $output .= '<li class="list-group-item">'.'No Data Found'.'</li>';
-            }
-
-            return $output;
-        }
-        return view('autosearch');
+        $query = $request->get('query');
+        $filterResult = Employee::where('name','LIKE',$request->name.'%')
+                        ->where('ppk_id', Auth::user()->ppk_id)
+                        ->limit(4)
+                        ->get();
+        return response()->json($filterResult);
 
     }
 }

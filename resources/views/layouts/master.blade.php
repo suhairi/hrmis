@@ -27,6 +27,7 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
 
+
 </head>
 
 <body>
@@ -212,6 +213,7 @@
 
 	<!-- <script src="{{ URL::to('assets/js/jquery-3.6.0.min.js') }}"></script> -->
 	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
 
 	<script src="{{ URL::to('assets/js/popper.min.js') }}"></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script> -->
@@ -243,6 +245,8 @@
 
 	<script src="https://unpkg.com/flowbite@1.3.2/dist/flowbite.js"></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> -->
+
+	
 
 
 	@stack('scripts')

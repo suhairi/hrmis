@@ -54,12 +54,13 @@
                                     <div class="grid grid-cols-4 gap-4">
 
                                         <div>
-                                            Name : <input type="text" name="name" id="name" class="form-control shadow rounded" required autocomplete="off">
+                                            <!-- <input type="text" id="search" name="search" placeholder="Search" class="form-control" /> -->
+                                            <strong>Name :</strong> <input type="text" name="name" id="name" class="form-control shadow rounded" required autocomplete="off" placeholder="Type a name...">
                                             <input type="hidden" name="employee_id" id="employee_id">
                                             <div id="employee_list"></div>
                                         </div>
                                         <div>
-                                            Leave Type : <select name="type" class="form-control border-black shadow focus:border-blue-400" required>
+                                            <strong>Leave Type :</strong> <select name="type" class="form-control border-black shadow focus:border-blue-400" required>
                                                 <option>Select Leave Type</option>
                                                 <option>Sick Leave</option>
                                                 <option>Emergency Leave</option>
@@ -67,10 +68,10 @@
                                             </select>
                                         </div>
                                         <div>
-                                            Start Date : <input type="date" name="start_date" class="form-control rounded shadow" required>
+                                            <strong>Start Date :</strong> <input type="date" name="start_date" class="form-control rounded shadow" required>
                                         </div>
                                         <div>
-                                            End Date : <input type="date" name="end_date" class="form-control rounded shadow" required>
+                                            <strong>End Date :</strong> <input type="date" name="end_date" class="form-control rounded shadow" required>
                                         </div>
 
                                         <div class="alert col-span-4 flex-right">
@@ -102,28 +103,19 @@
 @push('scripts')
 
 <script type="text/javascript">
-
-        $(document).ready(function(){
-            $('#name').on('keyup',function () {
-                var query = $(this).val();
-                $.ajax({
-                    url:'{{ route('employee.suggestion') }}',
-                    type:'GET',
-                    data:{'name':query},
-                    success:function (data) {
-                        $('#employee_list').html(data);
-                        // console.log(data);
-                    }
-                })
+    var route = "{{ route('employees.suggestion') }}";
+    $('#name').typeahead({
+        source: function (query, process) {
+            return $.get(route, {
+                query: query
+            }, function (data) {
+                return process(data);
             });
-            $(document).on('click', 'li', function(){
-                var value = $(this).text();
-                var id = $(this).attr("id");
-                $('#name').val(value);
-                $('#employee_id').val(id);
-                $('#employee_list').html("");
-            });
-        });
-    </script>  
+        },
+        afterSelect: function(data) {
+            $('#employee_id').val(data.id);
+        } 
+    });
+</script>  
 
 @endpush

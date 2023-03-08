@@ -52,9 +52,10 @@ class LeaveController extends Controller
             'type'          => 'required',
         ]);
 
-        // check for duplicate employee leave
-        // one employee might have overlap leave date
+        // 1 - check for duplicate employee leave
+        // 2 - exclude weekends
 
+        // dd($request->all());
         $leave = Leave::create($request->all());
 
         
