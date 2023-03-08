@@ -9,12 +9,22 @@
 
 
     <style>
+            @page {
+                margin: 10px 25px;
+            }
+
+
+
+            .my-text {
+                font-size: 10px;
+            }
+
             /** 
             * Define the width, height, margins and position of the watermark.
             **/
             #watermark {
                 position: fixed;
-                bottom:   -430px;
+                bottom:   -410px;
                 left:     270px;
                 /** The width and height may change 
                     according to the dimensions of your letterhead
@@ -26,10 +36,20 @@
                 /** Your watermark should be behind every content**/
                 z-index:  -1000;
             }
+
+            .header,
+            .footer {
+                width: 100%;
+                text-align: center;
+                position: fixed;
+            }
+
+            .footer {
+                bottom: 3px;
+                font-size: 10px;
+            }
+
         </style>
-
-
-
 
 </head>
 <body>
@@ -38,12 +58,25 @@
         <img src="{{ URL::to('assets/img/watermark.png')}}" height="200" width="200" />
     </div>
 
-    <h1>Employee List</h1>
-    <h3>PPK : ...</h3>
+    <div class="footer">Copyright &copy; 2023 - Lembaga Kemajuan Pertanian Muda (MADA)</div>
 
-    <table class="min-w-full text-left text-sm">
+    <table class="table">
+        <tr>
+            <td width="70%">
+                <h1>Senarai Pekerja</h1>
+            </td>
+            <td width="30%" align="left" class="text-xs">
+                Lembaga Kemajuan Pertanian Muda <br />
+                Pertubuhan Peladang Kawasan <br />
+                PPK C1 - Kangar <br />
+                04 - 772 8255
+            </td>
+        </tr>
+    </table>
+
+    <table class="min-w-full text-left my-text">
         <thead>
-            <tr class="bg-gray-200">
+            <tr class="bg-gray-200 underline underline-offset-1">
                 <th>#</th>
                 <th>Nama</th>
                 <th>No KP</th>
@@ -61,7 +94,7 @@
                     <td>{{ $employee->nokp  }}</td>
                     <td>{{ $employee->gender  }}</td>
                     <td>{{ $employee->position->name }}</td>
-                    <td>{{ $employee->start_date->format('d M Y') }}</td>
+                    <td class="text-center">{{ $employee->start_date->format('d M Y') }}</td>
                 </tr>
             @endforeach
         @endif

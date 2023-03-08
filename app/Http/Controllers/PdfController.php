@@ -23,7 +23,7 @@ class PdfController extends Controller
 
         $pdf = PDF::loadView('pdf.employees.index', $data);
 
-        $pdf->setPaper('P');
+        $pdf->setPaper('a4', 'portrait');
         $pdf->output();
         $canvas = $pdf->getDomPDF()->getCanvas();
 

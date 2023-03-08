@@ -28,42 +28,42 @@ class CreateAdminUserSeeder extends Seeder
 
         $user = User::create([
             'name'      => 'BPIP',
-            'email'     => 'bpip@gmail.com',
+            'email'     => 'bpip@mada.gov.my',
             'location'  => "HQ",
             'password'  => bcrypt('password'),
         ]);
 
         $user = User::create([
             'name'      => 'BPW',
-            'email'     => 'bpw@gmail.com',
+            'email'     => 'bpw@mada.gov.my',
             'location'  => "HQ",
             'password'  => bcrypt('password'),
         ]);
 
         $user = User::create([
             'name'      => 'Wilayah 1',
-            'email'     => 'w1@gmail.com',
+            'email'     => 'w1@mada.gov.my',
             'location'  => 'WILAYAH 1',
             'password'  => bcrypt('password'),
         ]);
 
         $user = User::create([
             'name'      => 'Wilayah 2',
-            'email'     => 'w2@gmail.com',
+            'email'     => 'w2@mada.gov.my',
             'location'  => 'WILAYAH 2',
             'password'  => bcrypt('password'),
         ]);
 
         $user = User::create([
             'name'      => 'Wilayah 4',
-            'email'     => 'w3@gmail.com',
+            'email'     => 'w3@mada.gov.my',
             'location'  => 'WILAYAH 3',
             'password'  => bcrypt('password'),
         ]);
 
         $user = User::create([
             'name'      => 'Wilayah 4',
-            'email'     => 'w4@gmail.com',
+            'email'     => 'w4@mada.gov.my',
             'location'  => 'WILAYAH 4',
             'password'  => bcrypt('password'),
         ]);
