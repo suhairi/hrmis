@@ -62,9 +62,15 @@
                                         <div>
                                             <strong>Leave Type :</strong> <select name="type" class="form-control border-black shadow focus:border-blue-400" required>
                                                 <option>Select Leave Type</option>
-                                                <option>Sick Leave</option>
-                                                <option>Emergency Leave</option>
-                                                <option>Others</option>
+                                                <option value="Sick Leave">Sick Leave</option>
+                                                <option value="Emergency Leave">Emergency Leave</option>
+                                                <option value="Pregnancy Leave">Pregnancy Leave</option>
+                                                <option value="Religious Leave">Religious Leave</option>
+                                                <option value="Paternity Leave">Paternity Leave</option>
+                                                <option value="Unpaid Leave">Unpaid Leave</option>
+                                                <option value="Half-Paid Leave">Half-Paid Leave</option>
+                                                <option value="Study Leave">Study Leave</option>
+                                                <option value="Others">Others</option>
                                             </select>
                                         </div>
                                         <div>

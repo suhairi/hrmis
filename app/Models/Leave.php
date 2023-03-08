@@ -13,6 +13,7 @@ class Leave extends Model
         'employee_id',
         'start_date',
         'end_date',
+        'type',
     ];
 
     protected $casts = [

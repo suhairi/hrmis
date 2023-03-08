@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->enum('type', ['Annual Leave', 'Sick Leave (MC)', 'Hajj Leave', 'Umrah Leave'])->default('Annual Leave');
+            $table->string('type');
             $table->datetime('start_date');
             $table->datetime('end_date');
 

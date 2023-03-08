@@ -54,10 +54,10 @@ class LeaveController extends Controller
 
         // 1 - check for duplicate employee leave
         // 2 - exclude weekends
+        // 3 - for type='pregnancy leave' check the gender for female
+        // 3 - for type='paternmity leave' check the gender for male
 
-        // dd($request->all());
         $leave = Leave::create($request->all());
-
         
         return redirect()->route('leaves.index');
     }

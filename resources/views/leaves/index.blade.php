@@ -73,7 +73,7 @@
 
                             <div class="col-md-12 shadow-md mb-5">
                                 <div class="alert mb-2 float-right">
-                                    <a href="{{ route('pdf.leavesList') }}" class="text-red-500 hover:text-red-700 mr-2" title="Export to PDF">
+                                    <a href="{{ route('pdf.leavesList') }}" class="text-red-500 hover:text-red-700 mr-2" title="Export to PDF" target="_blank">
                                         <i class="fa fa-file-pdf fa-xl transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 shadow-md"></i>
                                     </a>
                                     <a href="#" class="text-red-500 hover:text-red-700 mr-2" title="Export to Excel">

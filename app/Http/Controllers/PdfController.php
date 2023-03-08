@@ -82,7 +82,7 @@ class PdfController extends Controller
 
         $pdf = PDF::loadView('pdf.leaves.index', $leaves->toArray());
 
-        return $pdf->download('Leaves Management.pdf');
+        return $pdf->stream('Leaves Management.pdf');
 
     }
 }
