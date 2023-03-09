@@ -59,18 +59,31 @@ class LeaveController extends Controller
             'type'          => 'required',
         ]);
 
+        // 1 - check for duplicate employee leave
+        // 2 - exclude weekends - DONE
+        // 3 - for type='pregnancy leave' check the gender for female
+        // 3 - for type='paternity leave' check the gender for male
+
+        // #1
+        // { code here - check duplicate }
+
+        // #2
         $duration = Carbon::parse($request['start_date'])->diffInDaysFiltered(function(Carbon $date) {
                 return !$date->isWeekend();
             }, Carbon::parse($request['end_date'])->addDay());
 
         $request['duration'] = $duration;
 
-        dd($request->all());
+        // #3
+        $gender = Employee::select('gender')->where('id', $request['employee_id'])->first();
 
-        // 1 - check for duplicate employee leave
-        // 2 - exclude weekends - DONE
-        // 3 - for type='pregnancy leave' check the gender for female
-        // 3 - for type='paternmity leave' check the gender for male
+        // *******
+        // if($gender->gender == 'PEREMPUAN')
+        // *******
+
+        // dd($request->all());
+
+        
 
         $leave = Leave::create($request->all());
         
