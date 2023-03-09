@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('type');
             $table->datetime('start_date');
             $table->datetime('end_date');
+            $table->integer('duration');
 
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
 

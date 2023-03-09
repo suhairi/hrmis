@@ -6,6 +6,7 @@ use App\Models\Leave;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 use App\Models\Employee;
 
@@ -20,7 +21,13 @@ class LeaveController extends Controller
     {
         $leaves = Leave::wherehas('employee', function($q) { $q->where('ppk_id', Auth::user()->ppk_id); })->get();
 
-        // dd($leaves);
+        $startDate  = Carbon::now()->subDays(3);
+        $endDate    = Carbon::now()->addDay(2);
+        $endDate    = Carbon::now()->subDay(4);
+
+        $check = Carbon::now()->between($startDate,$endDate);
+
+        // return ($check) ? 'Yes, in the range date.' : 'Nope, not in the range date.';
 
         return view('leaves.index', compact('leaves'));
     }
@@ -52,8 +59,16 @@ class LeaveController extends Controller
             'type'          => 'required',
         ]);
 
+        $duration = Carbon::parse($request['start_date'])->diffInDaysFiltered(function(Carbon $date) {
+                return !$date->isWeekend();
+            }, Carbon::parse($request['end_date'])->addDay());
+
+        $request['duration'] = $duration;
+
+        dd($request->all());
+
         // 1 - check for duplicate employee leave
-        // 2 - exclude weekends
+        // 2 - exclude weekends - DONE
         // 3 - for type='pregnancy leave' check the gender for female
         // 3 - for type='paternmity leave' check the gender for male
 

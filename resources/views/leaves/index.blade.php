@@ -85,13 +85,13 @@
 
                             <div class="col-md-12 shadow-md">
                                 <table class="table table-bordered table-striped">
-                                    <thead>
+                                    <thead class="bg-blue-300" style="background-color: rgb(96 165 250); color: white;">
                                         <tr>
                                             <th>Bil</th>
                                             <th>Nama</th>
                                             <th>Type of Leave</th>
                                             <th>Start and End Date</th>
-                                            <th>Duration</th>
+                                            <th align="center">Duration</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
@@ -102,7 +102,7 @@
                                                 <td>{{ $leave->employee->name }}</td>
                                                 <td>{{ $leave->type }}</td>
                                                 <td>{{ $leave->start_date->format('d M') }} - {{ $leave->end_date->format('d M Y') }}</td>
-                                                <td>{{ $leave->start_date->diffInDays($leave->end_date) + 1 }}</td>
+                                                <td align="center">{{ $leave->duration }} {{ ($leave->duration == 1) ? 'day' : 'days' }} </td>
                                                 <td>
                                                    <a class="btn btn-info shadow-md text-white rounded-full" href="#">Show</a>
                                                    <a class="btn btn-success shadow-md rounded-full" href="#">Edit</a>

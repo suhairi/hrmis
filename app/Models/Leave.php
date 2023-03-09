@@ -14,6 +14,7 @@ class Leave extends Model
         'start_date',
         'end_date',
         'type',
+        'duration',
     ];
 
     protected $casts = [
