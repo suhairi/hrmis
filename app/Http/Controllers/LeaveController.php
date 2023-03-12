@@ -12,6 +12,15 @@ use App\Models\Employee;
 
 class LeaveController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:leave-list|leave-create|leave-edit|leave-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:leave-create', ['only' => ['create','store']]);
+         $this->middleware('permission:leave-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:leave-delete', ['only' => ['destroy']]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -66,6 +75,34 @@ class LeaveController extends Controller
 
         // #1
         // { code here - check duplicate }
+        // #1 - Carbon::parse($date)->between($startDate, $endDate);
+        // #2 - DateRangesOverlap = max(start1, start2) < min(end1, end2);
+        //    - validate $date1 <= $date2
+
+        // dd(Carbon::now());
+
+        // $date = Carbon::parse('3/17/2022');
+
+        // #2
+        // $date2 = Carbon::parse('3/16/2023');
+        // $isDateOverlap = max($date, Carbon::parse($request['start_date'])) <= min($date2, Carbon::parse($request['end_date']));
+
+        $leaves = Leave::where('employee_id', $request['employee_id'])->get();
+        // dd($leaves);
+
+        foreach($leaves as $leave) {
+
+            $isDateOverlap = max($leave->start_date, Carbon::parse($request['start_date'])) <= min($leave->end_date, Carbon::parse($request['end_date']));
+
+            if($isDateOverlap) {
+
+                return back()->withInput()->withErrors('Date is overlap with previous ' . $leave->type . ' date. ('. $leave->start_date->format('d/m/Y') .' - ' . $leave->end_date->format('d/m/Y') .')');
+            }
+
+        }
+
+
+
 
         // #2
         $duration = Carbon::parse($request['start_date'])->diffInDaysFiltered(function(Carbon $date) {
@@ -77,11 +114,21 @@ class LeaveController extends Controller
         // #3
         $gender = Employee::select('gender')->where('id', $request['employee_id'])->first();
 
-        // *******
-        // if($gender->gender == 'PEREMPUAN')
-        // *******
+        if($request['type'] == 'Paternity Leave') {
 
-        // dd($request->all());
+            if($gender->gender == 'PEREMPUAN' || $gender->gender == 'P')
+                return back()->withInput()
+                            ->withErrors('Perempuan tidak layak memohon Paternity Leave');
+        }
+
+        if($request['type'] == 'Pregnancy Leave') {
+
+            if($gender->gender == 'LELAKI' || $gender->gender == 'L')
+                return back()->withInput()
+                            ->withErrors('Lelaki tidak layak memohon Pregnancy Leave');
+        }
+
+        
 
         
 
@@ -130,8 +177,13 @@ class LeaveController extends Controller
      * @param  \App\Models\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Leave $leave)
+    public function destroy(Leave $leave, $id)
     {
-        //
+        Leave::find($id)->delete();
+        // dd($id);
+        // dd($leave->id);
+        // $leave->delete();
+
+        return back();
     }
 }

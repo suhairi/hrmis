@@ -61,7 +61,7 @@
                                             <a class="btn btn-success shadow-md" href="{{ route('roles.edit',$role->id) }}">Edit</a>
                                         @endcan
                                         @can('role-delete')
-                                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'style' =>'display:inline']) !!}
                                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger shadow-md']) !!}
                                             {!! Form::close() !!}
                                         @endcan

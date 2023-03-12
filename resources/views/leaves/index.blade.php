@@ -106,9 +106,10 @@
                                                 <td>
                                                    <a class="btn btn-info shadow-md text-white rounded-full" href="#">Show</a>
                                                    <a class="btn btn-success shadow-md rounded-full" href="#">Edit</a>
-                                                    {!! Form::open(['method' => 'DELETE','href' => '#','style'=>'display:inline']) !!}
+                                                    {!! Form::open(['method' => 'DELETE', 'route' => ['leaves.destroy', $leave->id],'style'=>'display:inline']) !!}
                                                         {!! Form::submit('Delete', ['class' => 'btn bg-red-500 text-white shadow-md hover:bg-red-600 rounded-full']) !!}
                                                     {!! Form::close() !!}
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach

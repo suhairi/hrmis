@@ -55,29 +55,29 @@
 
                                         <div>
                                             <!-- <input type="text" id="search" name="search" placeholder="Search" class="form-control" /> -->
-                                            <strong>Name :</strong> <input type="text" name="name" id="name" class="form-control shadow rounded" required autocomplete="off" placeholder="Type a name...">
-                                            <input type="hidden" name="employee_id" id="employee_id">
+                                            <strong>Name :</strong> <input type="text" name="name" id="name" class="form-control shadow rounded" required autocomplete="off" placeholder="Type a name..." value="{{ old('name') }}">
+                                            <input type="hidden" name="employee_id" id="employee_id" value="{{ old('employee_id') }}">
                                             <div id="employee_list"></div>
                                         </div>
                                         <div>
                                             <strong>Leave Type :</strong> <select name="type" class="form-control border-black shadow focus:border-blue-400" required>
                                                 <option>Select Leave Type</option>
-                                                <option value="Sick Leave">Sick Leave</option>
-                                                <option value="Emergency Leave">Emergency Leave</option>
-                                                <option value="Pregnancy Leave">Pregnancy Leave</option>
-                                                <option value="Religious Leave">Religious Leave</option>
-                                                <option value="Paternity Leave">Paternity Leave</option>
-                                                <option value="Unpaid Leave">Unpaid Leave</option>
-                                                <option value="Half-Paid Leave">Half-Paid Leave</option>
-                                                <option value="Study Leave">Study Leave</option>
-                                                <option value="Others">Others</option>
+                                                <option value="Sick Leave" {{ (old('type') == "Sick Leave") ? 'selected' : '' }}>Sick Leave</option>
+                                                <option value="Emergency Leave" {{ (old('type') == "Emergency Leave") ? 'selected' : ''}}>Emergency Leave</option>
+                                                <option value="Pregnancy Leave" {{ (old('type') == "Pregnancy Leave") ? 'selected' : ''}}>Pregnancy Leave</option>
+                                                <option value="Religious Leave" {{ (old('type') == "Religious Leave") ? 'selected' : ''}}>Religious Leave</option>
+                                                <option value="Paternity Leave" {{ (old('type') == "Paternity Leave")? 'selected' : ''}}>Paternity Leave</option>
+                                                <option value="Unpaid Leave" {{ (old('type') == "Unpaid Leave")? 'selected' : ''}}>Unpaid Leave</option>
+                                                <option value="Half-Paid Leave" {{ (old('type') == "Half-Paid Leave")? 'selected' : ''}}>Half-Paid Leave</option>
+                                                <option value="Study Leave" {{ (old('type') == "Study Leave")? 'selected' : ''}}>Study Leave</option>
+                                                <option value="Others" {{ (old('type') == "Others")? 'selected' : ''}}>Others</option>
                                             </select>
                                         </div>
                                         <div>
-                                            <strong>Start Date :</strong> <input type="date" name="start_date" class="form-control rounded shadow" required>
+                                            <strong>Start Date :</strong> <input type="date" name="start_date" class="form-control rounded shadow" required value="{{ old('start_date') }}">
                                         </div>
                                         <div>
-                                            <strong>End Date :</strong> <input type="date" name="end_date" class="form-control rounded shadow" required>
+                                            <strong>End Date :</strong> <input type="date" name="end_date" class="form-control rounded shadow" required value="{{ old('end_date') }}">
                                         </div>
 
                                         <div class="alert col-span-4 flex-right">
