@@ -68,10 +68,10 @@ class LeaveController extends Controller
             'type'          => 'required',
         ]);
 
-        // 1 - check for duplicate employee leave
+        // 1 - check for duplicate employee leave - DONE
         // 2 - exclude weekends - DONE
-        // 3 - for type='pregnancy leave' check the gender for female
-        // 3 - for type='paternity leave' check the gender for male
+        // 3 - for type='pregnancy leave' check the gender for female - DONE
+        // 3 - for type='paternity leave' check the gender for male - DONE
 
         // #1
         // { code here - check duplicate }
@@ -100,9 +100,6 @@ class LeaveController extends Controller
             }
 
         }
-
-
-
 
         // #2
         $duration = Carbon::parse($request['start_date'])->diffInDaysFiltered(function(Carbon $date) {
