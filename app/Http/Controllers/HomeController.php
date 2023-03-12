@@ -13,7 +13,7 @@ use App\Models\Education;
 use App\Models\Position;
 use App\Models\Ppk;
 
-use Notification;
+use Notification; 
 use App\Notifications\EmailNotification;
 
 class HomeController extends Controller

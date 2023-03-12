@@ -19,7 +19,7 @@ class EmailNotification extends Notification
      * @return void
      */
     public function __construct($project)
-    {
+    { 
         $this->project = $project;
     }
 
