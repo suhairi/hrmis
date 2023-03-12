@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('gender',);
             $table->datetime('start_date', 0);
             $table->string('employment_status');
+            $table->integer('leave_eligibility')->nullable();
             $table->unsignedBigInteger('education_id');
             $table->unsignedBigInteger('position_id');
             $table->decimal('basic_salary', 6, 2);

@@ -137,7 +137,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Employment Status</strong></span>
                                         </div>
-                                        {!! Form::select('employment_status', ['BERSARA' => 'BERSARA', 'BEKERJA' => 'BEKERJA', 'BERHENTI' => 'BERHENTI'], null, array('placeholder' => 'Select Employment Status','class' => 'form-control')) !!}
+                                        {!! Form::select('employment_status', ['BERSARA' => 'BERSARA', 'BEKERJA' => 'BEKERJA', 'BERHENTI' => 'BERHENTI'], 'BEKERJA', array('placeholder' => 'Select Employment Status','class' => 'form-control')) !!}
                                         @error('employment_status')
                                             <p class="text-danger mr-4">{{ $message }}</p>
                                         @enderror
