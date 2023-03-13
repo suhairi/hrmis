@@ -14,7 +14,7 @@
                             @csrf
                             <div class="form-group">
                                 <label class="form-control-label">Username</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="c1@mada.gov.my" placeholder="Enter username" autofocus />
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="c2@mada.gov.my" placeholder="Enter username" autofocus />
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Password</label>

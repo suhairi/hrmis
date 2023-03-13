@@ -36,10 +36,10 @@
 		<div class="header">
 			<div class="header-left">
 				<a href="{{ route('home') }}" class="logo">
-					<img src="{{ URL::to('assets/img/example-logo-1.gif') }}" alt="Logo">
+					<img src="{{ URL::to('assets/img/logo.gif') }}" alt="Logo">
 				</a>
 				<a href="index.html" class="logo logo-small">
-					<img src="{{ URL::to('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
+					<img src="{{ URL::to('assets/img/logo.gif') }}" alt="Logo" width="30" height="30">
 				</a>
 				<a href="javascript:void(0);" id="toggle_btn">
 					<span class="bar-icon">
