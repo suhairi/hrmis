@@ -17,6 +17,7 @@
         "laravelcollective/html": "^6.3",
         "league/flysystem": "^3.12",
         "livewire/livewire": "^2.10",
+        "maatwebsite/excel": "^3.1",
         "masbug/flysystem-google-drive-ext": "^2.2",
         "owen-it/laravel-auditing": "^13.0",
         "spatie/laravel-backup": "^8.1",

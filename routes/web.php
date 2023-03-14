@@ -99,13 +99,19 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/settings/trim/name', [SettingsController::class, 'trimmed'])->name('trim.employee.name');
     Route::get('/settings/trim/kwspno', [SettingsController::class, 'kwsp'])->name('trim.employee.kwsp');
 
-    // PDF
-
+    // ##########
+    //    PDF
+    // ##########
     /* Employee */
     Route::get('pdf/employeesList', [PdfController::class, 'employeesList'])->name('pdf.employeesList');
 
 
     /* Leaves */
     Route::get('pdf/leavesList', [PdfController::class, 'leavesList'])->name('pdf.leavesList');
+
+
+    // ##########
+    //    Excel
+    // ##########
 
 });
