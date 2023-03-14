@@ -46,7 +46,7 @@
                                     <a href="{{ route('pdf.employeesList') }}" target="_blank" class="text-red-500 hover:text-red-700">
                                         <i class="fa fa-file-pdf fa-xl transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 shadow-md mr-4"></i>
                                     </a>
-                                    <a href="#" class="text-red-500 hover:text-red-700" disabled>
+                                    <a href="{{ route('excel.employeesList') }}" class="text-red-500 hover:text-red-700">
                                         <i class="fa-sharp fa-solid fa-file-csv fa-xl transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 shadow-md mr-4"></i>
                                     </a>
                                     

@@ -20,6 +20,7 @@ use App\Http\Controllers\TransferController;
 use App\Http\Controllers\LeaveController;
 
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\ExcelController;
 
 use App\Http\Livewire\UserWizard;
 
@@ -113,5 +114,6 @@ Route::group(['middleware' => ['auth']], function() {
     // ##########
     //    Excel
     // ##########
+    Route::get('excel/employeeExcel', [ExcelController::class, 'employeeList'])->name('excel.employeesList');
 
 });

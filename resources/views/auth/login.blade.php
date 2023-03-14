@@ -28,7 +28,7 @@
                                     
                                 </div>
                             </div>
-                            <button class="btn btn-sm btn-block btn-primary" style="border-radius: 20px" type="submit">Login</button>
+                            <button class="btn btn-sm btn-block btn-primary transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 duration-300" style="border-radius: 20px" type="submit">Login</button>
 
                         </form>
                     </div>
