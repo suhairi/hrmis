@@ -4,59 +4,35 @@ namespace App\Exports;
 
 use App\Models\Employee;
 use App\Models\Ppk;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithStyles;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
+use App\Exports\EmployeesMultiSheetExport;
 
-class EmployeesExport implements FromView, ShouldAutoSize, WithStyles, Exportables, WithMultipleSheets
+
+class EmployeesExport implements WithMultipleSheets
 {
-    use Exportables;
+    use Exportable;
 
-    protected $ppkCode;
-
-    public function __construct(string $ppkCode)
-    {
-        $this->ppkCode = $ppkCode;
-    }
-
-    public function sheets() : array 
+    /**
+     * @return array
+     */
+    public function sheets(): array
     {
         $sheets = [];
 
         $ppks = Ppk::all();
 
         foreach($ppks as $ppk) {
-            $sheets[] = new EmployeePerPpkShhet($ppk);
+            $sheets[] = new EmployeesMultiSheetExport($ppk->code);
         }
-    }
 
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function view(): View
-    {
-        return view('excel.employees', [
-            'employees' => Employee::with('ppk')->get()
-        ]);
-    }
+        // for ($month = 1; $month <= 12; $month++) {
+        //     $sheets[] = new EmployeesMultiSheetExport($this->year, $month);
+        // }
 
-    // WithCustomStartCell is only supported for FromCollection exports.
-    // public function startCell(): string 
-    // {
-    //     return 'A8';
-    // }
-
-    public function styles(Worksheet $sheet) 
-    {
-        return $sheet = [
-            1 => ['font' => ['bold' => true]]
-        ];
+        return $sheets;
     }
 
 

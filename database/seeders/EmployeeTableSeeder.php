@@ -523,10 +523,10 @@ class EmployeeTableSeeder extends Seeder
             $ageOfService = Carbon::parse($employee->start_date)->age;
 
             if($ageOfService >= 30) {
-                echo 'Employee Name : ' . $employee->name . '\n';
-                echo 'Employee Start Date : ' . Carbon::parse($employee->start_date)->format('d-m-Y') . '\n';
-                echo 'Employee Start Date : ' . $employee->employment_status . '\n';
-                echo 'Employee Service Age : ' . $ageOfService . '\n';
+                $this->command->info("Employee Name : $employee->name");
+                $this->command->info("Employee Start Date : " . Carbon::parse($employee->start_date)->format('d-m-Y'));
+                $this->command->info("Employee Start Date : $employee->employment_status");
+                $this->command->info("Employee Service Age : $ageOfService \n\n");
             }
         }
    
