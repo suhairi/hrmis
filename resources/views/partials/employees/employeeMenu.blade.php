@@ -17,7 +17,7 @@
     </a>
     <a  href="{{ route('employees.showAset', $employee) }}" 
         class="btn mr-3 rounded-full 
-         transition ease-in-out delay-30 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-200 shadow-md">
+         transition ease-in-out delay-30 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-200 shadow-md show_confirm">
          <i class="fa fa-building"> </i> Aset</a>
     </a>                                
 </div>
