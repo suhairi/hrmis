@@ -13,12 +13,6 @@
                 </div>
             @endif
             
-            <div class="page-name mb-4">
-                <h4 class="m-0">
-                    <!-- <img src="assets/img/profile.jpg" class="mr-1" alt="profile" /> -->
-                    Welcome {{ ucFirst(strtolower(Auth::user()->location)) }}</h4>
-                <label>{{ \Carbon\Carbon::parse()->isoFormat('dddd, D MMMM YYYY')}}</label>
-            </div>
             <div class="row mb-4">
                 <div class="col-xl-12 col-sm-12 col-12">
                     <div class="breadcrumb-path ">

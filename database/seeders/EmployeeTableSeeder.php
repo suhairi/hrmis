@@ -448,6 +448,87 @@ class EmployeeTableSeeder extends Seeder
         Employee::create(['name' => 'SURIYATI BT. SHAFIE','nokp' => '861022-02-5204','gender' => 'P','start_date' => Carbon::createFromFormat('d-m-Y', '01-04-2012')->toDateString(), 'employment_status' => 'BEKERJA','education_id' => '5','position_id' => '51','basic_salary' => '1220','allowance' => '50','service_status' => 'TETAP','kwsp_no' => '16627318','location' => 'INDUK','ppk_id' => '27','edu_major' => 'AKAUNTANSI',]);
 
 
+
+
+        $employees = Employee::all();
+
+        // ######### FILTERATION ##############
+        $emp = [];
+        $count = 0;
+        foreach($employees as $employee) {
+
+            // 1 - trim spaces in employee name
+            // echo '################## FILTER 1 ###########################';
+            if(str_contains($employee->name, '  ')) {
+                // echo $employee->name . '\n';
+                $employee->name = trim($employee->name);
+                // echo '<strong><font color=green>' . $employee->name . '</font></strong>\n';
+                $employee->update();
+            }           
+
+            // 2 - Employee name - standardize b to bin and bt or bte to binti
+            // echo '################## FILTER 2 ###########################';
+            if(strpos($employee->name, ' B ')) {
+                // echo $employee->name . '<br/>';
+                $employee->name = str_replace('B ', 'BIN ', $employee->name);
+                // echo '<strong><font color=green>' . $employee->name . '</font></strong>\n';
+            }
+
+            if(strpos($employee->name, ' B. ')) {
+                // echo $employee->name . '<br/>';
+                $employee->name = str_replace('B. ', 'BIN ', $employee->name);
+                // echo '<strong><font color=green>' . $employee->name . '</font></strong>\n';
+            }
+
+            if(strpos($employee->name, ' BT ')) {
+                // echo $employee->name . '<br/>';
+                $employee->name = str_replace('BT ', 'BINTI ', $employee->name);
+                // echo '<strong><font color=green>' . $employee->name . '</font></strong>\n';
+            }
+
+            if(strpos($employee->name, ' BT. ')) {
+                // echo $employee->name . '\n';
+                $employee->name = str_replace('BT. ', 'BINTI ', $employee->name);
+                // echo '<strong><font color=green>' . $employee->name . '</font></strong>\n';
+            }
+
+            // 3 - display employee with no gender value
+            if($employee->gender == 'P') {
+                $employee->gender = 'PEREMPUAN';
+                $employee->update();
+
+            } else if ($employee->gender == 'L') {
+                $employee->gender = 'LELAKI';
+                $employee->update();
+
+            } else if ($employee->gender == 'W') {
+                $employee->gender = 'PEREMPUAN';
+                $employee->update();
+
+            } else {
+                array_push($emp);
+            }
+
+            if(str_contains($employee->employment_status, ' ')) {
+                $employee->employment_status = trim($employee->employment_status);
+                $employee->update();
+            } 
+
+
+        }
+
+        // 3 - Employee who worked more than 30 years
+        foreach($employees as $employee) {
+
+            $ageOfService = Carbon::parse($employee->start_date)->age;
+
+            if($ageOfService >= 30) {
+                echo 'Employee Name : ' . $employee->name . '\n';
+                echo 'Employee Start Date : ' . Carbon::parse($employee->start_date)->format('d-m-Y') . '\n';
+                echo 'Employee Start Date : ' . $employee->employment_status . '\n';
+                echo 'Employee Service Age : ' . $ageOfService . '\n';
+            }
+        }
    
 
 

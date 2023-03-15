@@ -8,6 +8,11 @@
             <div class="loginbox">
                 <div class="login-right">
                     <div class="login-right-wrap">
+                        <div class="inline flex mb-1 items-center justify-center gap-4">
+                            <img class="img-fluid" src="{{ asset('assets/img/mada.png') }}" alt="Logo" width="80" height="80">
+                            <img class="img-fluid" src="{{ asset('assets/img/lpp.jpeg') }}" alt="Logo" width="80" height="80">
+                        </div>
+                        
                         <h1>Login</h1>
                         <p class="account-subtitle">Access to p-HRIS dashboard</p>
                         <form method="POST" action="{{ route('login') }}" class="md-float-material">
