@@ -3,16 +3,17 @@
 namespace App\Exports;
 
 use App\Models\Employee;
-use App\Models\Ppks;
+use App\Models\Ppk;
 
-use Maatwebsite\Excel\Concerns\FromQuery;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 
-class EmployeesMultiSheetExport implements FromQuery, WithTitle, ShouldAutoSize
+class EmployeesMultiSheetExport implements FromView, WithTitle, ShouldAutoSize
 {
-    private $ppkCode;
+    protected $ppkCode;
 
     public function __construct(String $ppkCode)
     {
@@ -22,12 +23,15 @@ class EmployeesMultiSheetExport implements FromQuery, WithTitle, ShouldAutoSize
     /**
      * @return Builder
      */
-    public function query()
+    public function view() : view
     {
-       return Employee::query()->with('ppk')
-                    ->whereHas('ppk', function($q) {
-                        $q->where('code', $this->ppkCode);
-                    });
+        $ppkId = Ppk::where('code', $this->ppkCode)->first();
+
+        $employees = Employee::where('ppk_id', $ppkId->id)->get();
+
+        // dd($employees);
+        return view('excel.employees', ['employees' => $employees]);
+
     }
 
     /**
