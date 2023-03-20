@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 
 use Carbon\Carbon;
 
+use Illuminate\Support\Str;
+
 use App\Models\Employee;
 
 class EmployeeTableSeeder extends Seeder
@@ -518,16 +520,32 @@ class EmployeeTableSeeder extends Seeder
         }
 
         // 3 - Employee who worked more than 30 years
+        // foreach($employees as $employee) {
+
+        //     $ageOfService = Carbon::parse($employee->start_date)->age;
+
+        //     if($ageOfService >= 30) {
+        //         $this->command->info("Employee Name : $employee->name");
+        //         $this->command->info("Employee Start Date : " . Carbon::parse($employee->start_date)->format('d-m-Y'));
+        //         $this->command->info("Employee Start Date : $employee->employment_status");
+        //         $this->command->info("Employee Service Age : $ageOfService \n\n");
+        //     }
+        // }
+
+        // 4 - No KP format with dash
+        $employees = Employee::all();
+
+        $employees = $employees->filter(function ($employee) {
+                    if(!Str::contains($employee->nokp, "-")) {
+                        return $employee;
+                    }
+                });
+
         foreach($employees as $employee) {
 
-            $ageOfService = Carbon::parse($employee->start_date)->age;
-
-            if($ageOfService >= 30) {
-                $this->command->info("Employee Name : $employee->name");
-                $this->command->info("Employee Start Date : " . Carbon::parse($employee->start_date)->format('d-m-Y'));
-                $this->command->info("Employee Start Date : $employee->employment_status");
-                $this->command->info("Employee Service Age : $ageOfService \n\n");
-            }
+            // replace ' ' with '-'
+            $employee->nokp = str_replace(' ', '-', $employee->nokp);
+            $employee->save();
         }
    
 

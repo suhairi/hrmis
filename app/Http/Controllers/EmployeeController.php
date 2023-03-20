@@ -120,8 +120,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $educations = Education::pluck('name', 'id');
-        $positions  = Position::pluck('name', 'id');
+        $educations = Education::all();
+        $positions  = Position::all();
 
         // Populate PPKs by user access
         if(Auth::user()->location == 'PPK') {
@@ -161,22 +161,34 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
+        $request['name'] = strtoupper($request['name']);
+
+        // dd($request->all());
+
         $this->validate($request, [
-            'name'              => 'required|min:4',
-            'nokp'              => 'required|min:14|max:14',
+            'name'              => 'required|min:3',
+            'nokp'              => 'required|min:12|max:12',
             'gender'            => 'required',
             'position_id'       => 'required|numeric',
             'start_date'        => 'required',
-            'employment_status' => 'required',
             'service_status'    => 'required',
             'basic_salary'      => 'required',
             'allowance'         => 'required',
             'kwsp_no'           => 'required',
-            'ppk_id'            => 'required|numeric',
             'education_id'      => 'required|numeric',
         ]);
 
-        // $request['name'] = strtoupper($request->name);
+        // Nokp format : add - to $request['nokp']
+        $nokp_1 = substr($request['nokp'], 0, 6);
+        $nokp_2 = substr($request['nokp'], 6, 2);
+        $nokp_3 = substr($request['nokp'], 8, 4);
+
+        $request['nokp'] = $nokp_1 . '-' . $nokp_2 . '-' . $nokp_3;
+        $request['employment_status'] = 'BEKERJA';
+        $request['edu_major'] = strtoupper($request['edu_major']);
+        $request['ppk_id'] = Auth::user()->ppk_id;
 
         $employee = Employee::create($request->all());
 

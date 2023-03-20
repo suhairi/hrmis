@@ -14,248 +14,183 @@
     <div class="page-wrapper">
         <div class="content container-fluid">
 
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="breadcrumb-path ">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Employees</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="pull-right p-2 mb-3">
+                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-semibold 
+                    transition ease-in-out delay-30 
+                    hover:-translate-y-1 duration-300 
+                    rounded-full shadow-md" 
+                    href="{{ URL::previous() }}">
+                < Back</a>
             </div>
 
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Create New Employee</strong></div>
+                        <div class="card-header"><strong>Rekod Baru</strong></div>
 
                         <div class="card-body">
 
-                            <div class="pull-right p-2">
-                                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
-                            </div>
+                            <form method="POST" action="{{ route('employees.store') }}">
+                                @csrf
 
-<!--                             @if (count($errors) > 0)
-                              <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                   @foreach ($errors->all() as $error)
-                                     <li>{{ $error }}</li>
-                                   @endforeach
-                                </ul>
-                              </div>
-                            @endif -->
-
-                            {!! Form::open(array('route' => 'employees.store','method'=>'POST')) !!}
-                            <div class="row pt-4 rounded mt-2 shadow">
-
-                                <!-- ######## PERSONAL ######### -->
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert bg-blue-500 text-white"><strong>1 - Employee Personal Details</strong></div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Name</strong></span>
+                                <h3 class="mb-2"><strong>Maklumat Peribadi</strong></h3>                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Nama Penuh</strong></span>
+                                                <input type="text" name="name" class="block w-full mt-1 rounded-md" placeholder="Nama Penuh" value="{{ old('name')}}" autocomplete="off" required min="3" />
+                                            </label>
+                                            @error('name')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-                                        @error('name')
-                                            <span class="text-danger mr-4">{{ $message }}</span>
-                                        @enderror                                      
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>No KP</strong></span>
+                                                <input type="number" name="nokp" class="block w-full mt-1 rounded-md" placeholder="No Kad Pengenalan" value="{{ old('nokp')}}" autocomplete="off" required />
+                                            </label>
+                                            @error('nokp')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Jantina</strong></span>
+                                                <select name="gender" class="block w-full mt-1 rounded-md" value="{{ old('gender')}}" required />
+                                                    <option value="">Jantina</option>
+                                                    <option value="LELAKI" {{ (old('gender') == "LELAKI") ? 'selected' : ''}}>LELAKI</option>
+                                                    <option value="PEREMPUAN" {{ (old('gender') == "PEREMPUAN") ? 'selected' : ''}}>PEREMPUAN</option>
+                                                </select>
+                                            </label>
+                                            @error('gender')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
+                                </div>
                                     
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
 
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>No KP</strong></span>
+                                <!-- ########################################################## -->
+                                <h3 class="mb-2"><strong>Maklumat Jawatan</strong></h3>                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Jawatan</strong></span>
+                                                <select name="position_id" class="block w-full mt-1 rounded-md" required>
+                                                    <option value="">Pilih Jawatan</option>
+                                                    @foreach($positions as $position)
+                                                        <option value="{{ $position->id }}" {{ (old('position_id') == $position->id) ? 'selected' : ''}}>{{ $position->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </label>
+                                            @error('position_id')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        {!! Form::text('nokp', null, array('placeholder' => 'No Kad Pengenalan : 890130-02-5567','class' => 'form-control')) !!}
-                                        @error('nokp')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
+                                        <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Tarikh Mula Bekerja</strong></span>
+                                                <input type="date" name="start_date" class="block w-full mt-1 rounded-md" value="{{ old('start_date') }}" required>
+                                            </label>                                    
+                                            @error('start_date')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Status Perjawatan</strong></span>
+                                                <select name="service_status" class="block w-full mt-1 rounded-md" required>
+                                                    <option value="">Pilih Status Perjawatan</option>
+                                                    <option value="TETAP" {{ (old('service_status') == "TETAP") ? 'selected' : ''}}>TETAP</option>
+                                                    <option value="KONTRAK" {{ (old('service_status') == "KONTRAK") ? 'selected' : ''}}>KONTRAK</option>
+                                                    <option value="SAMBILAN" {{ (old('service_status') == "SAMBILAN") ? 'selected' : ''}}>SAMBILAN</option>
+                                                    <option value="BERHENTI" {{ (old('service_status') == "BERHENTI") ? 'selected' : ''}}>BERHENTI</option>
+                                                    <option value="PERCUBAAN" {{ (old('service_status') == "PERCUBAAN") ? 'selected' : ''}}>PERCUBAAN</option>
+                                                </select>
+                                            </label>
+                                            @error('service_status')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Gaji Pokok (RM)</strong></span>
+                                                <div class="input-group mb-3">
+                                                    <input type="number" name="basic_salary" class="block w-full mt-1 rounded-md" min="0" placeholder="0.00" step=".01" value="{{ old('basic_salary') }}" required>
+                                                </div>
+                                            </label>
+                                            @error('basic_salary')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Elaun (RM)</strong></span>
+                                                <div class="input-group mb-3">
+                                                    <input type="number" name="allowance" class="block w-full mt-1 rounded-md" min="0" placeholder="0.00" step=".01" value="{{ old('allowance') }}" required>
+                                                </div>
+                                            </label>
+                                            @error('allowance')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>No KWSP</strong></span>
+                                                <input type="number" name="kwsp_no" class="block w-full mt-1 rounded-md" placeholder="No KWSP" value="{{ old('kwsp_no')}}" autocomplete="off" required />
+                                            </label>
+                                            @error('kwsp_no')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Gender</strong></span>
-                                        </div>
-                                        {!! Form::select('gender', ['LELAKI' => 'LELAKI', 'PEREMPUAN' => 'PEREMPUAN'], null, array('placeholder' => 'Select Gender','class' => 'form-control')) !!}
-                                        @error('gender')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                            </div>
-                            <div class="row pt-4 rounded mt-3 shadow">
-
-                                <!-- ######## JOB DETAILS ######### -->
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert bg-blue-500 text-white"><strong>2 - Job Details</strong></div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Position</strong></span>
-                                        </div>
-                                        {!! Form::select('position_id', $positions, null, array('placeholder' => 'Select Position','class' => 'form-control')) !!}
-                                        @error('position_id')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Start Date</strong></span>
-                                        </div>
-                                        {!! Form::date('start_date', null, array('placeholder' => 'Start date','class' => 'form-control')) !!}
-                                        @error('start_date')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Employment Status</strong></span>
-                                        </div>
-                                        {!! Form::select('employment_status', ['BERSARA' => 'BERSARA', 'BEKERJA' => 'BEKERJA', 'BERHENTI' => 'BERHENTI'], 'BEKERJA', array('placeholder' => 'Select Employment Status','class' => 'form-control')) !!}
-                                        @error('employment_status')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Service Status</strong></span>
-                                        </div>
-                                        {!! Form::select('service_status', ['TETAP' => 'TETAP', 'SAMBILAN' => 'SAMBILAN', 'KONTRAK' => 'KONTRAK', 'BERSARA' => 'BERSARA'], null, array('placeholder' => 'Select Service Status','class' => 'form-control')) !!}
-                                        @error('service_status')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>                                
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Basic Salary</strong></span>
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1">RM</span>
-                                        </div>
-                                        {!! Form::number('basic_salary', null, array('placeholder' => 'Basic Salary','class' => 'form-control', 'step' => '.01')) !!}
-                                        @error('basic_salary')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Allowance</strong></span>
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1">RM</span>
-                                        </div>
-                                        {!! Form::number('allowance', null, array('placeholder' => 'Allowance','class' => 'form-control', 'step' => '.01')) !!}
-                                        @error('allowance')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>KWSP No</strong></span>
-                                        </div>
-                                        {!! Form::text('kwsp_no', '', array('placeholder' => 'KWSP No','class' => 'form-control')) !!}
-                                        @error('kwsp_no')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>PPK</strong></span>
-                                        </div>
-                                        {!! Form::select('ppk_id', $ppks, null, array('class' => 'form-control', 'placeholder' => 'Select PPK')) !!}
-                                        @error('ppk_id')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-8 col-sm-8 col-md-8"></div>
-
-                            </div>
-                            <div class="row pt-4 mt-3 rounded shadow">
                                 
-                                <!-- ######## EDUCATION ######### -->                                
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="alert bg-blue-500 text-white" role="alert"><strong>3 - Education Background</strong></div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
 
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200 bg-blue-200" id="basic-addon1"><strong>Education</strong></span>
+                                <!-- ######################################################## -->
+                                <h3 class="mb-2" class="mt-5"><strong>Maklumat Pendidikan</strong></h3>                                
+                                <div class="card">
+                                    <div class="card-body">                                
+                                        <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Pendidikan</strong></span>
+                                                <select name="education_id" class="block w-full mt-1 rounded-md" required>
+                                                    <option value="">Pilih Taraf Pendidikan</option>
+                                                    @foreach($educations as $education)
+                                                        <option value="{{ $education->id }}" {{ (old('education_id') == $education->id) ? 'selected' : ''}}>{{ $education->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </label>
+                                            @error('education_id')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        {!! Form::select('education_id', $educations, null, array('placeholder' => 'Select Education Level', 'class' => 'form-control')) !!}
-                                        @error('education_id')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
+                                        <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
+                                            <label class="block">
+                                                <span class="text-gray-700"><strong>Pengkhususan Pendidikan</strong></span>
+                                                <input type="text" name="edu_major" class="block w-full mt-1 rounded-md" placeholder="Pengkhususan Pendidikan" value="{{ old('edu_major')}}" autocomplete="off" />
+                                            </label>
+                                            @error('edu_major')
+                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
 
-                                <div class="col-xs-4 col-sm-4 col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-blue-200" id="basic-addon1"><strong>Education Major</strong></span>
-                                        </div>
-                                        {!! Form::text('edu_major', null, array('placeholder' => 'Education Major', 'class' => 'form-control')) !!}
-                                        @error('edu_major')
-                                            <p class="text-danger mr-4">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6"></div>
+                                <!-- ######################################################## -->
+                                <button type="submit" class="btn text-white bg-blue-500 hover:font-semibold hover:bg-blue-600
+                                    transition ease-in-out delay-30 
+                                    hover:-translate-y-1 duration-300 
+                                    rounded-full shadow-md
+                                    mt-3"
+                                >
+                                Submit</button>
 
-                                
+                            </form>                            
                             
-                            </div>
-                            <div class="row pt-4 rounded shadow">
-                                <div class="col-xs-12 col-sm-12 col-md-12 text-center p-3">
-                                    <button type="submit" class="btn btn-success shadow">Submit</button>
-                                </div>
-                            </div>
-                            {!! Form::close() !!}
                     
                         </div>
                     </div>

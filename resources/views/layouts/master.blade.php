@@ -13,15 +13,16 @@
 	<!-- <link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/fontawesome.min.css') }}"> -->
 	<!-- blank -->
 
+
 	<!-- <link rel="stylesheet" href="{{ URL::to('assets/plugins/fontawesome/css/all.min.css') }}"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/dataTables.bootstrap4.min.css') }}"> -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-	<!-- <link rel="stylesheet" href="{{ URL::to('assets/css/jquery.dataTables.min.css') }}"> -->
 	<link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
+
+	<link rel="stylesheet" href="{{ URL::to('assets/css/dataTables.bootstrap4.min.css') }}">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+	<link rel="stylesheet" href="{{ URL::to('assets/css/jquery.dataTables.min.css') }}">
 	
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
 
@@ -227,13 +228,13 @@
 	<script src="{{ URL::to('assets/js/feather.min.js') }}"></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/feathers/5.0.0/index.js"></script> -->
 
-	<!-- <script src="{{ URL::to('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script> -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-scroll/1.3.3/slimscroll.min.js"></script>
+	<script src="{{ URL::to('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-scroll/1.3.3/slimscroll.min.js"></script> -->
 
 
 
-	<!-- <script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script> -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script> -->
 
 	<!-- <script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/1.13.3/dataTables.bootstrap5.min.js"></script>
@@ -243,8 +244,8 @@
 
 	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 
-	<script src="https://unpkg.com/flowbite@1.3.2/dist/flowbite.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script> -->
+	<!-- <script src="https://unpkg.com/flowbite@1.3.2/dist/flowbite.js"></script> -->	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 

@@ -32,7 +32,7 @@
                                     transition ease-in-out delay-30 hover:-translate-y-1 duration-300 
                                     rounded-full shadow-md" 
                                     href="{{ URL::previous() }}">
-                                 < Back</a>
+                                < Back</a>
                             </div>
 
                             <div class="card mt-3">
