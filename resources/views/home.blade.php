@@ -38,7 +38,7 @@
             </div>
             <div class="row mb-4">
                 <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card board1 fill2 ">
+                    <div class="card board1 fill2">
                         <div class="card-body">
                             <div class="card_widget_header">
                                 <label>PPK</label>
@@ -51,19 +51,19 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card board1 fill1 ">
+                    <div class="card board1 fill2">
                         <div class="card-body">
                             <div class="card_widget_header">
                                 <label>Employees</label>
                                 <h4>{{ count($employees) }}</h4>
                             </div>
                             <div class="card_widget_img">
-                                <img src="assets/img/dash1.png" alt="card-img" />
+                                <img src="assets/img/dash2.png" alt="card-img" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-12">
+                <!-- <div class="col-xl-3 col-sm-6 col-12">
                     <div class="card board1 fill3 ">
                         <div class="card-body">
                             <div class="card_widget_header">
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
             </div>
             <div class="row">

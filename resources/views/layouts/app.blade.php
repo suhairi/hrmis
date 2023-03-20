@@ -33,5 +33,7 @@
 
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 
+    @stack('scripts')
+
 </body>
 </html>

@@ -287,30 +287,35 @@ class CreateAdminUserSeeder extends Seeder
 
 
         // Role
-        $user = User::find(1);
+        $users = User::where('id', '<', 4)->get();
         $role = Role::create(['name' => 'Admin']);
         $permissions = Permission::pluck('id', 'id')->all();
         $role->syncPermissions($permissions);
-        $user->assignRole([$role->id]);
 
-        // $user = User::find(2);
-        // $permissions = [9, 10, 11, 12, 13, 14, 15, 16];
-        // $role->syncPermissions($permissions);
-        // $user->assignRole([$role->id]);
-
-        // $user = User::find(3);
-        // $permissions = Permission::where('id', '>', 8)->pluck('id', 'id');
-        // $role->syncPermissions($permissions);
-        // $user->assignRole([$role->id]);
+        foreach($users as $user) {
+            $user->assignRole([$role->id]);    
+        }
+        
 
 
         $role = Role::create(['name' => 'PPK']);
-        // $permissions = Permission::where('id', '>', 8)->pluck('id', 'id');
-        // $role->syncPermissions($permissions);
+        $permissions = Permission::where('id', '>', 8)->pluck('id');
+        $permissions = array_values($permissions->toArray());
+        $role->syncPermissions($permissions);
+
+        $users = User::where('location', 'PPK')->get();
+        foreach($users as $user) {
+            $user->assignRole($role->id);
+        }
 
         $role = Role::create(['name' => 'Wilayah']);
-        // $permissions = [5,6,7,8];
-        // $role->syncPermissions($permissions);
+        $permissions = [9, 13];
+        $role->syncPermissions($permissions);
+
+        $users = User::where('location', 'like', 'WILAYAH%')->get();
+        foreach($users as $user) {
+            $user->assignRole($role->id);
+        }
 
         $role = Role::create(['name' => 'BPIP']);
         // $permissions = [5,6,7,8];

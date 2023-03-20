@@ -16,6 +16,9 @@ use App\Models\Ppk;
 use Notification; 
 use App\Notifications\EmailNotification;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class HomeController extends Controller
 {
     /**
@@ -83,7 +86,7 @@ class HomeController extends Controller
                 $employments = $employments->toArray();
 
             } else {
-                $employees = Employee::withTrashed()->get();
+                $employees = Employee::all();
 
                 $gender = $employees->countBy(function ($item) {
                     return $item['gender'];

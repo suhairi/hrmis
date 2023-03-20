@@ -30,16 +30,16 @@
                     </li>
                     <li>
                         <a href="{{ route('employees.index') }}"><img src="{{ URL::to('assets/img/employee.svg') }}" alt="sidebar_img"><span>
-                                Employees</span></a>
+                                Pengurusan Pekerja</span></a>
                     </li>
                     <li>
                         <a href="{{ route('leaves.index') }}"><img src="{{ URL::to('assets/img/bed.svg') }}" alt="sidebar_img"><span>
-                                Leave Management</span></a>
+                                Pengurusan Cuti</span></a>
                     </li>
                     
                     <li>
                         <a href="{{ route('performance.index') }}"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
-                                Performance</span></a>
+                                Pengurusan Prestasi</span></a>
                     </li>
                     @can('role-create')
                         <li>
@@ -79,9 +79,9 @@
                                 <span>Products</span></a>
                         </li>
                     @endcan
-                    <li>
+                    <li class="mt-5">
                         <a href="{{ route('profiles.index') }}"><img src="{{ URL::to('assets/img/profile.svg') }}" alt="sidebar_img">
-                            <span>Profile</span></a>
+                            <span>Profil Pengguna</span></a>
                     </li>
                     
 

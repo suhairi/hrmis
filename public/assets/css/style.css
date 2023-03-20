@@ -4572,18 +4572,18 @@ a.delete {
     font-size: 12px;
 }
 .board1.fill1 {
-    background: #3899c9;
+    background-color: #4ade80;
 }
 .card.board1.fill2 {
-    background: #42a8db;
+    background-color: #4ade80;
 }
 
 .card.board1.fill3 {
-    background: #48aadb;
+    background-color: #4ade80;
 }
 
 .card.board1.fill4 {
-    background: #4faddb;
+    background: #4ade80;
 }
 .card_widget_img {
     background: #fff;
@@ -6963,9 +6963,4 @@ label.logo-upload {
 	font-weight: 400;
 	border-radius: 0.25rem;
 
-}
-
-.hrmis-btn:hover {
-	font-weight: 500;
-	transform: translateY(-0.25rem);
 }

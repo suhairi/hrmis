@@ -43,21 +43,12 @@
                              <tr class="bg-blue-400 text-white">
                                <th>Name</th>
                                <th>Email</th>
-                               <th>Roles</th>
                                <th width="280px">Action</th>
                              </tr>
                               <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                  @if(!empty($user->getRoleNames()))
-                                    @foreach($user->getRoleNames() as $v)
-                                       <label class="badge">{{ $v }}</label>
-                                    @endforeach
-                                  @endif
-                                </td>
-                                <td>
-                                   <a class="btn btn-info shadow-md" href="{{ route('users.show', $user->id) }}">Show</a>
                                    <a class="btn btn-success shadow-md" href="{{ route('profiles.edit', $user->id) }}">Edit</a>
                                     {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                                 </td>
