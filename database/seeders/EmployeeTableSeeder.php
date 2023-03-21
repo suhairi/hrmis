@@ -547,6 +547,10 @@ class EmployeeTableSeeder extends Seeder
             $employee->nokp = str_replace(' ', '-', $employee->nokp);
             $employee->save();
         }
+
+        // 5 - Table Positions -> name = 'kerani' change to 'pembantu tadbir' ? 'pekerja am'
+        // The code should run in PermissionTableSeeder since table Positions does not exist yet
+        // $positions = Positions::all();
    
 
 

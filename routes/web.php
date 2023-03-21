@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('profiles', ProfileController::class);
 
     // Settings
-    Route::get('/settings/trim/name', [SettingsController::class, 'trimmed'])->name('trim.employee.name');
+    Route::get('/settings/trim/years', [SettingsController::class, 'years'])->name('trim.employee.years');
     Route::get('/settings/trim/kwspno', [SettingsController::class, 'kwsp'])->name('trim.employee.kwsp');
 
     // ##########

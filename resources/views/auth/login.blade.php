@@ -33,7 +33,13 @@
                                     
                                 </div>
                             </div>
-                            <button class="btn btn-sm btn-block btn-primary transition ease-in-out delay-30 hover:font-semibold hover:-translate-y-1 duration-300 shadow-md text-lg" style="border-radius: 20px" type="submit">Log Masuk</button>
+                            <button style="border-radius: 20px" type="submit"
+                                class="btn btn-block button bg-green-500 hover:bg-green-600 text-white hover:font-semibold
+                                transition ease-in-out delay-30 
+                                hover:-translate-y-1 duration-300
+                                shadow-md text-lg" 
+                            >
+                            Log Masuk</button>
 
                         </form>
                     </div>

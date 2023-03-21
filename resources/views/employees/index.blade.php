@@ -6,31 +6,11 @@
         <div class="content container-fluid">
 
             <div class="row mb-4">
-                <div class="col-12">
-                    <div class="breadcrumb-path ">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Users</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Employees Management</strong></div>
+                        <div class="card-header"><strong>Pengurusan Pekerja</strong></div>
 
                         <div class="card-body">
-
-                            @can('employee-create')
-                                <div class="p-3">
-                                    <a class="btn btn-success shadow-md rounded" href="{{ route('employees.create') }}"> Create New Employee</a>
-                                </div>
-                            @endcan
-
-
 
                             @if(session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -39,8 +19,18 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            @endif                           
+                            @endif
 
+                            @can('employee-list')
+                                <div class="p-3">
+                                    <a href="{{ route('employees.create') }}" class="btn button bg-green-500 hover:bg-green-600 text-white hover:font-semibold 
+                                    transition ease-in-out delay-30
+                                    hover:-translate-y-1 duration-300
+                                    shadow-md rounded"
+                                    >
+                                    Cipta Rekod</a>
+                                </div>
+                            @endcan
 
                             <div class="col-md-12 shadow-md mb-12">
                                 <div class="alert mb-2 float-right">

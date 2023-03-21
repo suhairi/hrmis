@@ -13,29 +13,7 @@
                 </div>
             @endif
             
-            <div class="row mb-4">
-                <div class="col-xl-12 col-sm-12 col-12">
-                    <div class="breadcrumb-path ">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="assets/img/dash.png"
-                                        class="mr-3" alt="breadcrumb" />Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ul>
-                        <h3>Admin Dashboard</h3>
-                    </div>
-                </div>
-<!--                 <div class="col-xl-6 col-sm-12 col-12">
-                    <div class="row">
-                        <div class="col-xl-6 col-sm-6 col-12">
-                            <a class="btn-dash" href="#"> Admin Dashboard</a>
-                        </div>
-                        <div class="col-xl-6 col-sm-6 col-12">
-                            <a class="btn-emp" href="index-employee.html">Employee Dashboard</a>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+            
             <div class="row mb-4">
                 <div class="col-xl-3 col-sm-6 col-12">
                     <div class="card board1 fill2">
@@ -178,7 +156,7 @@
                                 </div>
                                 <div class="team-action">
                                     <ul>
-                                        <li><a href="{{ route('trim.employee.name') }}"><i data-feather="play"></i></a></li>
+                                        <li><a href="{{ route('trim.employee.years') }}"><i data-feather="play"></i></a></li>
                                     </ul>
                                 </div>                                                                
                             </div>

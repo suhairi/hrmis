@@ -4,97 +4,71 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 use App\Models\Employee;
+use App\Models\Ppk;
 
 use Carbon\Carbon;
 
 class SettingsController extends Controller
 {
-    public function trimmed() {
+    public function years() {
 
-        $employees = Employee::all();
+        // Filter by ppk not all
+        
 
-        // ######### FILTERATION ##############
-        $emp = [];
-        $count = 0;
-        foreach($employees as $employee) {
+        $employee = collect([]);
 
-            // 1 - trim spaces in employee name
-            // echo '################## FILTER 1 ###########################';
-            if(str_contains($employee->name, '  ')) {
-                // echo $employee->name . '<br />';
-                $employee->name = trim($employee->name);
-                // echo '<strong><font color=green>' . $employee->name . '</font></strong><br /><br />';
-                $employee->update();
-            }           
-
-            // 2 - Employee name - standardize b to bin and bt or bte to binti
-            // echo '################## FILTER 2 ###########################';
-            if(strpos($employee->name, ' B ')) {
-                // echo $employee->name . '<br/>';
-                $employee->name = str_replace('B ', 'BIN ', $employee->name);
-                // echo '<strong><font color=green>' . $employee->name . '</font></strong><br /><br />';
-            }
-
-            if(strpos($employee->name, ' B. ')) {
-                // echo $employee->name . '<br/>';
-                $employee->name = str_replace('B. ', 'BIN ', $employee->name);
-                // echo '<strong><font color=green>' . $employee->name . '</font></strong><br /><br />';
-            }
-
-            if(strpos($employee->name, ' BT ')) {
-                // echo $employee->name . '<br/>';
-                $employee->name = str_replace('BT ', 'BINTI ', $employee->name);
-                // echo '<strong><font color=green>' . $employee->name . '</font></strong><br /><br />';
-            }
-
-            if(strpos($employee->name, ' BT. ')) {
-                // echo $employee->name . '<br />';
-                $employee->name = str_replace('BT. ', 'BINTI ', $employee->name);
-                // echo '<strong><font color=green>' . $employee->name . '</font></strong><br /><br />';
-            }
-
-            // 3 - display employee with no gender value
-            if($employee->gender == 'P') {
-                $employee->gender = 'PEREMPUAN';
-                $employee->update();
-
-            } else if ($employee->gender == 'L') {
-                $employee->gender = 'LELAKI';
-                $employee->update();
-
-            } else if ($employee->gender == 'W') {
-                $employee->gender = 'PEREMPUAN';
-                $employee->update();
-
-            } else {
-                array_push($emp);
-            }
-
-            if(str_contains($employee->employment_status, ' ')) {
-                $employee->employment_status = trim($employee->employment_status);
-                $employee->update();
-            } 
+        // $employee->put('age', 12);
+        // dd($employee);
 
 
+        if(Auth::user()->location == 'PPK') {
+
+            $employees = Employee::where('employment_status', 'BEKERJA')
+                        ->where('ppk_id', Auth()->user()->ppk_id)
+                        ->get();
+        } else {
+
+            if(Str::contains(Auth::user()->location, 'WILAYAH')) {
+
+                    $wilayah = str_replace('WILAYAH ', '', Auth::user()->location);
+                    $ppks = Ppk::where('wilayah_id', $wilayah)->get();
+
+                    $min = $ppks->min('id');
+                    $max = $ppks->max('id');
+
+                    $employees = Employee::where('ppk_id', '<=', $max)
+                                    ->where('ppk_id', '>=', $min)
+                                    ->where('employment_status', 'BEKERJA')
+                                    ->withTrashed()
+                                    ->get();
+                } else {
+                    $employees = Employee::where('employment_status', 'BEKERJA')
+                                    ->withTrashed()
+                                    ->get();
+                }
         }
 
-        // 3 - Employee who worked more than 30 years
-        foreach($employees as $employee) {
+        $employees = $employees->filter(function($employee) {
+                if(Carbon::now()->diffInYears($employee->start_date) >= 30) {
+                    // calc umur
+                    $dobYear = substr($employee->nokp, 0, 2);
+                    $dobMonth = substr($employee->nokp, 2, 2);
+                    $dobDay = substr($employee->nokp, 4, 2);
 
-            $ageOfService = Carbon::parse($employee->start_date)->age;
+                    $dob = Carbon::parse('19' . $dobYear . '-' . $dobMonth . '-' . $dobDay)->format('Y-m-d');
+                    $age = Carbon::now()->diffInYears($dob);
 
-            if($ageOfService >= 30) {
-                echo 'Employee Name : ' . $employee->name . '<br />';
-                echo 'Employee Start Date : ' . Carbon::parse($employee->start_date)->format('d-m-Y') . '<br />';
-                echo 'Employee Start Date : ' . $employee->employment_status . '<br />';
-                echo 'Employee Service Age : ' . $ageOfService . '<br /><br />';
-            }
-        }
+                    $employee->age = $age;
 
+                    return $employee;
+                }
+            });
 
-
-        return redirect()->route('home')->with('success','Employees name has been trimmed successfully.');
+        return view('settings.years', compact('employees'));
 
     }
 

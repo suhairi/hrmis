@@ -6,19 +6,6 @@
         <div class="content container-fluid">
 
             <div class="row mb-4">
-                <div class="col-12">
-                    <div class="breadcrumb-path ">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Users</li>
-                        </ul>
-                        <!-- <h3>Admin Dashboard</h3> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header"><strong>Users Management</strong></div>
@@ -27,7 +14,13 @@
 
                             @can('role-create')
                                 <div class="pull-right p-3">
-                                    <a class="btn btn-success shadow-sm rounded" href="{{ route('users.create') }}"> Create New User</a>
+                                    <a href="{{ route('users.create') }}"
+                                        class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                        transition ease-in-out delay-30
+                                        hover:-translate-y-1 duration-300
+                                        shadow-sm rounded" 
+                                    > 
+                                    Create New User</a>
                                 </div>
                             @endcan
 
@@ -62,7 +55,7 @@
                                 <td style="vertical-align:top">
                                   @if(!empty($user->getRoleNames()))
                                     @foreach($user->getRoleNames() as $v)
-                                       <label class="badge badge-secondary">{{ $v }}</label>                                       
+                                       <label class="badge badge-secondary">{{ $v }}</label>
                                     @endforeach
                                   @endif
                                 </td>
@@ -77,10 +70,27 @@
                                 </td>
                                 
                                 <td>
-                                   <a class="btn btn-info shadow-md" href="{{ route('users.show', $user->id) }}">Show</a>
-                                   <a class="btn btn-success shadow-md" href="{{ route('users.edit', $user->id) }}">Edit</a>
+                                   <a href="{{ route('users.show', $user->id) }}"
+                                        class="btn bg-yellow-300 hover:bg-yellow-400 text-white hover:font-semibold
+                                        transition ease-in-out delay-30
+                                        hover:-translate-y-1 duration-300
+                                        shadow-md rounded-full" 
+                                    >Show</a>
+                                   <a href="{{ route('users.edit', $user->id) }}"
+                                         class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                         transition ease-in-out delay-30
+                                         hover:-translate-y-1 duration-300
+                                         shadow-md rounded-full"
+                                    >Edit</a>
                                     {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger shadow-md']) !!}
+                                    {{ Form::button('Delete', ['type' => 'submit', 
+                                            'class' => 
+                                            'btn button bg-red-600 hover:bg-red-700 text-white hover:font-semibold
+                                            transition ease-in-out delay-30
+                                            hover:-translate-y-1 duration-300
+                                            shadow-md rounded-full'
+                                        ]) 
+                                    }}
                                     {!! Form::close() !!}
                                 </td>
                               </tr>

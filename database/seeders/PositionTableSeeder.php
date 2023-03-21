@@ -118,5 +118,11 @@ class PositionTableSeeder extends Seeder
         Position::create(['name' => 'KERANI KREDIT/ KONTRAK','grade' => 'S4','scheme' => 'SOKONGAN',]);
         Position::create(['name' => 'KERANI SUBSIDI/ SIPP','grade' => 'S4','scheme' => 'SOKONGAN',]);
 
+
+
+        // 5 - Table Positions -> name = 'kerani' change to 'pembantu tadbir' ? 'pekerja am'
+        // The code should run in PermissionTableSeeder since table Positions does not exist yet
+        // $positions = Positions::all();
+
     }
 }
