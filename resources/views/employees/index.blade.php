@@ -21,6 +21,8 @@
                                 </div>
                             @endif
 
+                            {{ url_to('../resources/') }}
+
                             @can('employee-list')
                                 <div class="p-3">
                                     <a href="{{ route('employees.create') }}" class="btn button bg-green-500 hover:bg-green-600 text-white hover:font-semibold 

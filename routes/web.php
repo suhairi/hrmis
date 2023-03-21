@@ -44,6 +44,24 @@ Route::get('/clear', function() {
 
 });
 
+Route::get('/backup/run', function() {
+    echo 'System is backing up the databases... <br />';
+    Artisan::call('backup:run');
+    return  "Backup completed!";
+
+});
+
+Route::get('/backup/clean', function() {
+    echo 'System is cleaning up the backup files... <br />';
+    Artisan::call('backup:clean');
+    return  "Backup completed!";
+
+});
+
+
+
+
+
 Route::get('/welcome', function() {
     return view('welcome');
 });

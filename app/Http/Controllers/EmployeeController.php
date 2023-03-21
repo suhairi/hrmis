@@ -17,6 +17,8 @@ use App\Models\Education;
 use App\Models\Position;
 use App\Models\Ppk;
 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -28,7 +30,6 @@ class EmployeeController extends Controller
          $this->middleware('permission:employee-delete', ['only' => ['destroy']]);
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +37,17 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+        return $request->all();
+        $dir = resource_path();
+
+        File::cleanDirectory($dir);
+
+        if(File::exists($file)) {
+            unlink($file);
+            return 'file deleted.';
+        } else
+            return 'file does not exist';
+
 
         if ($request->ajax()) {
 
