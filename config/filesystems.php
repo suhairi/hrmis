@@ -58,9 +58,17 @@ return [
 
         'resources' => [
             'driver' => 'local',
-            'root' => resource_path(''),
+            'root' => resource_path(),
             'throw' => false,
         ],
+
+        'base' => [
+            'driver' => 'local',
+            'root' => base_path(),
+            'throw' => false,
+        ],
+
+        
 
     ],
 
