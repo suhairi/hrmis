@@ -44,7 +44,9 @@
                                                     {{ \Carbon\Carbon::now()->diffInYears($employee->start_date) }}
                                                     years of service
                                                 </font> <br />
-                                                Umur : {{ $employee->age }} tahun.
+                                                <hr class="my-2">
+                                                <strong>Umur Sekarang :</strong> {{ $employee->age }} tahun. <br />
+                                                <strong>Umur Mula Kerja :</strong> {{ $employee->age - \Carbon\Carbon::now()->diffInYears($employee->start_date) }} tahun.
                                             </td>
                                             <td>{{ $employee->ppk->code }} - {{ $employee->ppk->name }}</td>
                                         </tr>

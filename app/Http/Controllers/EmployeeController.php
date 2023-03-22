@@ -37,18 +37,6 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        return $request->all();
-        $dir = resource_path();
-
-        File::cleanDirectory($dir);
-
-        if(File::exists($file)) {
-            unlink($file);
-            return 'file deleted.';
-        } else
-            return 'file does not exist';
-
-
         if ($request->ajax()) {
 
             // ###########################

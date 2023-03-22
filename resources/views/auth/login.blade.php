@@ -8,18 +8,20 @@
             <div class="loginbox">
                 <div class="login-right">
                     <div class="login-right-wrap">
-                        <div class="inline flex mb-1 items-center justify-center gap-4 mb-5">
-                            <img class="img-fluid" src="{{ asset('assets/img/mada.png') }}" alt="Logo" width="80" height="80">
-                            <img class="img-fluid" src="{{ asset('assets/img/lpp.jpeg') }}" alt="Logo" width="80" height="80">
+                        <div class="inline flex mb-1 items-center justify-center gap-5 mb-5">
+                            <img src="{{ asset('assets/img/mada.png') }}" alt="Logo" width="80" height="80">
+                            <img src="{{ asset('assets/img/lpp.jpeg') }}" alt="Logo" width="80" height="80">
                         </div>
                         
+                        <hr class="mb-5" />
+
                         <!-- <h1>Log Masuk</h1> -->
                         <!-- <p class="account-subtitle text-lg font-semibold">Akses ke p-HRIS Dashboard</p> -->
                         <form method="POST" action="{{ route('login') }}" class="md-float-material">
                             @csrf
                             <div class="form-group">
                                 <label class="form-control-label"><strong>Kata Nama</strong></label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror shadow-md" name="email" value="c2@mada.gov.my" placeholder="Enter username" autofocus />
+                                <input type="text" class="form-control @error('email') is-invalid @enderror shadow-md" name="email" value="c3@mada.gov.my" placeholder="Enter username" autofocus />
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label"><strong>Kata Laluan</strong></label>

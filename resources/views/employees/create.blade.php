@@ -35,7 +35,7 @@
 
                                 <h3 class="mb-2"><strong>Maklumat Peribadi</strong></h3>                                
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body bg-gray-50">
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <label class="block">
                                                 <span class="text-gray-700"><strong>Nama Penuh</strong></span>
@@ -74,7 +74,7 @@
                                 <!-- ########################################################## -->
                                 <h3 class="mb-2"><strong>Maklumat Jawatan</strong></h3>                                
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body bg-gray-50">
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <label class="block">
                                                 <span class="text-gray-700"><strong>Jawatan</strong></span>
@@ -153,7 +153,7 @@
                                 <!-- ######################################################## -->
                                 <h3 class="mb-2" class="mt-5"><strong>Maklumat Pendidikan</strong></h3>                                
                                 <div class="card">
-                                    <div class="card-body">                                
+                                    <div class="card-body bg-gray-50">                                
                                         <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
                                             <label class="block">
                                                 <span class="text-gray-700"><strong>Pendidikan</strong></span>

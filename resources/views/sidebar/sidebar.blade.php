@@ -33,7 +33,7 @@
                                 Pengurusan Pekerja</span></a>
                     </li>
                     <li>
-                        <a href="{{ route('leaves.index') }}"><img src="{{ URL::to('assets/img/bed.svg') }}" alt="sidebar_img"><span>
+                        <a href="{{ route('leaves.index') }}"><img src="{{ URL::to('assets/img/bed.svg') }}" class="text-blue-500" alt="sidebar_img"><span>
                                 Pengurusan Cuti</span></a>
                     </li>
                     
