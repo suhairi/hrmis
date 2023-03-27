@@ -14,14 +14,7 @@
     <div class="page-wrapper">
         <div class="content container-fluid">
 
-            <div class="pull-right p-2 mb-3">
-                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-semibold 
-                    transition ease-in-out delay-30 
-                    hover:-translate-y-1 duration-300 
-                    rounded-full shadow-md" 
-                    href="{{ URL::previous() }}">
-                < Back</a>
-            </div>
+            @include('partials.buttons.back')
 
             <div class="row mb-4">
                 <div class="col-md-12">

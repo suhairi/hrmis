@@ -100,7 +100,7 @@
                             </div>
                             <div class="row pt-4 rounded shadow">
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center p-3">
-                                    <button type="submit" class="btn btn-success shadow">Submit</button>
+                                    @include('partials.buttons.submit', ['text' => 'Cipta'])
                                 </div>
                             </div>
                         </div>

@@ -7,20 +7,14 @@
     <div class="page-wrapper">
         <div class="content container-fluid">
 
+            @include('partials.buttons.back')
+
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header"><strong>Leave New Record</strong></div>
 
                         <div class="card-body shadow">
-
-                            <div class="pull-right p-2">
-                                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-semibold 
-                                    transition ease-in-out delay-30 hover:-translate-y-1 duration-300 
-                                    rounded-full shadow-md" 
-                                    href="{{ URL::previous() }}">
-                                < Back</a>
-                            </div>
 
                             <div class="card mt-3">
                                 <div class="card-header"><div class="card-title">Record Leave</div></div>
@@ -68,11 +62,7 @@
                                         </div>
 
                                         <div class="alert col-span-4 flex-right">
-                                            <button type="submit" 
-                                                class="btn float-right bg-green-400 hover:bg-green-500 text-white hover:font-semibold
-                                                    transition ease-in-out delay-30 hover:-translate-y-1 duration-300 
-                                                    rounded shadow-md">
-                                                Add</button>
+                                            @include('partials.buttons.submit', ['text' => 'Cipta'])
                                         </div>
 
                                     </div>

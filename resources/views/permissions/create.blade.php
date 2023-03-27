@@ -62,7 +62,7 @@
                                     </div>
                                 </div>                                
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center p-3">
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    @include('partials.buttons.submit', ['text' => 'Cipta'])
                                 </div>
                             </div>
                             {!! Form::close() !!}

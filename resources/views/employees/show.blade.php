@@ -5,9 +5,7 @@
     <div class="page-wrapper">
         <div class="content container-fluid">
 
-            <div class="pull-right p-3">
-                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
-            </div>
+            @include('partials.buttons.back')
 
             <div class="row">
                 <div class="col col-12">

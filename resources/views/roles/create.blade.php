@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary" style="padding-right: 10px; padding-left:10px">Submit</button>
+                                    @include('partials.buttons.submit', ['text' => 'Cipta'])
                                 </div>
                             </div>
                             {!! Form::close() !!}
