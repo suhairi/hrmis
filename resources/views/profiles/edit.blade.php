@@ -1,37 +1,26 @@
 @extends('layouts.master')
-@section('menu')
-@extends('sidebar.sidebar')
-@endsection
+
 @section('content')
 
     <div class="page-wrapper">
         <div class="content container-fluid">
 
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="breadcrumb-path ">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Profile</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="pull-right p-2 mb-3">
+                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-semibold 
+                    transition ease-in-out delay-30 
+                    hover:-translate-y-1 duration-300 
+                    rounded-full shadow-md" 
+                    href="{{ URL::previous() }}">
+                < Back</a>
             </div>
-    
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Edit My Profile</strong></div>
+                        <div class="card-header"><strong>Tukar Password</strong></div>
 
                         <div class="card-body">
-
-
-                            <div class="pull-right">
-                                <a class="btn btn-dark" href="{{ URL::previous() }}"> Back</a>
-                            </div>
-                            <br />
-
 
                             @if (count($errors) > 0)
                               <div class="alert alert-danger">

@@ -13,15 +13,10 @@
                         <div class="card-body">
 
                             @if(session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>Success! </strong> {{ session('success') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                                @include('partials.messages.success')
                             @endif
 
-                            @can('employee-list')
+                            @can('employee-create')
                                 <div class="p-3">
                                     <a href="{{ route('employees.create') }}" class="btn button bg-green-500 hover:bg-green-600 text-white hover:font-semibold 
                                     transition ease-in-out delay-30

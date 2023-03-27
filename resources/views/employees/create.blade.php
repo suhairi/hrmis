@@ -2,14 +2,7 @@
 
 @section('content')
 
-    <style type="text/css">
-        .input-group>.input-group-prepend {
-            flex: 0 0 40%;
-        }
-        .input-group .input-group-text {
-            width: 100%;
-        }
-    </style>
+
 
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -31,7 +24,7 @@
                         <div class="card-body">
 
                             <form method="POST" action="{{ route('employees.store') }}">
-                                @csrf
+                            @csrf
 
                                 <h3 class="mb-2"><strong>Maklumat Peribadi</strong></h3>                                
                                 <div class="card">
@@ -42,7 +35,7 @@
                                                 <input type="text" name="name" class="block w-full mt-1 rounded-md" placeholder="Nama Penuh" value="{{ old('name')}}" autocomplete="off" required min="3" />
                                             </label>
                                             @error('name')
-                                                <div class="text-sm text-red-600">{{ $message }}</div>
+                                                <div class="inline text-sm text-red-600">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4">
@@ -130,7 +123,7 @@
                                             <label class="block">
                                                 <span class="text-gray-700"><strong>Elaun (RM)</strong></span>
                                                 <div class="input-group mb-3">
-                                                    <input type="number" name="allowance" class="block w-full mt-1 rounded-md" min="0" placeholder="0.00" step=".01" value="{{ old('allowance') }}" required>
+                                                    <input type="number" name="allowance" class="block w-full mt-1 rounded-md" min="0" placeholder="0.00" step=".01" value="{{ old('allowance') }}" >
                                                 </div>
                                             </label>
                                             @error('allowance')
@@ -140,7 +133,7 @@
                                         <div class="col-xs-4 col-sm-4 col-md-4 mt-2">
                                             <label class="block">
                                                 <span class="text-gray-700"><strong>No KWSP</strong></span>
-                                                <input type="number" name="kwsp_no" class="block w-full mt-1 rounded-md" placeholder="No KWSP" value="{{ old('kwsp_no')}}" autocomplete="off" required />
+                                                <input type="number" name="kwsp_no" class="block w-full mt-1 rounded-md" placeholder="No KWSP" value="{{ old('kwsp_no')}}" autocomplete="off" />
                                             </label>
                                             @error('kwsp_no')
                                                 <div class="text-sm text-red-600">{{ $message }}</div>

@@ -41,22 +41,24 @@
                 </div>              
             </div>
 
-            <div class="col-6 p-3 mb-3">
-                <a class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold 
-                            transition ease-in-out delay-30 hover:-translate-y-1 duration-300
-                            shadow-md rounded-full" 
-                    href="{{ route('leaves.create') }}"
-                    title="Add new leave record" 
-                >
-                New Record</a>
-            </div>
-
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header"><strong>Leaves Management</strong></div>
 
                         <div class="card-body">
+
+                            @can('leave-create')
+                                <div class="p-3">
+                                    <a href="{{ route('leaves.create') }}" class="btn button bg-green-500 hover:bg-green-600 text-white hover:font-semibold 
+                                    transition ease-in-out delay-30
+                                    hover:-translate-y-1 duration-300
+                                    shadow-md rounded"
+                                    >
+                                    Cipta Rekod</a>
+                                </div>
+                                <hr class="mb-4">
+                            @endcan
 
                             <div class="col-md-12 shadow-md mb-5">
                                 <div class="alert mb-2 float-right">

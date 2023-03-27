@@ -18,8 +18,13 @@
                 </div>
             </div>
 
-            <div class="pull-right p-3">
-                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
+            <div class="pull-right p-2 mb-3">
+                <a class="btn bg-gray-500 hover:bg-gray-600 text-white hover:font-semibold 
+                    transition ease-in-out delay-30 
+                    hover:-translate-y-1 duration-300 
+                    rounded-full shadow-md" 
+                    href="{{ URL::previous() }}">
+                < Back</a>
             </div>
 
             <div class="row">
@@ -32,9 +37,17 @@
                             
                             @include('partials.employees.employeeMenu')
 
-                            <div class="col-6 mb-2">
-                                <a class="btn bg-green-400  hover:bg-green-500 rounded-full transition ease-in-ease-out delay-30 hover:-translate-y-1 hover:scale-110 duration-300" href="{{ route('leaves.create', $employee->id) }}"><i class="fa fa-book"> </i> New Record</a>
-                            </div>
+                            @can('leave-create')
+                                <div class="p-3">
+                                    <a href="{{ route('leaves.create') }}" class="btn button bg-green-500 hover:bg-green-600 text-white hover:font-semibold 
+                                    transition ease-in-out delay-30
+                                    hover:-translate-y-1 duration-300
+                                    shadow-md rounded"
+                                    >
+                                    Cipta Rekod Cuti</a>
+                                </div>
+                                <hr class="mb-4">
+                            @endcan
 
                             <div class="col-6">
                                 <table class="table table-bordered table-hover table-striped shadow-2xl">

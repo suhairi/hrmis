@@ -6,19 +6,6 @@
         <div class="content container-fluid">
 
             <div class="row mb-4">
-                <div class="col-12">
-                    <div class="breadcrumb-path ">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Positions</li>
-                        </ul>
-                        <!-- <h3>Admin Dashboard</h3> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header"><strong>Positions Management</strong></div>
@@ -32,12 +19,7 @@
                             @endcan
 
                             @if(session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>Success! </strong> {{ session('success') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                                @include('partials.messages.success')
                             @endif
 
                             <table class="table table-bordered mb-4 table-striped data-table">

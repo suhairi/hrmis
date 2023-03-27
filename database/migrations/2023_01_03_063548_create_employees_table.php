@@ -25,9 +25,9 @@ return new class extends Migration
             $table->unsignedBigInteger('education_id');
             $table->unsignedBigInteger('position_id');
             $table->decimal('basic_salary', 6, 2);
-            $table->decimal('allowance', 6, 2);
+            $table->decimal('allowance', 6, 2)->nullable()->default(0.00);
             $table->string('service_status');
-            $table->string('kwsp_no');
+            $table->string('kwsp_no')->nullable();
             $table->string('location')->nullable();
             $table->unsignedBigInteger('ppk_id');
             $table->string('edu_major')->nullable();

@@ -184,7 +184,6 @@ class EmployeeController extends Controller
             'start_date'        => 'required',
             'service_status'    => 'required',
             'basic_salary'      => 'required',
-            'allowance'         => 'required',
             'kwsp_no'           => 'required',
             'education_id'      => 'required|numeric',
         ]);
@@ -193,8 +192,8 @@ class EmployeeController extends Controller
         $nokp_1 = substr($request['nokp'], 0, 6);
         $nokp_2 = substr($request['nokp'], 6, 2);
         $nokp_3 = substr($request['nokp'], 8, 4);
-
         $request['nokp'] = $nokp_1 . '-' . $nokp_2 . '-' . $nokp_3;
+
         $request['employment_status'] = 'BEKERJA';
         $request['edu_major'] = strtoupper($request['edu_major']);
         $request['ppk_id'] = Auth::user()->ppk_id;
@@ -202,7 +201,7 @@ class EmployeeController extends Controller
         $employee = Employee::create($request->all());
 
         return redirect()->route('employees.index')
-                        ->with('success','Employee ' . $employee->name . ' created successfully');
+                        ->with('success','Rekod ' . $employee->name . ' telah dicipta.');
     }
 
     /**
@@ -259,10 +258,7 @@ class EmployeeController extends Controller
         return view('employees.showAset', compact('employee'));
     }
 
-    
 
-   
-    
 
     /**
      * Show the form for editing the specified resource.
@@ -298,18 +294,16 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [
-            'name'              => 'required|min:4',
-            'nokp'              => 'required|min:14|max:14',
+            'name'              => 'required|min:3',
+            'nokp'              => 'required|min:12|max:12',
             'gender'            => 'required',
             'position_id'       => 'required|numeric',
             'start_date'        => 'required',
-            'employment_status' => 'required',
             'service_status'    => 'required',
             'basic_salary'      => 'required',
-            'allowance'         => 'required',
             'kwsp_no'           => 'required',
-            'ppk_id'            => 'required|numeric',
             'education_id'      => 'required|numeric',
         ]);
 
@@ -320,23 +314,28 @@ class EmployeeController extends Controller
         // Check if different in ppk_id
         // create a transaction in table transfer
         // ######################################
-        if($request->ppk_id != $employee->ppk_id) {
+        // if($request->ppk_id != $employee->ppk_id) {
 
-            $transfer_from = Ppk::find($employee->ppk_id);
-            $transfer_to = Ppk::find($request->ppk_id);
+        //     $transfer_from = Ppk::find($employee->ppk_id);
+        //     $transfer_to = Ppk::find($request->ppk_id);
 
-            $transfer = Transfer::create([
-                        'employee_id'       => $employee->id,
-                        'date_of_transfer'  => Carbon::today(),
-                        'transfer_from'     => $transfer_from->code . ' - ' . $transfer_from->name,
-                        'transfer_to'       => $transfer_to->code . ' - ' . $transfer_to->name
-                    ]);
-        }
+        //     $transfer = Transfer::create([
+        //                 'employee_id'       => $employee->id,
+        //                 'date_of_transfer'  => Carbon::today(),
+        //                 'transfer_from'     => $transfer_from->code . ' - ' . $transfer_from->name,
+        //                 'transfer_to'       => $transfer_to->code . ' - ' . $transfer_to->name
+        //             ]);
+        // }
+
+        $nokp_1 = substr($request['nokp'], 0, 6);
+        $nokp_2 = substr($request['nokp'], 6, 2);
+        $nokp_3 = substr($request['nokp'], 8, 4);
+        $request['nokp'] = $nokp_1 . '-' . $nokp_2 . '-' . $nokp_3;
         
         $employee->update($request->all());
 
         return redirect()->route('employees.index')
-                        ->with('success','Employee ' . $employee->name . ' updated successfully');
+                        ->with('success','Rekod ' . $employee->name . ' telah dikemaskini.');
     }
 
     /**
