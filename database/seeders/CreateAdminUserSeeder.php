@@ -295,8 +295,6 @@ class CreateAdminUserSeeder extends Seeder
         foreach($users as $user) {
             $user->assignRole([$role->id]);    
         }
-        
-
 
         $role = Role::create(['name' => 'PPK']);
         $permissions = Permission::where('id', '>', 8)->pluck('id');
@@ -309,7 +307,7 @@ class CreateAdminUserSeeder extends Seeder
         }
 
         $role = Role::create(['name' => 'Wilayah']);
-        $permissions = [9, 13];
+        $permissions = [11, 15, 16, 20];
         $role->syncPermissions($permissions);
 
         $users = User::where('location', 'like', 'WILAYAH%')->get();

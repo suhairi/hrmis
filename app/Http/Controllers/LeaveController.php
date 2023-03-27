@@ -18,6 +18,7 @@ class LeaveController extends Controller
          $this->middleware('permission:leave-create', ['only' => ['create','store']]);
          $this->middleware('permission:leave-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:leave-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:leave-show', ['only' => ['show']]);
     }
 
 

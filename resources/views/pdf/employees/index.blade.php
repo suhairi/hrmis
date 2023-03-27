@@ -24,14 +24,14 @@
             <td width="70%">
                 <h1>Senarai Pekerja</h1>
             </td>
-            <td width="30%" align="left" class="text-xs">
-                Lembaga Kemajuan Pertanian Muda <br />
-                Pertubuhan Peladang Kawasan <br />
-                PPK C1 - Kangar <br />
-                04 - 772 8255
+            <td width="40%" align="left" class="text-xs">
+                {{ $address->address }} <br />
+                {{ $address->phone }}
             </td>
         </tr>
     </table>
+
+    <hr class="mb-3" />
 
     <table class="min-w-full text-left my-text">
         <thead>

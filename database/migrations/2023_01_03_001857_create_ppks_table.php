@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();            
             $table->string('name');
             $table->string('code');
+            $table->string('address');
+            $table->string('phone');
             $table->unsignedBigInteger('wilayah_id');
             $table->foreign('wilayah_id')->references('id')->on('wilayahs')->onDelete('cascade');
             $table->softDeletes();

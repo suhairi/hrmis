@@ -11,6 +11,7 @@ use PDF;
 use App\Models\Leave;
 use App\Models\Employee;
 use App\Models\Ppk;
+use App\Models\Wilayah;
 
 class PdfController extends Controller
 {
@@ -24,6 +25,10 @@ class PdfController extends Controller
 
 
         if(Auth::user()->location == 'PPK') {
+
+            $address = Auth::user()->ppk->address;
+
+            dd($address);
             $employees = Employee::where('ppk_id', Auth::user()->ppk_id)
                             ->withTrashed()
                             ->get();
@@ -33,6 +38,8 @@ class PdfController extends Controller
             // 1 - HQ
             // 2 - Wilayah
             if(Str::contains(Auth::user()->location, 'WILAYAH')) {
+
+                $address = Wilayah::where('name', Auth::user()->location)->first();                
 
                 $wilayah = str_replace('WILAYAH ', '', Auth::user()->location);
                 $ppks = Ppk::where('wilayah_id', $wilayah)->get();
@@ -49,7 +56,7 @@ class PdfController extends Controller
             }
         }
 
-        $data = ['employees' => $employees];
+        $data = ['employees' => $employees, 'address' => $address];
         // view()->share('pdf.employees.index', $employees);
 
         $pdf = PDF::loadView('pdf.employees.index', $data);

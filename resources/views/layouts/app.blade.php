@@ -15,6 +15,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
 
+    <style>
+        body {
+            background-image: url({{ URL::to('assets/img/background2.webp') }});
+        }
+    </style>
+
 </head>
 
 <body>

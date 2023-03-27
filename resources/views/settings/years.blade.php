@@ -26,7 +26,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                {{ $employee->name }}
+                                                <a href="{{ route('employees.show', $employee->id) }}">{{ $employee->name }}</a>
                                                 <sup>
                                                     @if($employee->employment_status == 'BEKERJA')
                                                         <span class='badge bg-green-600 text-white rounded-pill' style='font-size: 8px;'>Active</span>
