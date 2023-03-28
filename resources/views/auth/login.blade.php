@@ -4,13 +4,13 @@
 <div class="main-wrapper login-body">
     <div class="login-wrapper">
         <div class="container">
-            <img class="img-fluid logo-dark" src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+            <img class="mx-auto" src="{{ asset('assets/img/logo_text - 250x97.png') }}" width="250" height="97" alt="Logo">
             <div class="loginbox">
                 <div class="login-right">
                     <div class="login-right-wrap">
                         <div class="inline flex mb-1 items-center justify-center gap-5 mb-5">
-                            <img src="{{ asset('assets/img/mada.png') }}" alt="Logo" width="80" height="80">
-                            <img src="{{ asset('assets/img/lpp.jpeg') }}" alt="Logo" width="80" height="80">
+                            <img class="shadow-lg" src="{{ asset('assets/img/mada.png') }}" alt="Logo" width="80" height="80">
+                            <img src="{{ asset('assets/img/lpp.png') }}" alt="Logo" width="80" height="80">
                         </div>
                         
                         <hr class="mb-5" />
@@ -19,16 +19,18 @@
                         <!-- <p class="account-subtitle text-lg font-semibold">Akses ke p-HRIS Dashboard</p> -->
                         <form method="POST" action="{{ route('login') }}" class="md-float-material">
                             @csrf
-                            <div class="form-group">
-                                <label class="form-control-label"><strong>Kata Nama</strong></label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror shadow-md" name="email" value="c3@mada.gov.my" placeholder="Enter username" autofocus />
+                            <div class="relative mb-4" data-te-input-wrapper-init>
+                                <!-- <label class="form-control-label"><strong>Kata Nama</strong></label> -->
+                                <input type="text" class="form-control @error('email') is-invalid @enderror shadow-md rounded-full" name="email" value="c3@mada.gov.my" placeholder="Kata Nama" autofocus />
+
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label"><strong>Kata Laluan</strong></label>
+                                <!-- <label class="form-control-label"><strong>Kata Laluan</strong></label> -->
                                 <div class="pass-group">
-                                    <input type="password" class="form-control pass-input @error('password') is-invalid @enderror shadow-md" name="password" placeholder=" Enter Password" value="password">
-                                    <span class="fas fa-eye toggle-password"></span>
+                                    <input type="password" class="form-control pass-input @error('password') is-invalid @enderror shadow-md rounded-full" name="password" placeholder="Kata Laluan" value="password">
+                                    <!-- <span class="fas fa-eye toggle-password"></span> -->
                                 </div>
+                                
                             </div>
                             <div class="form-group">
                                 <div class="row">

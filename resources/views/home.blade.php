@@ -27,7 +27,7 @@
                     <div class="card board1 fill2">
                         <div class="card-body">
                             <div class="card_widget_header">
-                                <label>Employees</label>
+                                <label>Pekerja</label>
                                 <h4>{{ count($employees) }}</h4>
                             </div>
                             <div class="card_widget_img">
@@ -69,14 +69,14 @@
                     <div class="card flex-fill">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="card-title">Total Employees</h5>
+                                <h5 class="card-title">Jumlah Pekerja</h5>
                             </div>
                         </div>
                         <div class="card-body">
                             <!-- <div id="invoice_chart"></div> -->
                             <!-- <div id="sales_chart"></div> -->
                             <div class="card">
-                                <div class="card-header bg-orange-300"><strong>By Gender</strong></div>
+                                <div class="card-header bg-orange-300"><strong>Mengikut jantina</strong></div>
                                 <div class="card-body">
                                     <table class="table table-bordered table-striped table-hover">
                                         <tr>
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="card-header bg-orange-300"><strong>By Employment Status</strong></div>
+                                <div class="card-header bg-orange-300"><strong>Mengikut status pekerjaan</strong></div>
                                 <div class="card-body">
                                     <table class="table table-bordered table-condensed table-striped">
                                     @foreach($employment_status as $value)
@@ -138,15 +138,15 @@
                     <div class="card flex-fill">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="card-title">Housekeeping</h5>
+                                <h5 class="card-title">Selenggara</h5>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="team-list">
-                                <div class="team-view">
+                                <div class="team-view shadow-md">
                                     <div class="team-content">
-                                        <label>Employee Work More than 30 Years</label>
-                                        <span>Action : Display the list</span>
+                                        <label>Senarai Pekerja yg bekerja melebihi 30 tahun</label>
+                                        <span>Tindakan : Paparan senarai</span>
                                     </div>
                                 </div>
                                 <div class="team-action">

@@ -14,7 +14,7 @@
     **/
     #watermark {
         position: fixed;
-        bottom:   -410px;
+        bottom:   -450px;
         left:     270px;
         /** The width and height may change 
             according to the dimensions of your letterhead
@@ -35,7 +35,19 @@
     }
 
     .footer {
-        bottom: 3px;
+        bottom: 1px;
+        font-size: 10px;
+        margin-top: 1px;
+    }
+
+    .cetakan {
+        width: 100%;
+        text-align: right;
+        position: fixed;
+    }
+
+    .cetakan {
+        bottom: 1px;
         font-size: 10px;
         margin-top: 4px;
     }

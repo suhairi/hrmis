@@ -17,6 +17,7 @@
         <img src="{{ URL::to('assets/img/watermark.png')}}" height="200" width="200" />
     </div>
 
+    <div class="cetakan">Tarikh dicetak : {{ \Carbon\Carbon::now()->format('d-m-Y h:m a') }}</div>
     <div class="footer">Copyright &copy; 2023 - Lembaga Kemajuan Pertanian Muda (MADA)</div>
 
     <table class="table mb-4">
@@ -40,8 +41,8 @@
                 <th>Nama</th>
                 <th>No KP</th>
                 <th>Jantina</th>
-                <th>PPK / Jawatan </th>
-                <th>Tarikh Lantikan / Status</th>
+                <th>Jawatan </th>
+                <th>Tarikh Lantikan</th>
             </tr>
         </thead>
         <tbody>
