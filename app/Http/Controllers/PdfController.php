@@ -26,9 +26,9 @@ class PdfController extends Controller
 
         if(Auth::user()->location == 'PPK') {
 
-            $address = Auth::user()->ppk->address;
+            $address = Ppk::where('id', Auth::user()->ppk_id)->first();
+            // dd($address);
 
-            dd($address);
             $employees = Employee::where('ppk_id', Auth::user()->ppk_id)
                             ->withTrashed()
                             ->get();
@@ -52,6 +52,9 @@ class PdfController extends Controller
                                 ->withTrashed()
                                 ->get();
             } else {
+                $address = collect([]);
+                $address->address = 'LEMBAGA KEMAJUAN PERTANIAN MUDA (MADA), AMPANG JAJAR, 05150 ALOR SETAR, KEDAH.';
+                $address->phone = '04-7728 255';
                 $employees = Employee::withTrashed()->get();
             }
         }
@@ -61,7 +64,7 @@ class PdfController extends Controller
 
         $pdf = PDF::loadView('pdf.employees.index', $data);
 
-        $pdf->setPaper('a4', 'portrait');
+        $pdf->setPaper('letter', 'portrait');
         $pdf->output();
         $canvas = $pdf->getDomPDF()->getCanvas();
 
