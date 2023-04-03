@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // PPK
     Route::get('/ppk', [PpkController::class, 'index'])->name('ppk.index');
+    Route::get('/directory/ppk', [PpkController::class, 'directory'])->name('directory.index');
 
     // Wilayah
     Route::get('/wilayah', [WilayahController::class, 'index'])->name('wilayah.index');

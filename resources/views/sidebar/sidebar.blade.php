@@ -41,6 +41,14 @@
                         <a href="{{ route('performance.index') }}"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
                                 Pengurusan Prestasi</span></a>
                     </li>
+
+                    @if(Str::contains(Auth::user()->location, 'WILAYAH'))
+                        <li>
+                            <a href="{{ route('directory.index') }}"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
+                                    Direktori PPK</span></a>
+                        </li>
+                    @endif
+
                     @can('role-create')
                         <li>
                             <a href="{{ route('positions.index') }}"><img src="{{ URL::to('assets/img/position.svg') }}" alt="sidebar_img"> <span>
@@ -72,12 +80,6 @@
                                     Audit</span></a>
                         </li>
                         
-                    @endcan
-                    @can('product-create')
-                        <li>
-                            <a href="{{ route('products.index') }}"><img src="{{ URL::to('assets/img/calendar.svg') }}" alt="sidebar_img">
-                                <span>Products</span></a>
-                        </li>
                     @endcan
                     <li class="mt-5">
                         <a href="{{ route('profiles.index') }}"><img src="{{ URL::to('assets/img/profile.svg') }}" alt="sidebar_img">
