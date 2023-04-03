@@ -7,15 +7,14 @@
             @if(session('success'))
                 @include('partials.messages.success')
             @endif
-            
-            
+
             <div class="row mb-4">
                 <div class="col-xl-3 col-sm-6 col-12">
                     <div class="card board1 fill2">
                         <div class="card-body">
                             <div class="card_widget_header">
                                 <label>PPK</label>
-                                <h4><small><small>{{ $ppk }}</small></small></h4>
+                                <h4><small>{{ $ppk }}</small></h4>
                             </div>
                             <div class="card_widget_img">
                                 <img src="assets/img/dash2.png" alt="card-img" />
@@ -28,7 +27,7 @@
                         <div class="card-body">
                             <div class="card_widget_header">
                                 <label>Pekerja</label>
-                                <h4>{{ count($employees) }}</h4>
+                                <h4>{{ count($employees) }} orang.</h4>
                             </div>
                             <div class="card_widget_img">
                                 <img src="assets/img/dash2.png" alt="card-img" />
@@ -143,7 +142,7 @@
                         </div>
                         <div class="card-body">
                             <div class="team-list">
-                                <div class="team-view shadow-md">
+                                <div class="team-view bg-gray-50  hover:bg-gray-100 shadow-md">
                                     <div class="team-content">
                                         <label>Senarai Pekerja yg bekerja melebihi 30 tahun</label>
                                         <span>Tindakan : Paparan senarai</span>

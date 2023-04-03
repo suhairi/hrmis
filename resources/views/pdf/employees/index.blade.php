@@ -27,6 +27,9 @@
             </td>
             <td width="40%" align="left" class="text-xs">
                 {{ $address->address }} <br />
+                {{ $address->address2 }} <br />
+                {{ $address->address3 }} <br />
+                {{ $address->address4 }} <br />
                 {{ $address->phone }}
             </td>
         </tr>

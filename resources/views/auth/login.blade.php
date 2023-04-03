@@ -21,7 +21,7 @@
                             @csrf
                             <div class="relative mb-4" data-te-input-wrapper-init>
                                 <!-- <label class="form-control-label"><strong>Kata Nama</strong></label> -->
-                                <input type="text" class="form-control @error('email') is-invalid @enderror shadow-md rounded-full" name="email" value="c3@mada.gov.my" placeholder="Kata Nama" autofocus />
+                                <input type="text" class="form-control @error('email') is-invalid @enderror shadow-md rounded-full" name="email" value="a1@mada.gov.my" placeholder="Kata Nama" autofocus />
 
                             </div>
                             <div class="form-group">

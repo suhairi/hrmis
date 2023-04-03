@@ -8,7 +8,7 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Profile Management</strong></div>
+                        <div class="card-header"><strong>Tukar Kata Laluan</strong></div>
 
                         <div class="card-body">
 
@@ -21,15 +21,20 @@
 
                             <table class="table table-bordered rounded-lg">
                              <tr class="bg-blue-400 text-white">
-                               <th>Name</th>
+                               <th>Nama</th>
                                <th>Email</th>
-                               <th width="280px">Action</th>
+                               <th width="280px">Tindakan</th>
                              </tr>
                               <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                   <a class="btn btn-success shadow-md" href="{{ route('profiles.edit', $user->id) }}">Tukar Kata Laluan</a>
+                                   <a href="{{ route('profiles.edit', $user->id) }}"
+                                        class = "btn button bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                                transition ease-in-out delay-30
+                                                hover:-translate-y-1 duration-300
+                                                rounded-full hover:shadow-md shadow-md"
+                                    >Tukar Kata Laluan</a>
                                     {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                                 </td>
                               </tr>

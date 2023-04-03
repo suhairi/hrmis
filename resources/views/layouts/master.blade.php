@@ -28,6 +28,14 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" referrerpolicy="no-referrer" />
 
+	<style>
+        body {
+/*            background-image: url({{ URL::to('assets/img/background2.webp') }});*/
+/*				background-color: rgb(254 252 232);*/
+				background: linear-gradient(20deg, green, yellow);
+        }
+    </style>
+
 
 </head>
 
