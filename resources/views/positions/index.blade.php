@@ -14,9 +14,16 @@
 
                             @can('position-create')
                                 <div class="pull-right p-3">
-                                    <a class="btn btn-success shadow-sm rounded" href="{{ route('positions.create') }}"> Create New Position</a>
+                                    <a href="{{ route('positions.create') }}"
+                                        class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                        transition ease-in-out delay-30
+                                        hover:-translate-y-1 duration-300
+                                        shadow-sm rounded" 
+                                    > 
+                                    Create New Position</a>
                                 </div>
                             @endcan
+
 
                             @if(session('success'))
                                 @include('partials.messages.success')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
 
 use App\Models\Ppk;
 
@@ -31,7 +32,6 @@ class PpkController extends Controller
     }
 
     public function directory() {
-
 
         $ppks = Ppk::where('wilayah_id', substr(Auth::user()->location, -1))->get();
 

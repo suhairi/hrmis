@@ -49,7 +49,7 @@
                         </li>
                     @endif
 
-                    @can('role-create')
+                    @if(Str::contains(Auth::user()->location, 'HQ'))
                         <li>
                             <a href="{{ route('positions.index') }}"><img src="{{ URL::to('assets/img/position.svg') }}" alt="sidebar_img"> <span>
                                     Position</span></a>
@@ -80,7 +80,8 @@
                                     Audit</span></a>
                         </li>
                         
-                    @endcan
+                    @endif
+
                     <li class="mt-5">
                         <a href="{{ route('profiles.index') }}"><img src="{{ URL::to('assets/img/profile.svg') }}" alt="sidebar_img">
                             <span>Profil Pengguna</span></a>

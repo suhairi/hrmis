@@ -16,7 +16,13 @@
 
                             @can('role-create')
                                 <div class="pull-right p-3">
-                                    <a class="btn btn-success shadow-sm rounded" href="{{ route('permissions.create') }}"> Create New Permission</a>
+                                    <a href="{{ route('permissions.create') }}"
+                                        class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                        transition ease-in-out delay-30
+                                        hover:-translate-y-1 duration-300
+                                        shadow-sm rounded" 
+                                    > 
+                                    Create New Permission</a>
                                 </div>
                             @endcan
 
@@ -40,11 +46,28 @@
                                 <td>{{ $permission->name }}</td>
                                 <td>{{ $permission->guard_name }}</td>                            
                                 <td>
-                                   <a class="btn btn-info shadow-md" href="{{ route('permissions.show', $permission->id) }}">Show</a>
-                                   <a class="btn btn-success shadow-md" href="{{ route('permissions.edit', $permission->id) }}">Edit</a>
+                                    <a href="{{ route('permissions.show', $permission->id) }}"
+                                        class="btn bg-yellow-300 hover:bg-yellow-400 text-white hover:font-semibold
+                                        transition ease-in-out delay-30
+                                        hover:-translate-y-1 duration-300
+                                        shadow-md rounded-full" 
+                                    >Show</a>
+                                   <a href="{{ route('permissions.edit', $permission->id) }}"
+                                         class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                         transition ease-in-out delay-30
+                                         hover:-translate-y-1 duration-300
+                                         shadow-md rounded-full"
+                                    >Edit</a>
                                     {!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger shadow-md']) !!}
-                                    {!! Form::close() !!}
+                                    {{ Form::button('Delete', ['type' => 'submit', 
+                                            'class' => 
+                                            'btn button bg-red-600 hover:bg-red-700 text-white hover:font-semibold
+                                            transition ease-in-out delay-30
+                                            hover:-translate-y-1 duration-300
+                                            shadow-md rounded-full'
+                                        ]) 
+                                    }}
+
                                 </td>
                               </tr>
                              @endforeach
