@@ -69,6 +69,9 @@ class LeaveController extends Controller
             'type'          => 'required',
         ]);
 
+        $start_date = Carbon::parse($request['start_date']);
+        $end_date = Carbon::parse($request['end_date']);
+
         // 1 - check for duplicate employee leave
         // 2 - exclude weekends - DONE
         // 3 - for type='pregnancy leave' check the gender for female
@@ -93,7 +96,7 @@ class LeaveController extends Controller
 
         foreach($leaves as $leave) {
 
-            $isDateOverlap = max($leave->start_date, Carbon::parse($request['start_date'])) <= min($leave->end_date, Carbon::parse($request['end_date']));
+            $isDateOverlap = max($leave->start_date, Carbon::parse($start_date)) <= min($leave->end_date, Carbon::parse($request['end_date']));
 
             if($isDateOverlap) {
 
@@ -103,14 +106,30 @@ class LeaveController extends Controller
         }
 
 
+        // #2 - Exclude Weekends from duration
+        //    - If same date automatic duration = 1 day
+        //    - check if same day, isweekend(), if true return with error message
 
+        if($start_date->eq($request['end_date'])) {
 
-        // #2
-        $duration = Carbon::parse($request['start_date'])->diffInDaysFiltered(function(Carbon $date) {
+            // check if that date is on weekend
+            if($start_date->isWeekend()) {
+
+                return redirect()->back()
+                        ->withInput($request->except(['start_date', 'end_date']))
+                        ->withErrors(['msg' => 'Tarikh yang dipilih adalah hari minggu.']);
+            }
+
+            $request['duration'] = 1;
+        
+        } else {
+            $duration = Carbon::parse($start_date)->diffInDaysFiltered(function(Carbon $date) {
                 return !$date->isWeekend();
             }, Carbon::parse($request['end_date'])->addDay());
 
-        $request['duration'] = $duration;
+            $request['duration'] = $duration;
+        }
+        
 
         // #3
         $gender = Employee::select('gender')->where('id', $request['employee_id'])->first();
@@ -128,10 +147,6 @@ class LeaveController extends Controller
                 return back()->withInput()
                             ->withErrors('Lelaki tidak layak memohon Pregnancy Leave');
         }
-
-        
-
-        
 
         $leave = Leave::create($request->all());
         
