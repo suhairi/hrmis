@@ -14,8 +14,15 @@
                         <div class="card-body">
                         
                             @can('role-create')
+
                                 <div class="pull-right p-3">
-                                    <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+                                    <a href="{{ route('roles.create') }}"
+                                        class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                        transition ease-in-out delay-30
+                                        hover:-translate-y-1 duration-300
+                                        shadow-sm rounded" 
+                                    > 
+                                    Create New Role</a>
                                 </div>
                             @endcan
 
@@ -37,15 +44,32 @@
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>
-                                        <a class="btn btn-info shadow-md" href="{{ route('roles.show',$role->id) }}">Show</a>
-                                        @can('role-edit')
-                                            <a class="btn btn-success shadow-md" href="{{ route('roles.edit',$role->id) }}">Edit</a>
-                                        @endcan
-                                        @can('role-delete')
-                                            {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'style' =>'display:inline']) !!}
-                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger shadow-md']) !!}
-                                            {!! Form::close() !!}
-                                        @endcan
+                                        <a href="{{ route('roles.show', $role->id) }}" 
+                                            class="btn button bg-yellow-300 hover:bg-yellow-400 text-white hover:font-semibold
+                                            transition ease-in-out delay-30
+                                            hover:-translate-y-1 duration-300
+                                            rounded-full hover:shadow-md shadow-md" 
+                                        >
+                                            <i class="fa fa-eye mr-2"> </i>Papar
+                                        </a>
+                                        <a href="{{ route('roles.edit', $role->id) }}"
+                                            class="btn button bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                            transition ease-in-out delay-30
+                                            hover:-translate-y-1 duration-300
+                                            rounded-full hover:shadow-md shadow-md" 
+                                        >
+                                            <i class="fa fa-pencil-square mr-2"> </i>Kemaskini
+                                        </a>
+                                        {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                            {{ Form::button('<i class="fa fa-trash mr-2"></i>Hapus', ['type' => 'submit', 
+                                                    'class' => 'btn button bg-red-600 hover:bg-red-700 text-white hover:font-semibold
+                                                    transition ease-in-out delay-30
+                                                    hover:-translate-y-1 duration-300
+                                                    rounded-full hover:shadow-md 
+                                                    show_confirm shadow-md'
+                                                ])  
+                                            }}
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                                 @endforeach

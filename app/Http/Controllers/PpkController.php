@@ -24,7 +24,14 @@ class PpkController extends Controller
                     ->addColumn('name', function($ppk) {
                         return $ppk->code . ' - ' . $ppk->name;
                     })
-                    ->rawColumns(['name'])
+                    ->addColumn('address', function($ppk) {
+                        return $ppk->address . ' <br /> ' . $ppk->address2 . '<br />' . $ppk->address3 . '<br />' . $ppk->address4;
+                    })
+                    ->addColumn('telephone', function($ppk) {
+                        return $ppk->phone;
+                    })
+                    
+                    ->rawColumns(['name', 'address', 'telephone'])
                     ->make(true);
         }
         

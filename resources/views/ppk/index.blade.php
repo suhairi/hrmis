@@ -21,6 +21,8 @@
                                     <tr class="bg-blue-500 text-white">
                                         <th>#</th>
                                         <th>Nama</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -47,6 +49,8 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: true},
                 {data: 'name', name: 'name'},
+                {data: 'address', name: 'address'},
+                {data: 'telephone', name: 'telephone'},
             ],
             sPaginationType: "simple_numbers",
         });
