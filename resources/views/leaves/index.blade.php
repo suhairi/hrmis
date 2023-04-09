@@ -93,12 +93,28 @@
                                                 <td>{{ $leave->start_date->format('d M') }} - {{ $leave->end_date->format('d M Y') }}</td>
                                                 <td align="center">{{ $leave->duration }} {{ ($leave->duration == 1) ? 'day' : 'days' }} </td>
                                                 <td>
-                                                   <a class="btn btn-info shadow-md text-white rounded-full" href="#">Show</a>
-                                                   <a class="btn btn-success shadow-md rounded-full" href="#">Edit</a>
-                                                    {!! Form::open(['method' => 'DELETE', 'route' => ['leaves.destroy', $leave->id],'style'=>'display:inline']) !!}
-                                                        {!! Form::submit('Delete', ['class' => 'btn bg-red-500 text-white shadow-md hover:bg-red-600 rounded-full']) !!}
-                                                    {!! Form::close() !!}
-                                                    
+                                                   <a href="#"
+                                                        class="btn bg-yellow-300 hover:bg-yellow-400 text-white hover:font-semibold
+                                                        transition ease-in-out delay-30
+                                                        hover:-translate-y-1 duration-300
+                                                        shadow-md rounded-full"class="btn btn-info shadow-md text-white rounded-full"
+                                                    >Papar</a>
+                                                   <a href="{{ route('leaves.edit', $leave) }}"
+                                                        class="btn bg-green-400 hover:bg-green-500 text-white hover:font-semibold
+                                                        transition ease-in-out delay-30
+                                                        hover:-translate-y-1 duration-300
+                                                        shadow-md rounded-full"class="btn btn-success shadow-md rounded-full"
+                                                    >Kemaskini</a>
+                                                    {!! Form::open(['method' => 'DELETE','route' => ['leaves.destroy', $leave->id],'style'=>'display:inline']) !!}
+                                                    {{ Form::button('Delete', ['type' => 'submit', 
+                                                            'class' => 
+                                                            'btn button bg-red-600 hover:bg-red-700 text-white hover:font-semibold
+                                                            transition ease-in-out delay-30
+                                                            hover:-translate-y-1 duration-300
+                                                            shadow-md rounded-full'
+                                                        ]) 
+                                                    }}
+                                                    {!! Form::close() !!}                                                    
                                                 </td>
                                             </tr>
                                         @endforeach
