@@ -48,6 +48,10 @@
 
                         <div class="card-body">
 
+                            @if(session('success'))
+                                @include('partials.messages.success')
+                            @endif
+
                             @can('leave-create')
                                 <div class="p-3">
                                     <a href="{{ route('leaves.create') }}" class="btn button bg-green-500 hover:bg-green-600 text-white hover:font-semibold 

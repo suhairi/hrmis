@@ -117,7 +117,6 @@ class LeaveController extends Controller
 
             // check if that date is on weekend for Kedah
             if($start_date->isWeekend()) {
-
                 return redirect()->back()
                         ->withInput($request->except(['start_date', 'end_date']))
                         ->withErrors(['msg' => 'Tarikh yang dipilih adalah hari minggu.']);
@@ -153,15 +152,6 @@ class LeaveController extends Controller
 
                 $request['duration'] = $duration;
             }
-
-            
-
-            // For Perlis
-            // if $wilayah1 = Str::of($employee->ppk()->code)->contains('1');
-            // $now = CarbonImmutable::now();
-            // echo CarbonPeriod::create($now->startOfMonth(), $end->endOfMonth())
-            //   ->filter(static fn ($date) => $date->is('Saturday'))
-            //   ->count();
         }
         
 
@@ -182,9 +172,28 @@ class LeaveController extends Controller
                             ->withErrors('Lelaki tidak layak memohon Pregnancy Leave');
         }
 
+        // ** Check if start date is on weekend first
+        if($request['duration'] == 1) {
+            if(Str::of(Auth::user()->ppk->code)->contains('1')) {
+            
+                if($start_date->is('Saturday') || $start_date->is('Sunday'))
+                    $request['start_date'] = $request['end_date'];
+                else
+                    $request['end_date'] = $request['start_date'];
+            
+            } else {
+
+                if($start_date->isWeekend())
+                    $request['start_date'] = $request['end_date'];
+                else
+                    $request['end_date'] = $request['start_date'];
+
+            }
+        }
+
         $leave = Leave::create($request->all());
         
-        return redirect()->route('leaves.index');
+        return redirect()->route('leaves.index')->with('success', 'Rekod telah berjaya disimpan.');
     }
 
     /**
@@ -218,9 +227,130 @@ class LeaveController extends Controller
      * @param  \App\Models\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Leave $leave)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'          => 'required',
+            'start_date'    => 'required|date|before_or_equal:end_date',
+            'end_date'      => 'required|date|after_or_equal:start_date',
+            'type'          => 'required',
+        ]);
+
+        $start_date = Carbon::parse($request['start_date']);
+        $end_date = Carbon::parse($request['end_date']);
+
+        // ###########################################
+        // Check dates if overlap with previous record
+        // ###########################################
+
+        $leaves = Leave::where('employee_id', $request['employee_id'])
+                    ->where('id', '!=', $id)
+                    ->get();
+        // dd($leaves);
+
+        foreach($leaves as $leave) {
+
+            $isDateOverlap = max($leave->start_date, Carbon::parse($start_date)) <= min($leave->end_date, Carbon::parse($request['end_date']));
+
+            if($isDateOverlap) {
+
+                return back()->withInput()->withErrors('Date is overlap with previous ' . $leave->type . ' date. ('. $leave->start_date->format('d/m/Y') .' - ' . $leave->end_date->format('d/m/Y') .')');
+            }
+
+        }
+
+        // ###########################################
+        // Check if same day or range of date
+        // ###########################################
+        if($start_date->eq($request['end_date'])) {
+
+
+
+            // check if that date is on weekend for Perlis
+            if(Str::of(Auth::user()->ppk->code)->contains('1')) {
+
+                $saturdays  = CarbonPeriod::create($start_date, $end_date)
+                              ->filter(static fn ($date) => $date->is('Saturday'))
+                              ->count();
+                $sundays    = CarbonPeriod::create($start_date, $end_date)
+                              ->filter(static fn ($date) => $date->is('Sunday'))
+                              ->count();
+                
+                $weekends = $saturdays + $sundays;
+
+                if($weekends > 0) {
+                    return redirect()->back()
+                            ->withInput($request->except(['start_date', 'end_date']))
+                            ->withErrors(['msg' => 'Tarikh yang dipilih adalah hari minggu.']);
+                }
+
+            } else {
+
+                // Check weekends for Kedah
+                if($start_date->isWeekend()) {
+
+                    return redirect()->back()
+                            ->withInput($request->except(['start_date', 'end_date']))
+                            ->withErrors(['msg' => 'Tarikh yang dipilih adalah hari minggu.']);
+                }                
+            }
+            
+
+            $request['duration'] = 1;
+        
+        } else {
+
+            if(Str::of(Auth::user()->ppk->code)->contains('1')) {
+
+                // Checking weekends of Perlis
+                $saturdays  = CarbonPeriod::create($start_date, $end_date)
+                              ->filter(static fn ($date) => $date->is('Saturday'))
+                              ->count();
+                $sundays    = CarbonPeriod::create($start_date, $end_date)
+                              ->filter(static fn ($date) => $date->is('Sunday'))
+                              ->count();
+                
+                $weekends = $saturdays + $sundays;
+
+                $duration = $start_date->diffInDays($end_date) + 1 - $weekends;
+
+                // return $end_date;
+                // return $duration;
+                $request['duration'] = $duration;
+
+            } else {
+
+                // Checking weekends for Kedah
+                $duration = Carbon::parse($start_date)->diffInDaysFiltered(function(Carbon $date) {
+                    return !$date->isWeekend();
+                }, Carbon::parse($request['end_date'])->addDay());
+
+                $request['duration'] = $duration;
+            }
+        }
+
+        // ** Check if start date is on weekend first
+        if($request['duration'] == 1) {
+            if(Str::of(Auth::user()->ppk->code)->contains('1')) {
+            
+                if($start_date->is('Saturday') || $start_date->is('Sunday'))
+                    $request['start_date'] = $request['end_date'];
+                else
+                    $request['end_date'] = $request['start_date'];
+            
+            } else {
+
+                if($start_date->isWeekend())
+                    $request['start_date'] = $request['end_date'];
+                else
+                    $request['end_date'] = $request['start_date'];
+
+            }
+        }
+
+        $leave = Leave::findOrFail($id);
+        $leave->update($request->all());
+        return redirect()->route('leaves.index')->with('success', 'Rekod telah berjaya dikemaskini.');
     }
 
     /**

@@ -37,7 +37,7 @@
                                         <div>
                                             <!-- <input type="text" id="search" name="search" placeholder="Search" class="form-control" /> -->
                                             <strong>Name :</strong> <input type="text" name="name" id="name" class="form-control shadow rounded" required autocomplete="off" value="{{ $leave->employee->name }}" readonly>
-                                            <input type="hidden" name="employee_id" id="employee_id" value="{{ old('employee_id') }}">
+                                            <input type="hidden" name="employee_id" id="employee_id" value="{{ $leave->employee_id }}">
                                             <div id="employee_list"></div>
                                         </div>
                                         <div>
@@ -54,16 +54,15 @@
                                                 <option value="Others" {{ ($leave->type == "Others")? 'selected' : ''}}>Others</option>
                                             </select>
                                         </div>
-                                        {{ $leave->start_date->parse('m-d-Y') }}
                                         <div>
-                                            <strong>Start Date :</strong> <input type="date" name="start_date" class="form-control rounded shadow" required value="{{ $leave->start_date }}">
+                                            <strong>Start Date : </strong> <input type="date" name="start_date" class="form-control rounded shadow" required value="{{ $leave->start_date->format('Y-m-d') }}">
                                         </div>
                                         <div>
-                                            <strong>End Date :</strong> <input type="date" name="end_date" class="form-control rounded shadow" required value="{{ $leave->end_date }}">
+                                            <strong>End Date : </strong> <input type="date" name="end_date" class="form-control rounded shadow" required value="{{ $leave->end_date->format('Y-m-d') }}">
                                         </div>
 
                                         <div class="alert col-span-4 flex-right">
-                                            @include('partials.buttons.submit', ['text' => 'Cipta'])
+                                            @include('partials.buttons.submit', ['text' => 'Kemaskini'])
                                         </div>
 
                                     </div>
