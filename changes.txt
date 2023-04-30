@@ -37,3 +37,6 @@
 - Pengurusan Cuti
 	-> Bilangan cuti hari ini, bulan ini dan tahun ini.
 	-> Translate English to BM.
+
+02 Mei 2023 - Tuesday
+- Side Menu - Directory listing for all access.
