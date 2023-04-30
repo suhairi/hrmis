@@ -41,21 +41,22 @@ class LeaveController extends Controller
 
             $startDate = Carbon::parse($leave->start_date);
             $endDate = Carbon::parse($leave->end_date);
-            $today = Carbon::now();
+            $today = Carbon::parse(Carbon::now())->startOfDay(); // to set the time to 00:00:00
 
+            // Count number of leaves for today
             if($startDate == $endDate) {
                 if($startDate->isCurrentDay())
                     $todayCount++;
             } else if($today->between($startDate, $endDate))
                 $todayCount++;
 
-            // return $todayCount;
-
+            // Count number of leaves for current month
             if($startDate->isCurrentMonth())
                 $monthCount++;
             else if($endDate->isCurrentMonth())
                 $monthCount++;
 
+            // Count number of leaves for the current year
         }
 
         // dd($todayCount);
