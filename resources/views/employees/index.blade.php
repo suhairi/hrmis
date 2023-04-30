@@ -49,7 +49,7 @@
                                         <th>Jantina</th>
                                         <th>PPK / Jawatan </th>
                                         <th>Tarikh Lantikan / Status</th>
-                                        <th width="280px">Tindakan</th>
+                                        <th width="180px">Tindakan</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

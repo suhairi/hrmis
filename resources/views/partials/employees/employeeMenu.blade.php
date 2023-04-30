@@ -26,7 +26,8 @@
          hover:-translate-y-1 hover:bg-indigo-500 duration-200 
          shadow-md">
          <i class="fa fa-building"> </i> Aset</a>
-    </a>                                
+    </a>
+              
 </div>
 
 <hr class="m-3" />

@@ -38,6 +38,9 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+        $employee = Employee::first();
+        // dd($employee->service_status);
+
         if ($request->ajax()) {
 
             // ###########################
@@ -98,17 +101,16 @@ class EmployeeController extends Controller
                     })
                     ->addColumn('ppk', function($employee) {
 
-                        $ppk = $employee->ppk->wilayah->name . '<br />' .
-                               $employee->ppk->code . ' - ' . $employee->ppk->name . '<br />' .
+                        $ppk = $employee->ppk->code . ' - ' . $employee->ppk->name . '<br />' .
                                $employee->position->name . '<br />' .
-                               $employee->employment_status . '<br />';
+                               $employee->employment_status . '<br />'.
+                               $employee->service_status . '<br />';
 
                         return $ppk;
                     })
                     ->addColumn('start_date', function($employee) {
 
                         $start_date = Carbon::parse($employee->start_date)->format('d-m-Y') . '<br />' . Carbon::parse($employee->start_date)->age . ' years of service. <br />' . 
-                            $employee->service_status . '<br />' .
                             $employee->education->name;
                         return $start_date;
                     })

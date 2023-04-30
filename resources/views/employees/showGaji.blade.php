@@ -5,22 +5,7 @@
     <div class="page-wrapper">
         <div class="content container-fluid">
 
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="breadcrumb-path ">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><img src="{{ URL::to('assets/img/dash.png') }}" class="mr-3" alt="breadcrumb" />Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Employee</li>
-                        </ul>
-                        <!-- <h3>Admin Dashboard</h3> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="pull-right p-3">
-                <a class="btn btn-dark rounded-full hover:bg-gray-600" href="{{ URL::previous() }}"> < Back</a>
-            </div>
+            @include('partials.buttons.back')
 
             <div class="row">
                 <div class="col col-12">
@@ -32,10 +17,10 @@
                             
                             @include('partials.employees.employeeMenu')
 
-                            <div class="col-6 mb-2">
+<!--                             <div class="col-6 mb-2">
                                 <a class="btn bg-yellow-200 hover:bg-yellow-300 rounded-full mr-2 hover:font-bold">Pending</a>
                                 <a class="btn bg-green-100 hover:bg-green-200 rounded-full mr-2 hover:font-bold">Incoming</a>
-                            </div>
+                            </div> -->
 
                             <div class="col-6">
                                 <table class="table table-bordered table-hover table-striped shadow-2xl">

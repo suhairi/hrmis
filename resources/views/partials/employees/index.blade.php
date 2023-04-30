@@ -3,25 +3,28 @@
         class="btn button bg-yellow-300 hover:bg-yellow-400 text-white hover:font-semibold
         transition ease-in-out delay-30
         hover:-translate-y-1 duration-300
-        rounded-full hover:shadow-md shadow-md" 
+        rounded-full hover:shadow-md shadow-md"
+        title="Papar" 
     >
-        <i class="fa fa-eye mr-2"></i>
+        <i class="fa fa-eye"></i>
     </a>
     <a href="{{ route('employees.edit', $employee->id) }}"
         class="btn button bg-green-400 hover:bg-green-500 text-white hover:font-semibold
         transition ease-in-out delay-30
         hover:-translate-y-1 duration-300
         rounded-full hover:shadow-md shadow-md" 
+        title="Kemaskini"
     >
-        <i class="fa fa-pencil-square mr-2"></i>
+        <i class="fa fa-pencil-square"></i>
     </a>
     {!! Form::open(['method' => 'DELETE','route' => ['employees.destroy', $employee->id],'style'=>'display:inline']) !!}
-        {{ Form::button('<i class="fa fa-trash mr-2"></i>', ['type' => 'submit', 
+        {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 
                 'class' => 'btn button bg-red-600 hover:bg-red-700 text-white hover:font-semibold
                 transition ease-in-out delay-30
                 hover:-translate-y-1 duration-300
                 rounded-full hover:shadow-md 
-                show_confirm shadow-md'
+                show_confirm shadow-md',
+                'title' => 'Hapus'
             ])  
         }}
     {!! Form::close() !!}

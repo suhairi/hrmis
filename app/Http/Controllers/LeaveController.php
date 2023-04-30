@@ -32,17 +32,37 @@ class LeaveController extends Controller
      */
     public function index()
     {
+        $todayCount = 0;
+        $monthCount = 0;
+
         $leaves = Leave::wherehas('employee', function($q) { $q->where('ppk_id', Auth::user()->ppk_id); })->get();
 
-        $startDate  = Carbon::now()->subDays(3);
-        $endDate    = Carbon::now()->addDay(2);
-        $endDate    = Carbon::now()->subDay(4);
+        foreach($leaves as $leave) {
 
-        $check = Carbon::now()->between($startDate,$endDate);
+            $startDate = Carbon::parse($leave->start_date);
+            $endDate = Carbon::parse($leave->end_date);
+            $today = Carbon::now();
+
+            if($startDate == $endDate) {
+                if($startDate->isCurrentDay())
+                    $todayCount++;
+            } else if($today->between($startDate, $endDate))
+                $todayCount++;
+
+            // return $todayCount;
+
+            if($startDate->isCurrentMonth())
+                $monthCount++;
+            else if($endDate->isCurrentMonth())
+                $monthCount++;
+
+        }
+
+        // dd($todayCount);
 
         // return ($check) ? 'Yes, in the range date.' : 'Nope, not in the range date.';
 
-        return view('leaves.index', compact('leaves'));
+        return view('leaves.index', compact('leaves', 'todayCount', 'monthCount'));
     }
 
     /**

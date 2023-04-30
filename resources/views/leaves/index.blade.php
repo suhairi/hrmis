@@ -8,23 +8,23 @@
             <div class="grid grid-cols-3 gap-10">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Today</div>
+                        <div class="card-title">Bilangan Cuti Hari Ini</div>
                     </div>
                     <div class="card-body">
                         <div class="grid grid-cols-2 gap-12">
-                            <div><strong>Total</strong></div>                            
-                            <div>2 employees.</div>                            
+                            <div><strong>Jumlah :</strong></div>                            
+                            <div>{{ $todayCount }} cuti.</div>                            
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">This Month</div>
+                        <div class="card-title">Bulan Ini</div>
                     </div>
                     <div class="card-body">
                         <div class="grid grid-cols-2 gap-12">
-                            <div><strong>Total</strong></div>                            
-                            <div>2 employees.</div>                            
+                            <div><strong>Jumlah :</strong></div>                            
+                            <div>{{ $monthCount }} cuti</div>                            
                         </div>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
                     </div>
                     <div class="card-body">
                         <div class="grid grid-cols-2 gap-12">
-                            <div><strong>Total</strong></div>                            
-                            <div>2 employees.</div>                            
+                            <div><strong>Jumlah :</strong></div>                            
+                            <div>2 cuti.</div>                            
                         </div>
                     </div>
                 </div>              
@@ -44,7 +44,7 @@
             <div class="row mb-4">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header"><strong>Leaves Management</strong></div>
+                        <div class="card-header"><strong>Pengurusan Cuti</strong></div>
 
                         <div class="card-body">
 
