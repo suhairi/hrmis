@@ -38,11 +38,30 @@ class PpkController extends Controller
         return view('ppk.index');
     }
 
-    public function directory() {
+    public function directory(Request $request) {
 
-        $ppks = Ppk::where('wilayah_id', substr(Auth::user()->location, -1))->get();
 
-        return view('directory.index', compact('ppks'));
+
+        if ($request->ajax()) {
+
+            $ppks = Ppk::all();
+
+            return Datatables::of($ppks)
+                    ->addIndexColumn()
+                    ->addColumn('name', function($ppk) {
+                        return $ppk->code . ' - ' . $ppk->name;
+                    })
+                    ->addColumn('address', function($ppk) {
+                        return $ppk->address . ' <br /> ' . $ppk->address2 . '<br />' . $ppk->address3 . '<br />' . $ppk->address4;
+                    })
+                    ->addColumn('telephone', function($ppk) {
+                        return $ppk->phone;
+                    })               
+                    ->rawColumns(['name', 'address', 'telephone', 'actions'])
+                    ->make(true);
+        }
+
+        return view('directory.index');
     }
 
 

@@ -13,31 +13,20 @@
 
                         <div class="col-md-7">
                             <div class="card-body">
-                                <table class="table table-bordered table-striped">
+
+                                <table class="table table-bordered mb-4 data-table">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-blue-500 text-white">
                                             <th class="text-center">#</th>
                                             <th>Nama</th>
                                             <th>Alamat</th>
                                             <th>No Telefon</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach($ppks as $ppk)
-                                            <tr>
-                                                <td class="align-top text-center">{{ $loop->iteration }}</td>
-                                                <td class="align-top">PPK {{ $ppk->code}} - {{ $ppk->name }}</td>
-                                                <td class="align-top">
-                                                    {{ $ppk->address }} <br />
-                                                    {{ $ppk->address2 }} <br />
-                                                    {{ $ppk->address3 }} <br />
-                                                    {{ $ppk->address4 }} <br />
-                                                </td>
-                                                <td class="align-top">{{ $ppk->phone }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
+                                    <tbody></tbody>
                                 </table>
+
+
                             </div>                            
                         </div>
 
@@ -52,3 +41,23 @@
 
 
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+    $(function () {
+      
+        var table = $('.data-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('directory.index') }}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: true},
+                {data: 'name', name: 'name'},
+                {data: 'address', name: 'address'},
+                {data: 'telephone', name: 'telephone'},
+            ],
+            sPaginationType: "first_last_numbers",
+        });
+    });
+</script>
+@endpush

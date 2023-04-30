@@ -42,12 +42,10 @@
                                 Pengurusan Prestasi</span></a>
                     </li>
 
-                    <!-- @if(Str::contains(Auth::user()->location, 'WILAYAH')) -->
                         <li>
                             <a href="{{ route('directory.index') }}"><img src="{{ URL::to('assets/img/performance.svg') }}" alt="sidebar_img"><span>
                                     Direktori PPK</span></a>
                         </li>
-                    <!-- @endif -->
 
                     @if(Str::contains(Auth::user()->location, 'HQ'))
                         <li>

@@ -39,4 +39,11 @@
 	-> Translate English to BM.
 
 02 Mei 2023 - Tuesday
-- Side Menu - Directory listing for all access.
+- Side Menu 
+	-> PPK Directory listing for all access.
+	-> Display using datatable, easier on searching.
+- DB - Table Wilayah
+	-> split address column to 4 columns (address, address2, address3, address4).
+-Side Menu
+	-> PPK Directory Listing
+		-> include wilayah addresses as well.
