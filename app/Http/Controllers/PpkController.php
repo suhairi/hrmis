@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 
 use App\Models\Ppk;
+use App\Models\Wilayah;
 
 use DataTables;
 
@@ -40,13 +41,16 @@ class PpkController extends Controller
 
     public function directory(Request $request) {
 
-
+        // dd($collections);
 
         if ($request->ajax()) {
 
             $ppks = Ppk::all();
+            $wilayahs = Wilayah::all();
 
-            return Datatables::of($ppks)
+            $collections = $wilayahs->toBase()->merge($ppks);
+
+            return Datatables::of($collections)
                     ->addIndexColumn()
                     ->addColumn('name', function($ppk) {
                         return $ppk->code . ' - ' . $ppk->name;

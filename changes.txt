@@ -1,4 +1,4 @@
-16 Mar 2023
+16 Mar 2023 - Thursday
 - Pengurusan Cuti 
 	-> Update 2 jenis weekends. Kedah (Jumaat & Sabtu) dan Perlis (Sabtu dan Ahad).
 - Pengurusan Pekerja
@@ -7,28 +7,28 @@
 		-> Redo and Redesign Create Form.
 		-> Butang Tindakan - SweetAlert Confirm Delete.
 
-27 Mar 2023
+27 Mar 2023 - Monday
 - Pengurusan Pekerja
 	-> Organize back button and success messages into partials.
 	-> DB - table ppk and wilayah
 		-> add column address and telephone.
 
-28 Mar 2023
+28 Mar 2023 - Tuesday
 - Pengurusan Pekerja
 	-> Report - PDF & Excel
 		-> Improve the columns appeared on the report.
 
-03 Apr 2023
+03 Apr 2023 - Monday
 - Pengurusan Pekerja
 	-> DB - table ppk and wilayah
 		-> create seeder
 
-10 Apr 2023
+10 Apr 2023 - Monday
 - Pengurusan Cuti
 	-> Form
 		-> Create and Update form
 
-30 Apr 2023
+30 Apr 2023 - Sunday
 - Pengurusan Pekerja
 	-> Butang Tindakan
 		-> simplify show, edit and delete buttons
@@ -47,3 +47,6 @@
 -Side Menu
 	-> PPK Directory Listing
 		-> include wilayah addresses as well.
+
+03 Mei 2023 - Wednesday
+- 
