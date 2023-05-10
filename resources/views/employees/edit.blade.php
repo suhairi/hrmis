@@ -23,8 +23,11 @@
 
                         <div class="card-body">
 
-                            {!! Form::model($employee, ['method' => 'PATCH','route' => ['employees.update', $employee->id]]) !!}
+                            @if(session('errors'))
+                                @include('partials.messages.error')
+                            @endif
 
+                            {!! Form::model($employee, ['method' => 'PATCH','route' => ['employees.update', $employee->id]]) !!}
                             <h3 class="mb-2"><strong>Maklumat Peribadi</strong></h3>                                
                                 <div class="card">
                                     <div class="card-body bg-gray-50">

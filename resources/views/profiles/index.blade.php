@@ -18,7 +18,6 @@
                                 @include('partials.messages.success')
                             @endif
 
-
                             <table class="table table-bordered rounded-lg">
                              <tr class="bg-blue-400 text-white">
                                <th>Nama</th>

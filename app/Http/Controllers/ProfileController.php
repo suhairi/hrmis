@@ -82,7 +82,17 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'password' => 'min:6',
+            'password_confirmation' => 'required_with:password|same:password|min:6'
+        ]);
+
+        $user = User::find($id);
+
+        $user->update(['password' => bcrypt($request['password'])]);
+
+        return redirect()->route('profiles.index')
+                        ->with('success','Kata Laluan ' . $user->name . ' telah dikemaskini.');
     }
 
     /**

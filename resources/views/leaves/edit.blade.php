@@ -19,16 +19,9 @@
                             <div class="card mt-3">
                                 <div class="card-header"><div class="card-title">Record Leave</div></div>
                                 <div class="card-body">
-
-                                    @if (count($errors) > 0)
-                                        <div class="alert alert-danger">
-                                        <strong>Ralat!</strong> <br>
-                                        <ul>
-                                           @foreach ($errors->all() as $error)
-                                             <li>{{ $error }}</li>
-                                           @endforeach
-                                        </ul>
-                                      </div>
+                                    
+                                    @if(session('errors'))
+                                        @include('partials.messages.error')
                                     @endif
 
                                     {!! Form::model($leave, ['method' => 'PATCH','route' => ['leaves.update', $leave->id]]) !!}
